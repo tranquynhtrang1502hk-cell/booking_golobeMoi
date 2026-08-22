@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Details - Golobe</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Montserrat) -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .detail-page-banner {
+            height: 350px;
+            background: url('https://images.unsplash.com/photo-1583949399430-a6867666a242?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            border-radius: 24px;
+            margin-bottom: -80px;
+        }
+        .detail-summary-bar {
+            background: var(--white);
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .detail-summary-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .detail-summary-info { display: flex; align-items: center; gap: 16px; }
+        .detail-summary-info img { height: 32px; }
+        .detail-summary-route h5 { font-size: 20px; }
+        .detail-summary-route p { font-size: 14px; color: var(--text-muted); }
+        .detail-summary-price { text-align: right; }
+        .detail-summary-price h4 { font-size: 24px; color: var(--primary); }
+        .detail-summary-price p { font-size: 12px; color: var(--text-muted); }
+
+        .detail-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+            padding: 40px 0;
+        }
+
+        .info-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: var(--shadow);
+            margin-bottom: 24px;
+        }
+        .info-card h4 {
+            font-size: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+        .fare-details ul { list-style: none; }
+        .fare-details li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+        .fare-details li.total {
+            font-weight: 700;
+            font-size: 16px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        .login-prompt {
+            text-align: center;
+        }
+        .login-prompt .btn-group {
+            display: flex;
+            gap: 16px;
+            margin-top: 16px;
+        }
+        .login-prompt .btn {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header / Navbar -->
+    <header class="static-header">
+        <div class="container navbar">
+            <ul class="nav-links">
+                <li><a href="index.html#flights-section" class="header-link"><i class="fa-solid fa-plane"></i> Find Flight</a></li>
+                <li><a href="index.html#stays-section" class="header-link"><i class="fa-solid fa-bed"></i> Find Stays</a></li>
+            </ul>
+            <a href="index.html" class="logo dark-logo">
+                <i class="fa-solid fa-paper-plane"></i> Golobe
+            </a>
+            <div class="auth-btns" id="auth-buttons">
+                <a href="login.html" class="btn btn-text-dark">Login</a>
+                <a href="signup.html" class="btn btn-dark">Sign up</a>
+            </div>
+            <div class="auth-btns" id="user-info" style="display: none;">
+                <span id="user-name" class="header-link"></span>
+                <button id="logout-btn" class="btn btn-dark">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container"><div class="detail-page-banner"></div></div>
+
+    <!-- Flight Summary Bar -->
+    <div class="detail-summary-bar">
+        <div class="container detail-summary-content">
+            <div class="detail-summary-info">
+                <i class="fa-solid fa-plane-up" style="font-size: 2rem; color: #8dd3bb;"></i>
+                <div class="detail-summary-route">
+                    <h5>Emirates A380 Airbus</h5>
+                    <p>LHE - KHI • 07 Nov, 2022 • 1 Passenger, Economy</p>
+                </div>
+            </div>
+            <div class="detail-summary-price">
+                <h4>$240</h4>
+                <p>per person</p>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="detail-layout">
+            <!-- Left Column: Details -->
+            <div class="main-details">
+                <div style="margin-bottom: 24px;">
+                    <a href="index.html" class="btn btn-outline"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+                </div>
+                <div class="info-card">
+                    <h4>Baggage Information</h4>
+                    <p>Each passenger can check in a total of 25 kg of baggage, and bring 1 piece of carry-on baggage (max 7kg).</p>
+                </div>
+                <div class="info-card fare-details">
+                    <h4>Fare Details</h4>
+                    <ul>
+                        <li><span>Base Fare</span> <span>$200</span></li>
+                        <li><span>Discount</span> <span>$0</span></li>
+                        <li><span>Taxes</span> <span>$30</span></li>
+                        <li><span>Service Fee</span> <span>$10</span></li>
+                        <li class="total"><span>Total</span> <span>$240</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Right Column: Summary & Booking -->
+            <aside class="sidebar-details">
+                <div class="info-card">
+                    <div class="flight-card" style="box-shadow: none; padding: 0; border: none;">
+                        <div class="airline-logo">
+                            <i class="fa-solid fa-plane-up" style="font-size: 2rem; color: #8dd3bb;"></i>
+                        </div>
+                        <div class="flight-details">
+                            <div class="flight-time">
+                                <span>12:00 PM</span> - <span>01:28 PM</span>
+                            </div>
+                            <div class="flight-path">
+                                <span class="dot"></span><span class="line"></span><i class="fa-solid fa-plane"></i><span class="line"></span><span class="dot"></span>
+                            </div>
+                            <div class="flight-info">
+                                <span>Emirates</span>
+                                <span>1h 28m</span>
+                            </div>
+                        </div>
+                        <div class="flight-booking" style="text-align: center;">
+                            <div class="flight-rating">
+                                <i class="fa-solid fa-star"></i> 4.2
+                                <span>(1,234 reviews)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-card login-prompt" id="booking-action-card">
+                    <h4>Login or Sign up to book</h4>
+                    <div class="btn-group">
+                        <a href="login.html" class="btn btn-primary">Login</a>
+                        <a href="signup.html" class="btn btn-outline">Sign up</a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer style="margin-top: 80px;">
+        <!-- (Copy footer from index.html here if you want) -->
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

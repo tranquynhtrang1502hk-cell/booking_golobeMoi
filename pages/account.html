@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Settings - Golobe</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Montserrat Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CHỈ CẦN GỌI DỰA VÀO 1 FILE STYLE CHÍNH DUY NHẤT -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- STATIC HEADER / NAVBAR -->
+    <header class="static-header">
+        <div class="container navbar">
+            <ul class="nav-links">
+                <li><a href="#" class="header-link"><i class="fa-solid fa-plane"></i> Find Flight</a></li>
+                <li><a href="#" class="header-link"><i class="fa-solid fa-bed"></i> Find Stays</a></li>
+            </ul>
+
+            <a href="index.html" class="logo dark-logo">
+                <i class="fa-solid fa-paper-plane" style="color: var(--primary);"></i> Golobe
+            </a>
+
+            <div class="header-actions">
+                <a href="#" class="nav-links header-link" style="text-decoration:none;">
+                    <i class="fa-solid fa-heart"></i> Favourites
+                </a>
+                <span style="color: var(--border);">|</span>
+
+                <!-- User Dropdown Menu Wrapper -->
+                <div class="user-profile-wrapper">
+                    <button class="profile-trigger" id="profile-trigger">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Avatar" class="nav-avatar">
+                        <span class="user-name">John D.</span>
+                        <i class="fa-solid fa-chevron-down" style="font-size: 12px;"></i>
+                    </button>
+
+                    <!-- Popup Dropdown Menu -->
+                    <div class="dropdown-menu" id="profile-dropdown">
+                        <div class="user-card-header">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Avatar" class="card-avatar">
+                            <div class="card-info">
+                                <h4>John Doe.</h4>
+                                <span class="status-online"><span style="display:inline-block; width:8px; height:8px; background:#10B981; border-radius:50%; margin-right:4px;"></span> Online</span>
+                            </div>
+                        </div>
+                        <hr class="divider">
+                        <ul class="dropdown-links">
+                            <li><a href="account.html#account-tab"><i class="fa-regular fa-user"></i> My account <i class="fa-solid fa-chevron-right arrow-next"></i></a></li>
+                            <li><a href="account.html#payment-tab"><i class="fa-regular fa-credit-card"></i> Payments <i class="fa-solid fa-chevron-right arrow-next"></i></a></li>
+                            <li><a href="account.html#account-tab"><i class="fa-solid fa-gear"></i> Settings <i class="fa-solid fa-chevron-right arrow-next"></i></a></li>
+                        </ul>
+                        <hr class="divider">
+                        <ul class="dropdown-links">
+                            <li><a href="#"><i class="fa-solid fa-circle-question"></i> Support <i class="fa-solid fa-chevron-right arrow-next"></i></a></li>
+                            <li><button class="logout-link" id="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Logout</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ACCOUNT MAIN CONTAINER -->
+    <main class="container account-main-content">
+
+        <!-- PROFILE HERO COVER CARD -->
+        <div class="account-hero-card">
+            <div class="cover-banner">
+                <button class="btn btn-primary btn-upload-cover">
+                    <i class="fa-solid fa-upload"></i> Upload new cover
+                </button>
+            </div>
+            <div class="account-avatar-wrapper">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="User Avatar" class="account-avatar">
+                <button class="btn-edit-avatar"><i class="fa-solid fa-pen"></i></button>
+            </div>
+            <div class="account-user-details">
+                <h2>John Doe.</h2>
+                <p>john.doe@gmail.com</p>
+            </div>
+        </div>
+
+        <!-- MAIN TABS NAVIGATION -->
+        <div class="account-nav-tabs">
+            <button class="account-tab-btn active" data-tab="account-tab">Account</button>
+            <button class="account-tab-btn" data-tab="history-tab">History / Bookings</button>
+            <button class="account-tab-btn" data-tab="payment-tab">Payment methods</button>
+        </div>
+
+        <!-- ================= TAB 1: ACCOUNT DETAILS ================= -->
+        <section id="account-tab" class="account-tab-content active">
+            <h2 class="account-section-title">Account</h2>
+            <div class="info-card account-card-list">
+                
+                <div class="account-info-row">
+                    <div class="info-meta">
+                        <span class="label-title">Name</span>
+                        <span class="value-text">John Doe</span>
+                    </div>
+                    <button class="btn btn-outline"><i class="fa-solid fa-pen-to-square"></i> Change</button>
+                </div>
+
+                <div class="account-info-row">
+                    <div class="info-meta">
+                        <span class="label-title">Email</span>
+                        <span class="value-text">john.doe@gmail.com</span>
+                    </div>
+                    <div class="row-actions">
+                        <button class="btn btn-outline">+ Add another email</button>
+                        <button class="btn btn-outline"><i class="fa-solid fa-pen-to-square"></i> Change</button>
+                    </div>
+                </div>
+
+                <div class="account-info-row">
+                    <div class="info-meta">
+                        <span class="label-title">Password</span>
+                        <span class="value-text">************</span>
+                    </div>
+                    <button class="btn btn-outline"><i class="fa-solid fa-pen-to-square"></i> Change</button>
+                </div>
+
+                <div class="account-info-row">
+                    <div class="info-meta">
+                        <span class="label-title">Phone number</span>
+                        <span class="value-text">+1 000-000-0000</span>
+                    </div>
+                    <button class="btn btn-outline"><i class="fa-solid fa-pen-to-square"></i> Change</button>
+                </div>
+
+                <div class="account-info-row">
+                    <div class="info-meta">
+                        <span class="label-title">Address</span>
+                        <span class="value-text">St 32 main downtown, Los Angeles, California, USA</span>
+                    </div>
+                    <button class="btn btn-outline"><i class="fa-solid fa-pen-to-square"></i> Change</button>
+                </div>
+
+                <div class="account-info-row">
+                    <div class="info-meta">
+                        <span class="label-title">Date of birth</span>
+                        <span class="value-text">01-01-1992</span>
+                    </div>
+                    <button class="btn btn-outline"><i class="fa-solid fa-pen-to-square"></i> Change</button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= TAB 2: TICKETS / BOOKINGS HISTORY ================= -->
+        <section id="history-tab" class="account-tab-content">
+            <div class="history-header">
+                <h2 class="account-section-title">Tickets/Bookings</h2>
+                <div class="filter-dropdown">
+                    <select class="field-group-select">
+                        <option>Upcoming</option>
+                        <option>Completed</option>
+                        <option>Canceled</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="history-subtabs">
+                <button class="subtab-btn active"><i class="fa-solid fa-plane"></i> Flights</button>
+                <button class="subtab-btn"><i class="fa-solid fa-bed"></i> Stays</button>
+            </div>
+
+            <!-- Ticket Item 1 -->
+            <div class="booking-ticket-item">
+                <div class="airline-brand">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Emirates_logo.svg" alt="Emirates">
+                </div>
+                <div class="booking-info">
+                    <div class="time-schedule">
+                        <div>
+                            <span class="airport">Newark (EWR)</span>
+                            <span class="time-val">12:00 pm</span>
+                        </div>
+                        <span class="path-dash">—</span>
+                        <div>
+                            <span class="airport">Newark (EWR)</span>
+                            <span class="time-val">6:00 pm</span>
+                        </div>
+                    </div>
+                    <div class="meta-tags">
+                        <span><i class="fa-regular fa-calendar"></i> 12-11-22</span>
+                        <span><i class="fa-regular fa-clock"></i> Flight time: Newark(EWR)</span>
+                        <span><i class="fa-solid fa-door-closed"></i> Gate: 12A</span>
+                        <span><i class="fa-solid fa-chair"></i> Seat: 12B</span>
+                    </div>
+                </div>
+                <div class="booking-actions">
+                    <button class="btn btn-primary">Download Ticket</button>
+                    <button class="btn-next-arrow"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+
+            <!-- Ticket Item 2 -->
+            <div class="booking-ticket-item">
+                <div class="airline-brand">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Emirates_logo.svg" alt="Emirates">
+                </div>
+                <div class="booking-info">
+                    <div class="time-schedule">
+                        <div>
+                            <span class="airport">Newark (EWR)</span>
+                            <span class="time-val">12:00 pm</span>
+                        </div>
+                        <span class="path-dash">—</span>
+                        <div>
+                            <span class="airport">Newark (EWR)</span>
+                            <span class="time-val">6:00 pm</span>
+                        </div>
+                    </div>
+                    <div class="meta-tags">
+                        <span><i class="fa-regular fa-calendar"></i> 12-11-22</span>
+                        <span><i class="fa-regular fa-clock"></i> Flight time: Newark(EWR)</span>
+                        <span><i class="fa-solid fa-door-closed"></i> Gate: 12A</span>
+                        <span><i class="fa-solid fa-chair"></i> Seat: 12B</span>
+                    </div>
+                </div>
+                <div class="booking-actions">
+                    <button class="btn btn-primary">Download Ticket</button>
+                    <button class="btn-next-arrow"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 3: PAYMENT METHODS ================= -->
+        <section id="payment-tab" class="account-tab-content">
+            <h2 class="account-section-title">Payment methods</h2>
+            <div class="payment-cards-grid">
+                
+                <!-- Existing Saved Card -->
+                <div class="user-credit-card">
+                    <div class="card-head">
+                        <span class="card-num">**** **** **** 4321</span>
+                        <button class="btn-delete-card"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                    <div class="card-foot">
+                        <div>
+                            <span class="exp-label">Valid thru</span>
+                            <span class="exp-date">02/27</span>
+                        </div>
+                        <span class="brand-name">VISA</span>
+                    </div>
+                </div>
+
+                <!-- Add New Card Box Trigger -->
+                <div class="add-card-placeholder" id="open-card-modal">
+                    <div class="plus-circle"><i class="fa-solid fa-plus"></i></div>
+                    <span>Add a new card</span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- NEWSLETTER SECTION -->
+        <div class="newsletter" style="margin-top: 60px;">
+            <div class="newsletter-text">
+                <h2>Subscribe Newsletter</h2>
+                <p style="font-weight:700; margin-bottom: 4px;">The Travel</p>
+                <p>Get inspired! Receive travel discounts, tips and behind the scenes stories.</p>
+                <form class="newsletter-form" style="margin-top: 16px;">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn btn-dark">Subscribe</button>
+                </form>
+            </div>
+            <div class="newsletter-graphic">
+                <i class="fa-solid fa-envelope-open-text" style="font-size: 120px; color: var(--secondary); opacity: 0.2;"></i>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-grid">
+            <div>
+                <div class="footer-logo">
+                    <i class="fa-solid fa-paper-plane"></i> Golobe
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Our Destinations</h4>
+                <ul>
+                    <li><a href="#">Canada</a></li>
+                    <li><a href="#">Alaska</a></li>
+                    <li><a href="#">France</a></li>
+                    <li><a href="#">Iceland</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Our Activities</h4>
+                <ul>
+                    <li><a href="#">Northern Lights</a></li>
+                    <li><a href="#">Cruising & sailing</a></li>
+                    <li><a href="#">Multi-activities</a></li>
+                    <li><a href="#">Kayaking</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Travel Blogs</h4>
+                <ul>
+                    <li><a href="#">Bali Travel Guide</a></li>
+                    <li><a href="#">Sri Lanka Travel Guide</a></li>
+                    <li><a href="#">Peru Travel Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Work with us</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL: ADD A NEW CARD -->
+    <div class="modal-backdrop" id="card-modal">
+        <div class="modal-dialog">
+            <button class="btn-modal-close" id="close-card-modal">&times;</button>
+            <h3 class="modal-title">Add a new Card</h3>
+            <form class="modal-card-form">
+                <div class="form-field">
+                    <label>Card Number</label>
+                    <input type="text" placeholder="4321 4321 4321 4321">
+                </div>
+                <div class="form-row-2col">
+                    <div class="form-field">
+                        <label>Exp. Date</label>
+                        <input type="text" placeholder="02/27">
+                    </div>
+                    <div class="form-field">
+                        <label>CVC</label>
+                        <input type="text" placeholder="123">
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label>Name on Card</label>
+                    <input type="text" placeholder="John Doe">
+                </div>
+                <div class="form-field">
+                    <label>Country or Region</label>
+                    <select>
+                        <option>United States</option>
+                        <option>Vietnam</option>
+                    </select>
+                </div>
+                <div class="checkbox-remember">
+                    <input type="checkbox" id="save-card-chk" checked>
+                    <label for="save-card-chk">Securely save my information for 1-click checkout</label>
+                </div>
+                <button type="button" class="btn btn-primary" style="width: 100%; margin-top: 12px;">Add Card</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript Core File -->
+    <script src="script.js"></script>
+    <!-- JavaScript Xử lý Động cho Trang Account -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+            if (currentUser) {
+                const fullName = currentUser.name || (currentUser.email ? currentUser.email.split('@')[0] : 'User');
+                const email = currentUser.email || 'Chưa có email';
+
+                // Tạo tên rút gọn cho phần Header (VD: John D.)
+                const nameParts = fullName.trim().split(' ');
+                let shortName = fullName;
+                if (nameParts.length > 1) {
+                    const lastName = nameParts[0];
+                    const firstNameInitial = nameParts[nameParts.length - 1].charAt(0).toUpperCase();
+                    shortName = `${lastName} ${firstNameInitial}.`;
+                }
+
+                // Tạo avatar ngẫu nhiên theo tên người dùng
+                const dynamicAvatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(fullName)}&background=random&color=fff&size=300`;
+
+                // 1. Đồng bộ tất cả các ảnh đại diện trên trang
+                document.querySelectorAll('.nav-avatar, .card-avatar, .account-avatar').forEach(img => {
+                    img.src = dynamicAvatarUrl;
+                });
+
+                // 2. Cập nhật tên ở Header & Dropdown menu
+                const headerUserName = document.querySelector('.user-name'); 
+                const dropdownFullName = document.querySelector('.card-info h4');
+                if (headerUserName) headerUserName.textContent = shortName;
+                if (dropdownFullName) dropdownFullName.textContent = fullName;
+
+                // 3. Cập nhật tên & email ở phần Bìa lớn (Hero Card)
+                const heroName = document.querySelector('.account-user-details h2');
+                const heroEmail = document.querySelector('.account-user-details p');
+                if (heroName) heroName.textContent = fullName;
+                if (heroEmail) heroEmail.textContent = email;
+
+                // 4. Cập nhật tên & email trong danh sách Account Details bên dưới
+                const accountValues = document.querySelectorAll('.account-tab-content .value-text');
+                if (accountValues.length >= 2) {
+                    accountValues[0].textContent = fullName; // Dòng Name
+                    accountValues[1].textContent = email;    // Dòng Email
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+</body>
+</html>

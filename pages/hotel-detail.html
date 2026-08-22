@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Golobe - Hotel Details & Booking</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        :root {
+            --primary: #1A2C3E;
+            --primary-light: #2C3E50;
+            --primary-dark: #0F1A2B;
+            --accent: #8DD3BB;
+            --accent-dark: #6BBFA3;
+            --accent-hover: #5BAF93;
+            --accent-light: #F0FAF6;
+            --white: #ffffff;
+            --bg-light: #F8F9FA;
+            --text-dark: #1A2C3E;
+            --text-muted: #6C757D;
+            --border: #E9ECEF;
+            --shadow: 0 4px 20px rgba(26, 44, 62, 0.1);
+            --shadow-hover: 0 8px 30px rgba(141, 211, 187, 0.35);
+            --success: #10B981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .static-header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-dark);
+        }
+
+        .nav-links a i {
+            margin-right: 8px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            text-decoration: none;
+            color: var(--primary);
+        }
+
+        .logo i {
+            color:  #0F1A2B;
+            margin-right: 8px;
+        }
+
+        .auth-btns {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .auth-btns .btn {
+            padding: 8px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-text-dark {
+            color: var(--text-dark);
+        }
+
+        .btn-text-dark:hover {
+            color: var(--accent-dark);
+        }
+
+        .btn-dark {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-dark:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background:  #0F1A2B;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .user-name {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text-dark);
+        }
+
+        .logout-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            color: #e74c3c;
+        }
+
+        /* Hotel Detail */
+        .hotel-detail-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .detail-gallery {
+            margin-bottom: 24px;
+        }
+
+        .detail-main-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 12px;
+            transition: opacity 0.5s ease;
+        }
+
+        .detail-thumbs {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .detail-thumbs img {
+            width: 120px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .detail-thumbs img:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow);
+        }
+
+        .detail-thumbs img.active {
+            border-color: var(--accent-dark);
+        }
+
+        .detail-rating {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .rating-badge {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .detail-location {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .detail-description {
+            margin-bottom: 32px;
+        }
+
+        .detail-description h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: var(--primary);
+        }
+
+        .detail-description p {
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .detail-amenities {
+            margin-bottom: 32px;
+        }
+
+        .detail-amenities h3 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            color: var(--primary);
+        }
+
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .amenities-grid span {
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: var(--white);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+        }
+
+        .amenities-grid span:hover {
+            border-color: var(--accent);
+            transform: translateX(4px);
+            box-shadow: var(--shadow);
+        }
+
+        .amenities-grid span i {
+            color: var(--accent-dark);
+            width: 20px;
+        }
+
+        .detail-reviews h3 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            color: var(--primary);
+        }
+
+        .review-item {
+            background: var(--white);
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            border-left: 4px solid var(--accent);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+
+        .review-item p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* Booking Card */
+        .booking-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: var(--shadow);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+            border: 1px solid var(--border);
+        }
+
+        .booking-price {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .booking-price .price-label {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .booking-price .price-value {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--accent-dark);
+            display: block;
+        }
+
+        .booking-field {
+            margin-bottom: 16px;
+        }
+
+        .booking-field label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .booking-field input,
+        .booking-field select {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            font-size: 14px;
+            font-weight: 600;
+            background: var(--bg-light);
+            transition: all 0.3s ease;
+            color: var(--text-dark);
+        }
+
+        .booking-field input:focus,
+        .booking-field select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(141, 211, 187, 0.2);
+        }
+
+        .booking-total {
+            display: flex;
+            justify-content: space-between;
+            padding: 16px 0;
+            border-top: 1px solid var(--border);
+            margin: 16px 0;
+            font-weight: 700;
+        }
+
+        .booking-total .total-price {
+            font-size: 20px;
+            color: var(--accent-dark);
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--primary);
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 16px;
+            width: 100%;
+            font-size: 18px;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-dark);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-primary i {
+            margin-right: 10px;
+        }
+
+        .btn-primary.added {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-primary.added:hover {
+            background: #059669;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            padding: 10px 24px;
+            border: 2px solid var(--accent-dark);
+            color: var(--accent-dark);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background: var(--accent-dark);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: 60px 0 40px;
+            margin-top: 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .footer-logo i {
+            color: var(--accent);
+            margin-right: 8px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-col h4 {
+            font-size: 16px;
+            margin-bottom: 16px;
+            color: #ffffff;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-col ul a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col ul a:hover {
+            color: var(--accent);
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-hover);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.5s ease;
+            z-index: 9999;
+            border-left: 4px solid var(--accent);
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast i {
+            color: var(--accent);
+            margin-right: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hotel-detail-grid {
+                grid-template-columns: 1fr;
+            }
+            .booking-card {
+                position: static;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+            .nav-links {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                gap: 20px;
+            }
+            .detail-main-img {
+                height: 240px;
+            }
+            .detail-thumbs img {
+                width: 80px;
+                height: 60px;
+            }
+            .amenities-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .auth-btns {
+                gap: 8px;
+            }
+            .auth-btns .btn {
+                padding: 6px 14px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="static-header">
+        <div class="container navbar">
+            <ul class="nav-links">
+                <li><a href="flights.html" class="header-link"><i class="fa-solid fa-plane"></i> Find Flight</a></li>
+                <li><a href="hotels.html" class="header-link"><i class="fa-solid fa-bed"></i> Find Stays</a></li>
+            </ul>
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-paper-plane"></i> Golobe
+            </a>
+            <div class="auth-btns" id="auth-btns">
+                <!-- Sẽ được thay đổi bởi JavaScript -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Hotel Detail -->
+    <section class="container" style="padding-top: 120px; padding-bottom: 80px;">
+        <div class="hotel-detail-grid">
+            <!-- Left Column -->
+            <div class="hotel-detail-main">
+                <div style="margin-bottom: 24px;">
+                    <a href="index.html" class="btn-outline"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+                </div>
+                <!-- Images -->
+                <div class="detail-gallery">
+                    <img id="detail-main-img" src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80" alt="Hotel" class="detail-main-img" />
+                    <div class="detail-thumbs" id="thumbnails">
+                        <!-- Thumbnails sẽ được tạo động bằng JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Hotel Info -->
+                <h1 id="hotel-name">Grand Istanbul Hotel</h1>
+                <div class="detail-rating">
+                    <span class="rating-badge" id="hotel-rating">⭐ 4.8</span>
+                    <span id="review-count">(2,341 reviews)</span>
+                    <span class="detail-location" id="hotel-address"><i class="fa-solid fa-location-dot"></i> Sultanahmet, Istanbul, Turkey</span>
+                </div>
+
+                <div class="detail-description">
+                    <h3>About this hotel</h3>
+                    <p id="hotel-description">Located in the heart of Sultanahmet, this 5-star hotel offers breathtaking views of the Hagia Sophia and the Blue Mosque. Guests enjoy luxurious rooms, a rooftop terrace, and world-class Turkish cuisine.</p>
+                </div>
+
+                <div class="detail-amenities">
+                    <h3>Amenities</h3>
+                    <div class="amenities-grid" id="amenities-grid">
+                        <!-- Amenities sẽ được tạo động -->
+                    </div>
+                </div>
+
+                <!-- Reviews -->
+                <div class="detail-reviews">
+                    <h3>What guests say</h3>
+                    <div id="reviews-container">
+                        <!-- Reviews sẽ được tạo động -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Booking Card -->
+            <div class="booking-card">
+                <div class="booking-price">
+                    <span class="price-label">From</span>
+                    <span class="price-value" id="price-per-night">$189</span>
+                    <span class="price-label">/ night</span>
+                </div>
+
+                <form id="booking-form">
+                    <div class="booking-field">
+                        <label for="checkin-date">Check-in</label>
+                        <input type="date" id="checkin-date" />
+                    </div>
+                    <div class="booking-field">
+                        <label for="checkout-date">Check-out</label>
+                        <input type="date" id="checkout-date" />
+                    </div>
+                    <div class="booking-field">
+                        <label for="booking-guests">Guests</label>
+                        <select id="booking-guests">
+                            <option>1 Guest</option>
+                            <option selected>2 Guests</option>
+                            <option>3 Guests</option>
+                            <option>4 Guests</option>
+                            <option>5+ Guests</option>
+                        </select>
+                    </div>
+                    <div class="booking-field">
+                        <label for="room-type">Room Type</label>
+                        <select id="room-type">
+                            <option>Standard Room</option>
+                            <option selected>Deluxe Room</option>
+                            <option>Suite</option>
+                            <option>Presidential Suite</option>
+                        </select>
+                    </div>
+
+                    <div class="booking-total">
+                        <span>Total (<span id="nights-count">5</span> nights)</span>
+                        <span class="total-price" id="total-price">$945</span>
+                    </div>
+
+                    <button type="button" id="hotel-add-to-cart" class="btn-primary">
+                        <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                    </button>
+                    <p style="font-size: 12px; color: var(--text-muted); text-align: center; margin-top: 12px;">
+                        <i class="fa-solid fa-lock"></i> Secure booking. No hidden fees.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo"><i class="fa-solid fa-paper-plane"></i> Golobe</div>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Our Destinations</h4>
+                    <ul>
+                        <li><a href="#">Istanbul</a></li>
+                        <li><a href="#">Sydney</a></li>
+                        <li><a href="#">Paris</a></li>
+                        <li><a href="#">Dubai</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Our Activities</h4>
+                    <ul>
+                        <li><a href="#">Northern Lights</a></li>
+                        <li><a href="#">Cruising & sailing</a></li>
+                        <li><a href="#">Multi-activity</a></li>
+                        <li><a href="#">Kayaking</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Travel Blogs</h4>
+                    <ul>
+                        <li><a href="#">Bali Travel Guide</a></li>
+                        <li><a href="#">Sri Lanka Travel Guide</a></li>
+                        <li><a href="#">Peru Travel Guide</a></li>
+                        <li><a href="#">Swiss Alps Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>About Us</h4>
+                    <ul>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Work with us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fa-solid fa-check-circle"></i>
+        <span id="toast-message">Added to cart!</span>
+    </div>
+
+    <script>
+        // ====== Hotel Data ======
+        const hotelData = {
+            istanbul: {
+                name: 'Grand Istanbul Hotel',
+                rating: '⭐ 4.8',
+                reviews: '(2,341 reviews)',
+                address: 'Sultanahmet, Istanbul, Turkey',
+                price: 189,
+                description: 'Located in the heart of Sultanahmet, this 5-star hotel offers breathtaking views of the Hagia Sophia and the Blue Mosque. Guests enjoy luxurious rooms, a rooftop terrace, and world-class Turkish cuisine.',
+                image: 'https://images.guidedistanbultours.com/media/Four-Seasons-Hotel-Istanbul.jpg',
+                amenities: ['Free WiFi', 'Breakfast', 'Pool', 'Spa & Sauna', 'Gym', 'Parking', '24/7 Concierge', 'Smart TV'],
+                thumbnails: [
+                    'https://du-lich.chudu24.com/f/m/2211/02/khach-san-grand-hyatt-istanbul-19.jpg',
+                    'https://du-lich.chudu24.com/f/m/2211/02/khach-san-grand-hyatt-istanbul-3.jpg',
+                    'https://du-lich.chudu24.com/f/m/2210/21/grand-hyatt-istanbul.jpeg?w=1200&h=800'
+                ],
+                reviews: [
+                    { name: 'Sarah M.', rating: '⭐⭐⭐⭐⭐', text: 'Absolutely incredible stay! The staff went above and beyond.' },
+                    { name: 'James K.', rating: '⭐⭐⭐⭐⭐', text: 'The view from the rooftop is unbeatable. Highly recommend!' },
+                    { name: 'Emma W.', rating: '⭐⭐⭐⭐', text: 'Great location, clean rooms, and delicious breakfast. Will come back!' }
+                ]
+            },
+            sydney: {
+                name: 'Sydney Harbour Resort',
+                rating: '⭐ 4.7',
+                reviews: '(1,892 reviews)',
+                address: 'Circular Quay, Sydney, Australia',
+                price: 245,
+                description: 'Overlooking the iconic Sydney Opera House and Harbour Bridge, this luxury resort offers stunning waterfront views, world-class dining, and easy access to the city\'s best attractions.',
+                image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/a7/05/da/rydges-sydney-harbour.jpg?w=1400&h=-1&s=1',
+                amenities: ['Free WiFi', 'Breakfast', 'Pool', 'Spa', 'Gym', 'Parking', 'Concierge', 'Smart TV', 'Ocean View'],
+                thumbnails: [
+                    'https://i.travelapi.com/lodging/1000000/10000/9100/9035/be73a21e_z.jpg',
+                    'https://www.americanexpress.com/en-us/travel/discover/photos/300812/35735/1200/Sofitel_Sydney_Darling_Harbour_Luxury_Corner_Darling_Harbour_view.jpg',
+                    'https://s3-ap-southeast-2.amazonaws.com/wayfarer.travel/wp-content/uploads/2019/11/14115204/Rydges-Sydney-Harbour-Rooftop.jpg'
+                ],
+                reviews: [
+                    { name: 'Michael R.', rating: '⭐⭐⭐⭐⭐', text: 'Breathtaking views of the Opera House! Absolutely loved it.' },
+                    { name: 'Lisa T.', rating: '⭐⭐⭐⭐', text: 'Great location, but a bit pricey. Still worth it for the views.' },
+                    { name: 'David L.', rating: '⭐⭐⭐⭐⭐', text: 'The staff were amazing and the facilities were top-notch.' }
+                ]
+            },
+            baku: {
+                name: 'Flame Towers Hotel',
+                rating: '⭐ 4.5',
+                reviews: '(1,124 reviews)',
+                address: 'Baku Boulevard, Baku, Azerbaijan',
+                price: 159,
+                description: 'Located in the heart of Baku, this modern hotel offers panoramic views of the Caspian Sea and the iconic Flame Towers. Perfect for both business and leisure travelers.',
+                image: 'https://mir-s3-cdn-cf.behance.net/project_modules/1400/483ddd23417323.5632308044d0d.jpg',
+                amenities: ['Free WiFi', 'Breakfast', 'Pool', 'Spa', 'Gym', 'Parking', '24/7 Concierge', 'Smart TV'],
+                thumbnails: [
+                   'https://www.ahstatic.com/photos/a593_ho_03_p_2048x1536.jpg', 
+                    'https://fairmont.hotelinbaku.com/data/Pics/OriginalPhoto/12781/1278115/1278115351/fairmont-baku-flame-towers-baku-pic-36.JPEG',
+                    'https://fairmont.hotels-baku.com/data/Images/OriginalPhoto/17168/1716894/1716894620/baku-fairmont-baku-flame-towers-image-83.JPEG'
+                ],
+                reviews: [
+                    { name: 'Ali H.', rating: '⭐⭐⭐⭐', text: 'Great hotel with amazing views of the city.' },
+                    { name: 'Elena K.', rating: '⭐⭐⭐⭐⭐', text: 'Modern, clean, and excellent service. Highly recommend!' }
+                ]
+            },
+            male: {
+                name: 'Overwater Paradise Resort',
+                rating: '⭐ 4.9',
+                reviews: '(3,456 reviews)',
+                address: 'North Malé Atoll, Maldives',
+                price: 520,
+                description: 'Experience the ultimate luxury in this overwater resort with crystal-clear waters, private villas, and unparalleled service. Perfect for honeymooners and those seeking paradise.',
+                image: 'https://cdn.moanavoyages.com/img/packages/13115.jpg',
+                amenities: ['Free WiFi', 'Breakfast', 'Private Pool', 'Spa', 'Gym', 'Water Sports', '24/7 Concierge', 'Smart TV'],
+                thumbnails: [
+                    'https://s-media-cache-ak0.pinimg.com/originals/5e/df/fc/5edffc1087e715032f5d70fb83d52a21.jpg',
+                    'https://www.journeyera.com/wp-content/uploads/2023/05/Overwater_bungalows_caribbean-49-1080x720.jpg',
+                    'https://www.maldiveswatervillas.com/wp-content/uploads/2021/09/Joali-Maldives-Luxury-water-villa-with-pool-ext.jpg'
+                ],
+                reviews: [
+                    { name: 'Honeymooners', rating: '⭐⭐⭐⭐⭐', text: 'A true paradise! Best vacation ever!' },
+                    { name: 'Travel Guru', rating: '⭐⭐⭐⭐⭐', text: 'Overwater villas are stunning. Worth every penny.' }
+                ]
+            },
+            paris: {
+                name: 'Eiffel Tower Suites',
+                rating: '⭐ 4.6',
+                reviews: '(2,678 reviews)',
+                address: '7th Arrondissement, Paris, France',
+                price: 310,
+                description: 'Situated just steps away from the Eiffel Tower, this elegant hotel offers stunning city views, Parisian charm, and luxurious amenities. The perfect base to explore the City of Light.',
+                image: 'https://imgcdn.stablediffusionweb.com/2024/12/28/8ae421b6-da27-42dd-9ad7-29256ebc2e46.jpg',
+                amenities: ['Free WiFi', 'Breakfast', 'Spa', 'Gym', 'Concierge', 'Smart TV', 'City View'],
+                thumbnails: [
+                    'https://cf.bstatic.com/xdata/images/hotel/max1024x768/835897635.jpg?k=9a95c12d28c73a9cb02c305d138c867e54dea917891cb06cc7df3811354af5ce&o=',
+                    'https://tse1.mm.bing.net/th/id/OIP.9l8s_Wdvf1yq1GuAkWfWOQHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',
+                    'https://sharetribe.imgix.net/6623df02-4af4-48a8-a977-c25cf75728b7/662666cd-ef82-4deb-a3a8-9b9563887489?auto=format&fit=clip&h=2400&w=2400&s=2155366ef8977e97b8ca05cf939132f6'
+                ],
+                reviews: [
+                    { name: 'Sophie L.', rating: '⭐⭐⭐⭐⭐', text: 'Wonderful hotel with Eiffel Tower view from the balcony.' },
+                    { name: 'Jean P.', rating: '⭐⭐⭐⭐', text: 'Great location, friendly staff, beautiful rooms.' }
+                ]
+            },
+            dubai: {
+                name: 'Burj Al Arab View Hotel',
+                rating: '⭐ 4.9',
+                reviews: '(4,201 reviews)',
+                address: 'Jumeirah, Dubai, UAE',
+                price: 450,
+                description: 'Experience the ultimate in luxury with stunning views of the Burj Al Arab and the Arabian Gulf. This 5-star hotel offers world-class amenities and impeccable service.',
+                image: 'https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0e/92/f2/6e.jpg',
+                amenities: ['Free WiFi', 'Breakfast', 'Private Pool', 'Spa', 'Gym', 'Parking', '24/7 Concierge', 'Smart TV', 'Ocean View'],
+                thumbnails: [
+                    'https://besthotelshome.com/wp-content/uploads/2019/02/Burj-Al-Arab-Suite-1024x768.jpg',
+                    'https://media-cdn.tripadvisor.com/media/photo-s/0e/76/29/b3/the-buffet-area-centre.jpg',
+                    'https://media.cntraveler.com/photos/5a78ac9ab4fe907d6c133b1d/16:9/w_2560,c_limit/Burj-Al-Arab-Jumeirah__2018_Burj-Al-Arab-Jumeirah---The-Terrace---Salt-Pool1.jpg'
+                ],
+                reviews: [
+                    { name: 'Ahmed M.', rating: '⭐⭐⭐⭐⭐', text: 'Absolute luxury! The views of Burj Al Arab are incredible.' },
+                    { name: 'Jennifer S.', rating: '⭐⭐⭐⭐⭐', text: 'World-class service and amenities. Will definitely return.' }
+                ]
+            },
+            tokyo: {
+                name: 'Shinjuku Sky Tower',
+                rating: '⭐ 4.7',
+                reviews: '(1,956 reviews)',
+                address: 'Shinjuku, Tokyo, Japan',
+                price: 280,
+                description: 'Located in the heart of Tokyo\'s vibrant Shinjuku district, this hotel offers panoramic city views, traditional Japanese hospitality, and modern comfort.',
+                image: 'https://th.bing.com/th/id/OIP.qxgEcnIauiALd_4YnNDPEQHaFu?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3',
+                amenities: ['Free WiFi', 'Breakfast', 'Spa', 'Gym', 'Concierge', 'Smart TV', 'City View'],
+                thumbnails: [
+                    'https://images.trvl-media.com/lodging/91000000/90100000/90097800/90097719/81bdc16b.jpg?impolicy=fcrop&w=1200&h=800&p=1&q=medium',
+                    'https://www.hotelgroove.jp/assets/img/mv_im02.jpg',
+                    'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/fb/d6/a3/caption.jpg?w=1200&h=-1&s=1'
+                ],
+                reviews: [
+                    { name: 'Yuki T.', rating: '⭐⭐⭐⭐⭐', text: 'Perfect location in Shinjuku. Clean, modern, and great service.' },
+                    { name: 'Mark W.', rating: '⭐⭐⭐⭐', text: 'Great view of Tokyo skyline. Would stay again.' }
+                ]
+            },
+            rome: {
+                name: 'Colosseum Palace',
+                rating: '⭐ 4.5',
+                reviews: '(1,789 reviews)',
+                address: 'Monti, Rome, Italy',
+                price: 220,
+                description: 'Steps away from the ancient Colosseum, this historic hotel combines old-world charm with modern amenities. Explore Rome\'s rich history right from your doorstep.',
+                image: 'https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=800&q=80',
+                amenities: ['Free WiFi', 'Breakfast', 'Spa', 'Gym', 'Concierge', 'Smart TV', 'Historic View'],
+                thumbnails: [
+                    'https://castelsantangelorome.com/wp-content/uploads/2025/02/colosseo-palace-star-roma-1024x768.jpg',
+                    'https://www.manfredihotels.com/wp-content/uploads/2021/11/Courtlounge-190-1-scaled-1.jpg'
+                ],
+                reviews: [
+                    { name: 'Marco R.', rating: '⭐⭐⭐⭐', text: 'Excellent location near Colosseum. Beautiful historic building.' },
+                    { name: 'Anna G.', rating: '⭐⭐⭐⭐⭐', text: 'Amazing experience! The view of Colosseum from the room is stunning.' }
+                ]
+            },
+            newyork: {
+                name: 'Central Park Towers',
+                rating: '⭐ 4.6',
+                reviews: '(3,124 reviews)',
+                address: 'Midtown, New York, USA',
+                price: 390,
+                description: 'Overlooking the iconic Central Park, this landmark hotel offers unparalleled views of the Manhattan skyline, luxury accommodations, and easy access to NYC\'s best attractions.',
+                image: 'https://media.architecturaldigest.com/photos/640f66ec5d38af65edd18e2c/16:9/w_1280,c_limit/GettyImages-1327817863.jpg?mbid=social_retweet',
+                amenities: ['Free WiFi', 'Breakfast', 'Pool', 'Spa', 'Gym', 'Parking', '24/7 Concierge', 'Smart TV', 'Park View'],
+                thumbnails: [
+                    'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/55/a3/b7/park-central-times-square.jpg?w=1200&h=-1&s=1',
+                    'https://imgs.6sqft.com/wp-content/uploads/2022/06/21120833/Central-Park-Tower-Amenities-4.jpg',
+                    'https://robbreport.com/wp-content/uploads/2024/10/220209_EJ_central_park_tower_amenities_0225_HIGH_RES.jpg'
+                ],
+                reviews: [
+                    { name: 'Tom H.', rating: '⭐⭐⭐⭐⭐', text: 'Incredible views of Central Park. The location is perfect.' },
+                    { name: 'Mary K.', rating: '⭐⭐⭐⭐', text: 'Luxurious hotel with excellent service. A bit pricey but worth it.' }
+                ]
+            }
+        };
+
+        // ====== Auth Functions ======
+        function getCurrentUser() {
+            return JSON.parse(localStorage.getItem('currentUser') || 'null');
+        }
+
+        function updateAuthUI() {
+            const authBtns = document.getElementById('auth-btns');
+            const user = getCurrentUser();
+            
+            if (user) {
+                const initials = user.name.split(' ').map(n => n[0]).join('').toUpperCase();
+                authBtns.innerHTML = `
+                    <div class="user-info">
+                        <div class="user-avatar">${initials}</div>
+                        <span class="user-name">${user.name}</span>
+                        <button onclick="logout()" class="logout-btn">
+                            <i class="fa-solid fa-sign-out-alt"></i> Logout
+                        </button>
+                    </div>
+                `;
+            } else {
+                authBtns.innerHTML = `
+                    <a href="login.html" class="btn btn-text-dark">Login</a>
+                    <a href="signup.html" class="btn btn-dark">Sign up</a>
+                `;
+            }
+        }
+
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.removeItem('currentUser');
+                updateAuthUI();
+                showToast('Logged out successfully!');
+                setTimeout(() => {
+                    window.location.reload();
+                }, 500);
+            }
+        }
+
+        // ====== Toast Notification ======
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            toastMessage.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // ====== Load Hotel Data ======
+        function loadHotelData() {
+            const params = new URLSearchParams(window.location.search);
+            const city = params.get('city') || params.get('hotel') || 'istanbul';
+            const data = hotelData[city] || hotelData.istanbul;
+
+            // Update main info
+            document.getElementById('hotel-name').textContent = data.name;
+            document.getElementById('hotel-rating').textContent = data.rating;
+            document.getElementById('review-count').textContent = data.reviews;
+            document.getElementById('hotel-address').innerHTML = `<i class="fa-solid fa-location-dot"></i> ${data.address}`;
+            document.getElementById('hotel-description').textContent = data.description;
+            document.getElementById('price-per-night').textContent = `$${data.price}`;
+            
+            // Update main image
+            const mainImg = document.getElementById('detail-main-img');
+            mainImg.style.opacity = '0';
+            setTimeout(() => {
+                mainImg.src = data.image;
+                mainImg.style.opacity = '1';
+            }, 200);
+
+            // Update thumbnails
+            const thumbnailsContainer = document.getElementById('thumbnails');
+            thumbnailsContainer.innerHTML = '';
+            data.thumbnails.forEach((thumb, index) => {
+                const img = document.createElement('img');
+                img.src = thumb;
+                img.alt = `Thumb ${index + 1}`;
+                img.onclick = function() { changeMainImage(this.src); };
+                if (index === 0) img.classList.add('active');
+                thumbnailsContainer.appendChild(img);
+            });
+
+            // Update amenities
+            const amenitiesGrid = document.getElementById('amenities-grid');
+            amenitiesGrid.innerHTML = '';
+            const amenityIcons = {
+                'Free WiFi': 'fa-wifi',
+                'Breakfast': 'fa-utensils',
+                'Pool': 'fa-swimming-pool',
+                'Private Pool': 'fa-swimming-pool',
+                'Spa & Sauna': 'fa-spa',
+                'Spa': 'fa-spa',
+                'Gym': 'fa-dumbbell',
+                'Parking': 'fa-parking',
+                '24/7 Concierge': 'fa-concierge-bell',
+                'Concierge': 'fa-concierge-bell',
+                'Smart TV': 'fa-tv',
+                'Ocean View': 'fa-water',
+                'City View': 'fa-city',
+                'Park View': 'fa-tree',
+                'Historic View': 'fa-landmark',
+                'Water Sports': 'fa-ship'
+            };
+            data.amenities.forEach(amenity => {
+                const icon = amenityIcons[amenity] || 'fa-check';
+                const span = document.createElement('span');
+                span.innerHTML = `<i class="fa-solid ${icon}"></i> ${amenity}`;
+                amenitiesGrid.appendChild(span);
+            });
+
+            // Update reviews
+            const reviewsContainer = document.getElementById('reviews-container');
+            reviewsContainer.innerHTML = '';
+            data.reviews.forEach(review => {
+                const div = document.createElement('div');
+                div.className = 'review-item';
+                div.innerHTML = `
+                    <div class="review-header">
+                        <strong>${review.name}</strong>
+                        <span>${review.rating}</span>
+                    </div>
+                    <p>"${review.text}"</p>
+                `;
+                reviewsContainer.appendChild(div);
+            });
+
+            // Set default dates
+            const today = new Date();
+            const checkin = new Date(today);
+            checkin.setDate(today.getDate() + 14);
+            const checkout = new Date(checkin);
+            checkout.setDate(checkin.getDate() + 5);
+
+            document.getElementById('checkin-date').value = checkin.toISOString().split('T')[0];
+            document.getElementById('checkout-date').value = checkout.toISOString().split('T')[0];
+
+            updateTotal();
+        }
+
+        // ====== Change Main Image ======
+        function changeMainImage(src) {
+            const mainImg = document.getElementById('detail-main-img');
+            mainImg.style.opacity = '0';
+            setTimeout(() => {
+                mainImg.src = src;
+                mainImg.style.opacity = '1';
+            }, 200);
+            
+            document.querySelectorAll('.detail-thumbs img').forEach(img => {
+                img.classList.remove('active');
+                if (img.src === src) {
+                    img.classList.add('active');
+                }
+            });
+        }
+
+        // ====== Update Total Price ======
+        function updateTotal() {
+            const price = parseInt(document.getElementById('price-per-night').textContent.replace('$', ''));
+            const checkin = new Date(document.getElementById('checkin-date').value);
+            const checkout = new Date(document.getElementById('checkout-date').value);
+            const nights = Math.max(1, Math.ceil((checkout - checkin) / (1000 * 60 * 60 * 24)));
+
+            document.getElementById('nights-count').textContent = nights;
+            document.getElementById('total-price').textContent = `$${price * nights}`;
+        }
+
+        // ====== Add to Cart ======
+        document.getElementById('hotel-add-to-cart').addEventListener('click', function() {
+            const user = getCurrentUser();
+            if (!user) {
+                if (confirm('Please login to book a hotel. Go to login page?')) {
+                    window.location.href = 'login.html';
+                }
+                return;
+            }
+
+            const params = new URLSearchParams(window.location.search);
+            const city = params.get('city') || params.get('hotel') || 'istanbul';
+            const data = hotelData[city] || hotelData.istanbul;
+            
+            const checkin = document.getElementById('checkin-date').value;
+            const checkout = document.getElementById('checkout-date').value;
+            const guests = document.getElementById('booking-guests').value;
+            const roomType = document.getElementById('room-type').value;
+            const totalPrice = document.getElementById('total-price').textContent;
+            const nights = document.getElementById('nights-count').textContent;
+
+            const booking = {
+                id: Date.now(),
+                type: 'Hotel',
+                name: data.name,
+                city: city,
+                address: data.address,
+                checkin: checkin,
+                checkout: checkout,
+                guests: guests,
+                roomType: roomType,
+                nights: nights,
+                totalPrice: totalPrice,
+                image: data.image,
+                pricePerNight: data.price,
+                userEmail: user.email,
+                userName: user.name,
+                timestamp: new Date().toISOString()
+            };
+
+           // Đổi 'bookingCart' thành 'cart' thống nhất cho toàn dự án
+let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+cart.push(booking);
+localStorage.setItem('cart', JSON.stringify(cart));
+
+// Cập nhật lại số lượng trên Icon giỏ hàng (nếu có)
+const cartCountElement = document.getElementById('cart-item-count');
+if (cartCountElement) {
+    cartCountElement.textContent = cart.length;
+}
+
+            const btn = this;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-check"></i> Added!';
+            btn.classList.add('added');
+            showToast('✓ Added to cart successfully!');
+            
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.classList.remove('added');
+            }, 2000);
+
+            setTimeout(() => {
+                if (confirm('Do you want to view your cart?')) {
+    window.location.href = 'payment.html'; // Đổi sang payment.html
+}
+            }, 300);
+        });
+
+        // ====== Initialize ======
+        document.addEventListener('DOMContentLoaded', function() {
+            updateAuthUI();
+            loadHotelData();
+            
+            document.getElementById('checkin-date').addEventListener('change', updateTotal);
+            document.getElementById('checkout-date').addEventListener('change', updateTotal);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Golobe - Travel Agency & Flight/Hotel Booking</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Montserrat) -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <div class="container navbar">
+            <ul class="nav-links">
+                <li><a href="#flights-section"><i class="fa-solid fa-plane"></i> Find Flight</a></li>
+                <li><a href="#stays-section"><i class="fa-solid fa-bed"></i> Find Stays</a></li>
+            </ul>
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-paper-plane"></i> Golobe
+            </a>
+            
+            <div class="header-actions">
+                <a href="payment.html" class="cart-icon"><i class="fa-solid fa-cart-shopping"></i><span id="cart-item-count">0</span></a>
+            </div>
+            <!-- Khi chưa đăng nhập -->
+<div class="auth-btns" id="auth-buttons">
+  <a href="login.html" class="btn btn-text">Login</a>
+  <a href="signup.html" class="btn btn-light">Sign up</a>
+</div>
+
+<!-- Khi ĐÃ đăng nhập -->
+<div class="user-profile-wrapper" id="user-info" style="display: none;">
+  <!-- Nút bấm hiển thị Avatar & Tên (đóng vai trò trigger toggle menu) -->
+  <button class="profile-trigger" id="profile-trigger">
+    <i class="fa-solid fa-circle-user" style="font-size: 24px; color: #555;"></i>
+    <span class="user-name" id="user-name">John D.</span>
+    <i class="fa-solid fa-chevron-down arrow-icon"></i>
+  </button>
+
+  <!-- Dropdown Menu Popup -->
+  <div class="dropdown-menu" id="profile-dropdown">
+    <!-- Thẻ thông tin user trên cùng -->
+    <div class="user-card-header">
+      <i class="fa-solid fa-circle-user" style="font-size: 24px; color: #555;"></i>
+      <div class="card-info">
+        <h4 id="dropdown-user-fullname">John Doe.</h4>
+        <span class="status-online"><span class="dot"></span> Online</span>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Danh sách Menu Links -->
+    <ul class="dropdown-links">
+      <li>
+        <a href="account.html">
+          <i class="fa-regular fa-user"></i>
+          <span>My account</span>
+          <i class="fa-solid fa-chevron-right arrow-next"></i>
+        </a>
+      </li>
+      <li>
+        <a href="account.html#payments">
+          <i class="fa-regular fa-credit-card"></i>
+          <span>Payments</span>
+          <i class="fa-solid fa-chevron-right arrow-next"></i>
+        </a>
+      </li>
+      <li>
+        <a href="account.html#settings">
+          <i class="fa-solid fa-gear"></i>
+          <span>Settings</span>
+          <i class="fa-solid fa-chevron-right arrow-next"></i>
+        </a>
+      </li>
+    </ul>
+
+    <hr class="divider">
+
+    <ul class="dropdown-links">
+      <li>
+        <a href="#support">
+          <i class="fa-solid fa-circle-question"></i>
+          <span>Support</span>
+          <i class="fa-solid fa-chevron-right arrow-next"></i>
+        </a>
+      </li>
+      <li>
+        <button id="logout-btn" class="logout-link">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Logout</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2 class="hero-subtitle">Helping Others</h2>
+        <h1 class="hero-title">Live & Travel</h1>
+        <p class="hero-desc">Special offers to suit your plan</p>
+    </section>
+
+    <!-- Search Form -->
+    <div class="search-container">
+        <div class="search-card">
+            <div class="search-tabs">
+                <button class="tab-btn active" data-tab="flights"><i class="fa-solid fa-plane"></i> Flights</button>
+                <button class="tab-btn" data-tab="stays"><i class="fa-solid fa-bed"></i> Stays</button>
+            </div>
+           <form id="search-form" action="/pages 2/flight-search.html">
+                <div class="search-fields">
+                   <div class="field-group input-with-swap">
+                        <label for="from-to">From - To</label>
+                            <div class="input-wrapper">
+                            <input type="text" id="from-to" name="route" value="Lahore - Karachi">
+                        <!-- Nút hoán đổi -->
+                            <button type="button" id="swap-btn" title="Swap locations">
+                                <i class="fa-solid fa-right-left"></i>
+                            </button>
+                    </div>
+                </div>
+                    <div class="field-group">
+                        <label for="trip-type">Trip</label>
+                        <select id="trip-type">
+                            <option>Return</option>
+                            <option>One Way</option>
+                        </select>
+                    </div>
+                    <div class="field-group">
+                        <label for="depart-return">Depart - Return</label>
+                        <input type="text" id="depart-return" value="07 Nov 22 - 13 Nov 22">
+                    </div>
+                    <div class="field-group">
+                        <label for="passenger-class">Passenger - Class</label>
+                        <input type="text" id="passenger-class" value="1 Passenger, Economy">
+                    </div>
+                </div>
+                <div class="search-actions">
+                    <a href="promo-code.html" class="btn btn-promo-code" id="add-promo-btn">
+        <i class="fa-solid fa-plus"></i> Add Promo Code
+    </a>
+                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Show Places</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Perfect Places Section -->
+    <section class="container">
+        <div class="section-header">
+            <div class="section-title">
+                <h2>Plan your perfect trip</h2>
+                <p>Search Flights & Places Hire to our most popular destinations</p>
+            </div>
+            <a href="places.html" class="btn btn-outline">See more places</a>
+        </div>
+
+        <div class="places-grid">
+            <a href="destination-detail.html" class="place-card">
+                <img src="https://istanbuljoy.com/wp-content/uploads/2022/08/Hagia-Sophia.jpg" class="place-img" alt="Istanbul">
+                <div class="place-info">
+                    <h4>Istanbul, Turkey</h4>
+                    <p>Flights • Hotels • Resorts</p>
+                </div>
+            </a>
+            <a href="sydney-detail.html" class="place-card">
+                <img src="https://www.sydneytravelguide.com.au/wp-content/uploads/2024/09/Sydney-harbour.jpg" class="place-img" alt="Sydney">
+                <div class="place-info">
+                    <h4>Sydney, Australia</h4>
+                    <p>Flights • Hotels • Resorts</p>
+                </div>
+            </a>
+            <a href="baku-detail.html" class="place-card">
+                <img src="https://i.pinimg.com/originals/48/56/b6/4856b688b43564b3eb79c0f9bdc500e3.jpg" class="place-img" alt="Baku">
+                <div class="place-info">
+                    <h4>Baku, Azerbaijan</h4>
+                    <p>Flights • Hotels • Resorts</p>
+                </div>
+            </a>
+            <a href="male-detail.html" class="place-card">
+                <img src="https://wallpapers.com/images/featured/maldives-pictures-23wyvlaqa7aydqny.jpg" class="place-img" alt="Male">
+                <div class="place-info">
+                    <h4>Malé, Maldives</h4>
+                    <p>Flights • Hotels • Resorts</p>
+                </div>
+            </a>
+            <a href="paris-detail.html" class="place-card">
+                <img src="https://tse1.mm.bing.net/th/id/OIP.qGO9N5tcc39oyMVRJTS-5wHaFu?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" class="place-img" alt="Paris">          
+                    <div class="place-info">
+                        <h4>Paris, France</h4>
+                        <p>Flights • Hotels • Resorts</p>
+                    </div>
+                </a>
+            </a>
+            <a href="dubai-detail.html" class="place-card">
+                <img src="https://res.klook.com/image/upload/fl_lossy.progressive,q_60/v1760437946/destination/vovea0rrgjojr9pgdp7b.jpg" class="place-img" alt="Dubai">
+                <div class="place-info">
+                    <h4>Dubai, UAE</h4>
+                    <p>Flights • Hotels • Resorts</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Category Banners -->
+    <section class="container">
+        <div id="flights-section" class="category-banners">
+            <div class="banner-card banner-flights">
+                <div class="banner-content">
+                    <h3>Flights</h3>
+                    <p>Search Flights & Places Hire to our most popular destinations</p>
+                    <a href="flights.html" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Show Flights</a>
+                </div>
+            </div>
+            <div id="stays-section" class="banner-card banner-hotels">
+                <div class="banner-content">
+                    <h3>Hotels</h3>
+                    <p>Search Hotels & Places Hire to our most popular destinations</p>
+                    <a href="hotels.html" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Show Hotels</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="container">
+        <div class="section-header">
+            <div class="section-title">
+                <h2>Reviews</h2>
+                <p>What people say about Golobe facilities</p>
+            </div>
+            <a href="reviews.html" class="btn btn-outline">See All</a>
+        </div>
+
+        <div class="reviews-grid">
+            <div class="review-card">
+                <h3 class="review-title">"A real sense of community, cozy"</h3>
+                <p class="review-text">Really convenient and the staff was super friendly. Loved the atmosphere and location!</p>
+                <div class="review-rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <div class="review-author">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" class="author-img" alt="Olga from Weave Studios - Kai Tak">
+                    <div>
+                        <div class="author-name">Olga</div>
+                        <div class="author-location">Weave Studios - Kai Tak</div>
+                    </div>
+                </div>
+            </div>
+            <div class="review-card">
+                <h3 class="review-title">"The best booking experience"</h3>
+                <p class="review-text">Easy to filter options and fast booking process. Will definitely use Golobe for my next trip!</p>
+                <div class="review-rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <div class="review-author">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" class="author-img" alt="Thomas from Weave Studios - Olympic">
+                    <div>
+                        <div class="author-name">Thomas</div>
+                        <div class="author-location">Weave Studios - Olympic</div>
+                    </div>
+                </div>
+            </div>
+            <div class="review-card">
+                <h3 class="review-title">"High quality & Great prices"</h3>
+                <p class="review-text">Found amazing flight deals that saved me hundreds of dollars. Highly recommended for travelers.</p>
+                <div class="review-rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <div class="review-author">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" class="author-img" alt="Eliot from Weave Studios - Sai Ying Pun">
+                    <div>
+                        <div class="author-name">Eliot</div>
+                        <div class="author-location">Weave Studios - Sai Ying Pun</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="container">
+        <div class="newsletter" aria-labelledby="newsletter-heading">
+            <div class="newsletter-text">
+                <h2>Subscribe <br>Newsletter</h2>
+                <p>The Travel<br>Get inspired! Receive travel discounts, tips and behind the scenes stories.</p>
+            </div>
+            <form id="newsletter-form" class="newsletter-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit" class="btn btn-secondary">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">
+                        <i class="fa-solid fa-paper-plane"></i> Golobe
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Our Destinations</h4>
+                     <ul>
+                        <li><a href="#">Maldives</a></li>
+                        <li><a href="#">Italia</a></li>
+                        <li><a href="#">France</a></li>
+                        <li><a href="#places.html">And More</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Our Activities</h4>
+                    <ul>
+                        <li><a href="#">Relaxation, Resorts & Islands</a></li>
+                        <li><a href="#">Explore Culture, History & Architecture</a></li>
+                        <li><a href="#">Adventure & Modern Fun</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Travel Blogs</h4>
+                    <ul>
+                        <li><a href="#">Maldives Travel Guide</a></li>
+                        <li><a href="#">Paris Travel Guide</a></li>
+                        <li><a href="#">Rome Travel Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>About Us</h4>
+                    <ul>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Work with us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>

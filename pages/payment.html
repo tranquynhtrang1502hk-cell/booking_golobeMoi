@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golobe - Payment</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .payment-card {
+            cursor: pointer;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.2s ease;
+        }
+        .payment-card.active {
+            border-color: #8dd3bb;
+            background-color: #f2fbf7;
+        }
+        main.page4-main {
+        margin-top: 150px !important; 
+    }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="static-header">
+        <div class="container navbar">
+            <ul class="nav-links">
+                <li><a href="flights.html" class="header-link"><i class="fa-solid fa-plane"></i> Find Flight</a></li>
+                <li><a href="hotels.html" class="header-link"><i class="fa-solid fa-bed"></i> Find Stays</a></li>
+            </ul>
+            <a href="index.html" class="logo dark-logo">
+                <i class="fa-solid fa-paper-plane"></i> Golobe
+            </a>
+            <div class="auth-btns" id="auth-buttons">
+                <a href="login.html" class="btn btn-text-dark">Login</a>
+                <a href="signup.html" class="btn btn-dark">Sign up</a>
+            </div>
+            <div class="auth-btns" id="user-info" style="display: none;">
+                <span id="user-name" class="header-link"></span>
+                <button id="logout-btn" class="btn btn-dark">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Layout -->
+    <main class="container page4-main">
+        <div style="margin-bottom: 24px;">
+            <a href="index.html" class="btn btn-outline"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+        </div>
+
+        <!-- Success Banner / Status -->
+        <section class="booking-status-card" id="bookingStatusCard" style="display: none !important; margin-bottom: 24px;">
+            <div class="status-icon">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <div class="status-text">
+                <h2>Booking Confirmed!</h2>
+                <p>Your ticket has been sent to your email. Booking ID: <strong>#GLB-8839201</strong></p>
+            </div>
+            <div class="status-actions">
+                <button class="btn-secondary-outline"><i class="fa-solid fa-download"></i> Download Ticket</button>
+                <button class="btn-primary"><i class="fa-solid fa-share-nodes"></i> Share</button>
+            </div>
+        </section>
+
+        <div class="checkout-grid">
+            <!-- Left Payment & Summary Panel -->
+            <div class="checkout-left">
+                <!-- Payment Methods Card -->
+                <div class="info-card payment-methods-card">
+                    <h4>Payment Method</h4>
+                    
+                    <div class="payment-options" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;">
+                        <label class="payment-card active" id="cardOption">
+                            <input type="radio" name="payment" value="card" checked style="display: none;">
+                            <div class="payment-info">
+                                <strong>Credit / Debit Card</strong>
+                                <span>Mastercard ending in 4242</span>
+                            </div>
+                            <i class="fa-brands fa-cc-mastercard payment-icon"></i>
+                        </label>
+
+                        <label class="payment-card" id="paypalOption">
+                            <input type="radio" name="payment" value="paypal" style="display: none;">
+                            <div class="payment-info">
+                                <strong>PayPal Account</strong>
+                                <span id="paypal-email"></span>
+                            </div>
+                            <i class="fa-brands fa-paypal payment-icon"></i>
+                        </label>
+                    </div>
+
+                    <!-- Payment Form Input (Thẻ tín dụng) -->
+                    <form class="payment-form" id="paymentForm" style="margin-top: 20px; display: flex; flex-direction: column; gap: 16px;">
+                        <div class="form-group" style="display: flex; flex-direction: column; gap: 6px;">
+                            <label for="cardholderName" style="font-size: 14px; font-weight: 500; color: #111827;">Cardholder Name</label>
+                            <input 
+                                type="text" 
+                                id="cardholderName" 
+                                name="cardholderName" 
+                                placeholder="e.g. JOHN DOE" 
+                                required
+                                style="width: 100%; padding: 12px 16px; font-size: 14px; border: 1px solid #d1d5db; border-radius: 4px; box-sizing: border-box; outline: none;">
+                        </div>
+                        
+                        <div class="form-group" style="display: flex; flex-direction: column; gap: 6px;">
+                            <label for="cardNumber" style="font-size: 14px; font-weight: 500; color: #111827;">Card Number</label>
+                            <input 
+                                type="text" 
+                                id="cardNumber" 
+                                name="cardNumber" 
+                                placeholder="1234 5678 9101 1121" 
+                                maxlength="19" 
+                                inputmode="numeric" 
+                                required
+                                style="width: 100%; padding: 12px 16px; font-size: 14px; border: 1px solid #d1d5db; border-radius: 4px; box-sizing: border-box; outline: none;">
+                        </div>
+                        
+                        <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                            <div class="form-group" style="display: flex; flex-direction: column; gap: 6px;">
+                                <label for="expiryDate" style="font-size: 14px; font-weight: 500; color: #111827;">Expiry Date</label>
+                                <input 
+                                    type="text" 
+                                    id="expiryDate" 
+                                    name="expiryDate" 
+                                    placeholder="MM/YY" 
+                                    maxlength="5" 
+                                    required
+                                    style="width: 100%; padding: 12px 16px; font-size: 14px; border: 1px solid #d1d5db; border-radius: 4px; box-sizing: border-box; outline: none;">
+                            </div>
+                            
+                            <div class="form-group" style="display: flex; flex-direction: column; gap: 6px;">
+                                <label for="cvc" style="font-size: 14px; font-weight: 500; color: #111827;">CVC / CVV</label>
+                                <input 
+                                    type="password" 
+                                    id="cvc" 
+                                    name="cvc" 
+                                    placeholder="123" 
+                                    maxlength="4" 
+                                    inputmode="numeric" 
+                                    required
+                                    style="width: 100%; padding: 12px 16px; font-size: 14px; border: 1px solid #d1d5db; border-radius: 4px; box-sizing: border-box; outline: none;">
+                            </div>
+                        </div>
+
+                        <!-- Nút thanh toán thẻ -->
+                        <button type="submit" id="pay-button" style="width: 100%; padding: 14px; background-color: #8dd3bb; color: #111827; border: none; border-radius: 4px; font-weight: 600; font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 10px;">
+                            <i class="fa-solid fa-lock"></i> Pay $0.00
+                        </button>
+                    </form>
+
+                    <!-- Khung thanh toán PayPal -->
+                    <div id="paypalSection" style="display: none; text-align: center; padding: 20px 0;">
+                        <p style="margin-bottom: 16px; color: #4b5563;">You will be redirected to PayPal to complete your payment safely.</p>
+                        <button id="paypalBtn" type="button" style="width: 100%; padding: 14px; background-color: #ffc439; color: #111827; border: none; border-radius: 4px; font-weight: 600; font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                            <i class="fa-brands fa-paypal"></i> Pay with PayPal
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Container for all tickets/bookings from the cart -->
+                <div id="tickets-container" style="margin-top: 24px;"></div>
+            </div>
+
+            <!-- Right Side Fare Breakdown -->
+            <aside class="checkout-right">
+                <div class="info-card price-summary-box">
+                    <h4>Your Cart</h4>
+                    
+                    <div id="cart-items-container"></div>
+
+                    <ul class="fare-details" id="fare-summary">
+                        <!-- Tổng tiền sẽ được chèn vào đây -->
+                    </ul>
+
+                    <div class="payment-guarantee">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <span>256-bit SSL Encrypted Payment</span>
+                    </div>
+
+                    <a href="index.html" class="btn btn-primary" style="width: 100%; text-align: center;">Back to Homepage</a>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer style="margin-top: 80px;">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo"><i class="fa-solid fa-paper-plane"></i> Golobe</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Chuyển đổi qua lại giữa Thẻ tín dụng và PayPal
+        const cardOption = document.getElementById('cardOption');
+        const paypalOption = document.getElementById('paypalOption');
+        const paymentForm = document.getElementById('paymentForm');
+        const paypalSection = document.getElementById('paypalSection');
+
+        cardOption.addEventListener('click', () => {
+            cardOption.classList.add('active');
+            paypalOption.classList.remove('active');
+            paymentForm.style.display = 'flex';
+            paypalSection.style.display = 'none';
+        });
+
+        paypalOption.addEventListener('click', () => {
+            paypalOption.classList.add('active');
+            cardOption.classList.remove('active');
+            paymentForm.style.display = 'none';
+            paypalSection.style.display = 'block';
+        });
+
+        // Hàm xử lý hiển thị Booking Confirmed
+        function handlePaymentSuccess() {
+            const statusCard = document.getElementById('bookingStatusCard');
+            if (statusCard) {
+                statusCard.style.setProperty('display', 'flex', 'important');
+                statusCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            alert('Payment successful! Your booking is confirmed.');
+        }
+
+        paymentForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            handlePaymentSuccess();
+        });
+
+        document.getElementById('paypalBtn').addEventListener('click', function() {
+            handlePaymentSuccess();
+        });
+
+        // Lấy thông tin người dùng
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (currentUser) {
+            const cardholderName = document.getElementById('cardholderName');
+            if (cardholderName) cardholderName.value = currentUser.name;
+            const paypalEmail = document.getElementById('paypal-email');
+            if (paypalEmail) paypalEmail.textContent = currentUser.email;
+        } else {
+            alert('Please log in to proceed with the payment.');
+            window.location.href = 'login.html';
+            return;
+        }
+
+        // Đọc giỏ hàng & Xử lý hiển thị ảnh chống lỗi
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartContainer = document.getElementById('cart-items-container');
+        const ticketsContainer = document.getElementById('tickets-container');
+        const fareSummary = document.getElementById('fare-summary');
+        let totalPrice = 0;
+
+        // Ảnh mặc định nếu đường dẫn bị lỗi hoặc không có ảnh
+        const fallbackImg = 'https://via.placeholder.com/150?text=Golobe';
+
+        if (cart.length === 0) {
+            cartContainer.innerHTML = '<p>Your cart is empty. Add some items to proceed.</p>';
+            fareSummary.style.display = 'none';
+            document.querySelector('.checkout-left').style.display = 'none';
+        } else {
+            cart.forEach(item => {
+                const itemImgSrc = (item.img && item.img.trim() !== '') ? item.img : fallbackImg;
+
+                cartContainer.innerHTML += `
+                    <div class="flight-mini-summary" style="display: flex; gap: 12px; align-items: center; margin-bottom: 12px;">
+                        <img src="${itemImgSrc}" 
+                             onerror="this.onerror=null; this.src='${fallbackImg}';" 
+                             alt="${item.name}" 
+                             style="width: 60px; height: 60px; border-radius: 8px; object-fit: cover;">
+                        <div style="flex-grow: 1;">
+                            <h5 style="margin:0;">${item.name}</h5>
+                            <span style="font-size: 12px; color: #6b7280;">${item.type} - ${item.route || ''}</span>
+                        </div>
+                        <strong style="margin-left: auto; font-size: 16px;">$${Number(item.price || 0).toFixed(2)}</strong>
+                        <button class="btn-remove-item" data-item-name="${item.name}" data-item-type="${item.type}" title="Remove item" style="background: none; border: none; color: #ef4444; cursor: pointer; margin-left: 10px; font-size: 16px;"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                `;
+                totalPrice += Number(item.price || 0);
+
+                let ticketIcon = 'fa-solid fa-ticket';
+                if (item.type === 'Hotel') ticketIcon = 'fa-solid fa-bed';
+                if (item.type === 'Tour') ticketIcon = 'fa-solid fa-map-location-dot';
+
+                ticketsContainer.innerHTML += `
+                    <div class="info-card ticket-card" style="margin-bottom: 24px;">
+                        <div class="ticket-header" style="display: flex; justify-content: space-between; align-items: center;">
+                            <div class="ticket-time">
+                                <h2 style="margin:0;">${item.name}</h2>
+                                <span>${item.type}</span>
+                            </div>
+                            <div class="ticket-flight-icon">
+                                <i class="${ticketIcon}"></i>
+                            </div>
+                            <div class="ticket-time" style="text-align: right;">
+                                <h2 style="margin:0;">$${Number(item.price || 0).toFixed(2)}</h2>
+                                <span>Price</span>
+                            </div>
+                        </div>
+                        <div class="ticket-body" style="margin-top: 16px;">
+                            <div class="passenger-info" style="display: flex; gap: 12px; align-items: center;">
+                                <img src="${itemImgSrc}" 
+                                     onerror="this.onerror=null; this.src='${fallbackImg}';" 
+                                     alt="${item.name}" 
+                                     style="width: 44px; height: 44px; border-radius: 8px; object-fit: cover;">
+                                <div>
+                                    <h4 style="margin:0;">${currentUser.name}</h4>
+                                    <p style="margin:0; font-size: 12px; color: #6b7280;">Booking for</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            fareSummary.innerHTML = `
+                <li class="total" style="display: flex; justify-content: space-between; font-weight: bold; font-size: 18px; margin-top: 16px;">
+                    <span>Total Payment</span> 
+                    <span class="total-price">$${totalPrice.toFixed(2)}</span>
+                </li>
+            `;
+
+            //  CẬP NHẬT TỔNG TIỀN VÀO NÚT PAY
+            const payBtn = document.getElementById('pay-button');
+            if (payBtn) {
+                payBtn.innerHTML = `<i class="fa-solid fa-lock"></i> Pay $${totalPrice.toFixed(2)}`;
+            }
+
+            document.querySelectorAll('.btn-remove-item').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const itemName = e.currentTarget.dataset.itemName;
+                    const itemType = e.currentTarget.dataset.itemType;
+
+                    if (confirm(`Are you sure you want to remove "${itemName}" from your cart?`)) {
+                        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                        const updatedCart = cart.filter(cartItem => !(cartItem.name === itemName && cartItem.type === itemType));
+                        localStorage.setItem('cart', JSON.stringify(updatedCart));
+                        window.location.reload();
+                    }
+                });
+            });
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Golobe - Find Hotels & Stays</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .hotel-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .hotel-card-link:hover .hotel-card {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+        .hotel-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        .destination-tag {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--secondary);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 10px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hotel-image {
+            position: relative;
+            height: 200px;
+        }
+        .hotel-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .hotel-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--secondary);
+            color: var(--white);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        .hotel-body {
+            padding: 20px;
+        }
+        .hotel-body h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .hotel-location {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+        .hotel-amenities {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .hotel-amenities span {
+            font-size: 13px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .hotel-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .hotel-price .price-label {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        .hotel-price .price-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .hotel-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            grid-column: 1 / -1;
+        }
+        .no-results i {
+            font-size: 48px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+        .no-results h3 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        .no-results p {
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 1024px) {
+            .hotel-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .hotel-grid {
+                grid-template-columns: 1fr;
+            }
+            .hotel-image {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="static-header">
+        <div class="container navbar">
+            <ul class="nav-links">
+                <li><a href="flights.html" class="header-link"><i class="fa-solid fa-plane"></i> Find Flight</a></li>
+                <li><a href="hotels.html" class="header-link"><i class="fa-solid fa-bed"></i> Find Stays</a></li>
+            </ul>
+            <a href="index.html" class="logo dark-logo">
+                <i class="fa-solid fa-paper-plane"></i> Golobe
+            </a>
+            <div class="auth-btns" id="auth-buttons">
+                <a href="login.html" class="btn btn-text-dark">Login</a>
+                <a href="signup.html" class="btn btn-dark">Sign up</a>
+            </div>
+            <div class="auth-btns" id="user-info" style="display: none;">
+                <span id="user-name" class="header-link"></span>
+                <button id="logout-btn" class="btn btn-dark">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-banner hotels-banner">
+        <div class="container">
+            <h1>Explore handpicked hotels</h1>
+            <p>in the world's most popular destinations</p>
+        </div>
+    </section>
+
+    <div class="search-container" style="margin-top: 60px;">
+        <div class="search-card">
+            <form id="hotel-search-form">
+                <div class="search-fields">
+                    <div class="field-group">
+                        <label for="hotel-destination">Destination</label>
+                        <input type="text" id="hotel-destination" placeholder="Where are you going?" />
+                    </div>
+                    <div class="field-group">
+                        <label for="check-in">Check-in</label>
+                        <input type="date" id="check-in" />
+                    </div>
+                    <div class="field-group">
+                        <label for="check-out">Check-out</label>
+                        <input type="date" id="check-out" />
+                    </div>
+                    <div class="field-group">
+                        <label for="guests">Guests</label>
+                        <select id="guests">
+                            <option value="1">1 Guest</option>
+                            <option value="2" selected>2 Guests</option>
+                            <option value="3">3 Guests</option>
+                            <option value="4">4 Guests</option>
+                            <option value="5">5+ Guests</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="search-actions">
+                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i> Search Hotels</button>
+                    <button type="reset" class="btn btn-outline" id="clear-search"><i class="fa-solid fa-times"></i> Clear</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="container" style="margin-top: 24px;">
+        <div style="margin-bottom: 24px;">
+            <a href="index.html" class="btn btn-outline"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+        </div>
+        <div id="results-stats" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+            <div>
+                <strong id="result-count">9</strong> hotels found
+                <span style="color: var(--text-muted); font-size: 14px; margin-left: 8px;" id="search-query"></span>
+            </div>
+            <div>
+                <select id="sort-select" style="padding: 10px 16px; border-radius: 8px; border: 1px solid #CCC; font-weight: 600; background: white;">
+                    <option value="recommended">Recommended</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="rating">Rating: Highest</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <section class="container" style="margin-top: 24px; margin-bottom: 80px;">
+        <div class="hotel-grid" id="hotel-grid">
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo"><i class="fa-solid fa-paper-plane"></i> Golobe</div>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Our Destinations</h4>
+                    <ul>
+                        <li><a href="#">Istanbul</a></li>
+                        <li><a href="#">Sydney</a></li>
+                        <li><a href="#">Paris</a></li>
+                        <li><a href="#">Dubai</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Our Activities</h4>
+                    <ul>
+                        <li><a href="#">Northern Lights</a></li>
+                        <li><a href="#">Cruising & sailing</a></li>
+                        <li><a href="#">Multi-activity</a></li>
+                        <li><a href="#">Kayaking</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Travel Blogs</h4>
+                    <ul>
+                        <li><a href="#">Bali Travel Guide</a></li>
+                        <li><a href="#">Sri Lanka Travel Guide</a></li>
+                        <li><a href="#">Peru Travel Guide</a></li>
+                        <li><a href="#">Swiss Alps Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>About Us</h4>
+                    <ul>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Work with us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+     
+        const hotels = [
+           {
+                id: 1,
+                name: 'Grand Istanbul Hotel',
+                city: 'Istanbul',
+                country: 'Turkey',
+                fullAddress: 'Sultanahmet, Istanbul, Turkey',
+                rating: 4.8,
+                reviews: 2341,
+                price: 189,
+                image: 'https://images.guidedistanbultours.com/media/Four-Seasons-Hotel-Istanbul.jpg',
+                amenities: ['Free WiFi', 'Breakfast', 'Pool'],
+                slug: 'istanbul'
+            },
+            {
+                id: 2,
+                name: 'Sydney Harbour Resort',
+                city: 'Sydney',
+                country: 'Australia',
+                fullAddress: 'Circular Quay, Sydney, Australia',
+                rating: 4.7,
+                reviews: 1892,
+                price: 245,
+                image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/a7/05/da/rydges-sydney-harbour.jpg?w=1400&h=-1&s=1',
+                amenities: ['Free WiFi', 'Breakfast', 'Spa'],
+                slug: 'sydney'
+            },
+            {
+                id: 3,
+                name: 'Flame Towers Hotel',
+                city: 'Baku',
+                country: 'Azerbaijan',
+                fullAddress: 'Baku Boulevard, Baku, Azerbaijan',
+                rating: 4.5,
+                reviews: 1124,
+                price: 159,
+                image: 'https://mir-s3-cdn-cf.behance.net/project_modules/1400/483ddd23417323.5632308044d0d.jpg',
+                amenities: ['Free WiFi', 'Breakfast', 'Gym'],
+                slug: 'baku'
+            },
+            {
+                id: 4,
+                name: 'Overwater Paradise Resort',
+                city: 'Malé',
+                country: 'Maldives',
+                fullAddress: 'North Malé Atoll, Maldives',
+                rating: 4.9,
+                reviews: 3456,
+                price: 520,
+                image: 'https://cdn.moanavoyages.com/img/packages/13115.jpg',
+                amenities: ['Free WiFi', 'Breakfast', 'Pool', 'Spa'],
+                slug: 'male'
+            },
+            {
+                id: 5,
+                name: 'Eiffel Tower Suites',
+                city: 'Paris',
+                country: 'France',
+                fullAddress: '7th Arrondissement, Paris, France',
+                rating: 4.6,
+                reviews: 2678,
+                price: 310,
+                image: 'https://imgcdn.stablediffusionweb.com/2024/12/28/8ae421b6-da27-42dd-9ad7-29256ebc2e46.jpg',
+                amenities: ['Free WiFi', 'Breakfast', 'City View'],
+                slug: 'paris'
+            },
+            {
+                id: 6,
+                name: 'Burj Al Arab View Hotel',
+                city: 'Dubai',
+                country: 'UAE',
+                fullAddress: 'Jumeirah, Dubai, UAE',
+                rating: 4.9,
+                reviews: 4201,
+                price: 450,
+                image: 'https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0e/92/f2/6e.jpg',
+                amenities: ['Free WiFi', 'Breakfast', 'Pool', 'Spa'],
+                slug: 'dubai'
+            },
+            {
+                id: 7,
+                name: 'Shinjuku Sky Tower',
+                city: 'Tokyo',
+                country: 'Japan',
+                fullAddress: 'Shinjuku, Tokyo, Japan',
+                rating: 4.7,
+                reviews: 1956,
+                price: 280,
+                image: 'https://th.bing.com/th/id/OIP.qxgEcnIauiALd_4YnNDPEQHaFu?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3',
+                amenities: ['Free WiFi', 'Breakfast', 'Onsen Spa'],
+                slug: 'tokyo'
+            },
+            {
+                id: 8,
+                name: 'Colosseum Palace',
+                city: 'Rome',
+                country: 'Italy',
+                fullAddress: 'Monti, Rome, Italy',
+                rating: 4.5,
+                reviews: 1789,
+                price: 220,
+                image: 'https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=400&q=80',
+                amenities: ['Free WiFi', 'Breakfast', 'Gym'],
+                slug: 'rome'
+            },
+            {
+                id: 9,
+                name: 'Central Park Towers',
+                city: 'New York',
+                country: 'USA',
+                fullAddress: 'Midtown, New York, USA',
+                rating: 4.6,
+                reviews: 3124,
+                price: 390,
+                image: 'https://media.architecturaldigest.com/photos/640f66ec5d38af65edd18e2c/16:9/w_1280,c_limit/GettyImages-1327817863.jpg?mbid=social_retweet',
+                amenities: ['Free WiFi', 'Breakfast', 'Pool', 'Gym'],
+                slug: 'newyork'
+            }
+        ];
+
+        function renderHotels(hotelList) {
+            const grid = document.getElementById('hotel-grid');
+            const countEl = document.getElementById('result-count');
+            
+            if (hotelList.length === 0) {
+                grid.innerHTML = `
+                    <div class="no-results">
+                        <i class="fa-solid fa-hotel"></i>
+                        <h3>No hotels found</h3>
+                        <p>Try adjusting your search criteria or destination</p>
+                    </div>
+                `;
+                countEl.textContent = '0';
+                return;
+            }
+
+            countEl.textContent = hotelList.length;
+
+            grid.innerHTML = hotelList.map(hotel => `
+                <a href="hotel-detail.html?city=${hotel.slug}" class="hotel-card-link">
+                    <div class="hotel-card">
+                        <div class="hotel-image">
+                            <img src="${hotel.image}" alt="${hotel.name}" loading="lazy" />
+                            <span class="hotel-badge">⭐ ${hotel.rating}</span>
+                        </div>
+                        <div class="hotel-body">
+                            <h3>${hotel.name}</h3>
+                            <p class="hotel-location"><i class="fa-solid fa-location-dot"></i> ${hotel.fullAddress}</p>
+                            <div class="hotel-amenities">
+                                ${hotel.amenities.map(a => `<span><i class="fa-solid fa-circle-check"></i> ${a}</span>`).join('')}
+                            </div>
+                            <div class="hotel-footer">
+                                <div class="hotel-price">
+                                    <span class="price-label">From</span>
+                                    <span class="price-value">$${hotel.price}</span>
+                                    <span class="price-label">/ night</span>
+                                </div>
+                                <span class="destination-tag">Flights · Hotels · Resorts</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            `).join('');
+        }
+
+        function searchHotels(query, checkin, checkout, guests) {
+            let results = [...hotels];
+
+            if (query && query.trim() !== '') {
+                const searchTerm = query.toLowerCase().trim();
+                results = results.filter(hotel => 
+                    hotel.city.toLowerCase().includes(searchTerm) ||
+                    hotel.country.toLowerCase().includes(searchTerm) ||
+                    hotel.name.toLowerCase().includes(searchTerm) ||
+                    hotel.fullAddress.toLowerCase().includes(searchTerm)
+                );
+            }
+
+            // Sort
+            const sortBy = document.getElementById('sort-select').value;
+            switch (sortBy) {
+                case 'price-low':
+                    results.sort((a, b) => a.price - b.price);
+                    break;
+                case 'price-high':
+                    results.sort((a, b) => b.price - a.price);
+                    break;
+                case 'rating':
+                    results.sort((a, b) => b.rating - a.rating);
+                    break;
+                default:
+                    break;
+            }
+
+            const queryDisplay = document.getElementById('search-query');
+            if (query && query.trim() !== '') {
+                queryDisplay.textContent = `for "${query.trim()}"`;
+            } else {
+                queryDisplay.textContent = '';
+            }
+
+            return results;
+        }
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const today = new Date();
+            const checkin = new Date(today);
+            checkin.setDate(today.getDate() + 14);
+            const checkout = new Date(checkin);
+            checkout.setDate(checkin.getDate() + 5);
+
+            const checkinInput = document.getElementById('check-in');
+            const checkoutInput = document.getElementById('check-out');
+            
+            if (checkinInput) checkinInput.value = checkin.toISOString().split('T')[0];
+            if (checkoutInput) checkoutInput.value = checkout.toISOString().split('T')[0];
+
+            renderHotels(hotels);
+
+            const searchForm = document.getElementById('hotel-search-form');
+            if (searchForm) {
+                searchForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const destination = document.getElementById('hotel-destination').value;
+                    const checkin = document.getElementById('check-in').value;
+                    const checkout = document.getElementById('check-out').value;
+                    const guests = document.getElementById('guests').value;
+
+                    const results = searchHotels(destination, checkin, checkout, guests);
+                    renderHotels(results);
+
+                    const stats = document.getElementById('results-stats');
+                    if (destination && destination.trim() !== '') {
+                        const queryDisplay = document.getElementById('search-query');
+                        queryDisplay.textContent = `for "${destination.trim()}"`;
+                    }
+                });
+            }
+
+            const clearBtn = document.getElementById('clear-search');
+            if (clearBtn) {
+                clearBtn.addEventListener('click', () => {
+                    document.getElementById('hotel-destination').value = '';
+                    document.getElementById('check-in').value = '';
+                    document.getElementById('check-out').value = '';
+                    document.getElementById('guests').value = '2';
+                    document.getElementById('search-query').textContent = '';
+                    renderHotels(hotels);
+                });
+            }
+
+            const sortSelect = document.getElementById('sort-select');
+            if (sortSelect) {
+                sortSelect.addEventListener('change', () => {
+                    const destination = document.getElementById('hotel-destination').value;
+                    const checkin = document.getElementById('check-in').value;
+                    const checkout = document.getElementById('check-out').value;
+                    const guests = document.getElementById('guests').value;
+                    const results = searchHotels(destination, checkin, checkout, guests);
+                    renderHotels(results);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

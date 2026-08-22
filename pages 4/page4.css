@@ -1,0 +1,270 @@
+/* Page 4 Specific Styles */
+.page4-main {
+    margin-top: 24px;
+}
+
+/* Status Banner */
+.booking-status-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px 32px;
+    box-shadow: var(--card-shadow);
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 32px;
+    border-left: 6px solid #10B981;
+}
+
+.status-icon {
+    font-size: 48px;
+    color: #10B981;
+}
+
+.status-text {
+    flex: 1;
+}
+
+.status-text h2 {
+    font-size: 24px;
+    margin-bottom: 4px;
+}
+
+.status-text p {
+    color: var(--gray-text);
+    font-size: 14px;
+}
+
+.status-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-secondary-outline {
+    background: transparent;
+    border: 1px solid var(--dark);
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Checkout Grid */
+.checkout-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 32px;
+}
+
+.payment-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.payment-card {
+    border: 1px solid var(--border-color);
+    padding: 16px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.payment-card.active {
+    border-color: var(--primary);
+    background: rgba(141, 211, 187, 0.08);
+}
+
+.payment-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.payment-info strong {
+    font-size: 14px;
+}
+
+.payment-info span {
+    font-size: 12px;
+    color: var(--gray-text);
+}
+
+.payment-icon {
+    font-size: 28px;
+    color: var(--dark);
+}
+
+/* Digital Ticket styling */
+.ticket-card {
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.ticket-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+}
+
+.ticket-time h2 {
+    font-size: 22px;
+}
+
+.ticket-time span {
+    font-size: 12px;
+    color: var(--gray-text);
+}
+
+.ticket-flight-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(141, 211, 187, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dark);
+}
+
+.ticket-divider {
+    position: relative;
+    height: 20px;
+    margin: 10px -24px;
+    display: flex;
+    align-items: center;
+}
+
+.circle-left, .circle-right {
+    width: 20px;
+    height: 20px;
+    background: #FAFAFA;
+    border-radius: 50%;
+}
+
+.dashed-line {
+    flex: 1;
+    border-top: 2px dashed #E5E7EB;
+}
+
+.ticket-body {
+    padding-top: 16px;
+}
+
+.passenger-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.passenger-info img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+}
+
+.passenger-info h4 {
+    font-size: 16px;
+}
+
+.passenger-info p {
+    font-size: 12px;
+    color: var(--gray-text);
+}
+
+.flight-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+    background: #F9FAFB;
+    padding: 16px;
+    border-radius: 12px;
+}
+
+.flight-meta-grid label {
+    display: block;
+    font-size: 11px;
+    color: var(--gray-text);
+}
+
+.flight-meta-grid strong {
+    font-size: 14px;
+}
+
+.barcode-box {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.barcode-img {
+    font-size: 60px;
+    letter-spacing: 4px;
+}
+
+.barcode-box span {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--gray-text);
+}
+
+/* Mini Flight Summary */
+.flight-mini-summary {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.flight-mini-summary img {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.flight-mini-summary span {
+    font-size: 12px;
+    color: var(--gray-text);
+}
+
+.payment-guarantee {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #10B981;
+    justify-content: center;
+    margin: 16px 0;
+}
+
+@media (max-width: 900px) {
+    .booking-status-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    .checkout-grid {
+        grid-template-columns: 1fr;
+    }
+    .payment-options {
+        grid-template-columns: 1fr;
+    }
+    .flight-meta-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

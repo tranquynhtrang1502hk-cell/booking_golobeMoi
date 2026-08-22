@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golobe - Flight Booking & Detail</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="page3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <div class="nav-left">
+                <a href="index.html" class="nav-link"><i class="fa-solid fa-plane"></i> Find Flight</a>
+                <a href="#" class="nav-link"><i class="fa-solid fa-bed"></i> Find Stays</a>
+            </div>
+            
+            <div class="logo">
+                <a href="index.html"><img src="https://api.iconify.design/ion:paper-plane.svg?color=%238dd3bb" alt="logo" class="logo-icon"> <span>Golobe</span></a>
+            </div>
+
+            <div class="nav-right">
+                <a href="#" class="user-profile">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Avatar" class="avatar">
+                    <span>John Doe</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Layout -->
+    <main class="container page3-main">
+        <!-- Breadcrumb & Top Bar -->
+        <div class="breadcrumb">
+            <a href="flight-search.html"><i class="fa-solid fa-angle-left"></i> Back to search results</a>
+            <div class="flight-title-wrap">
+                <div>
+                    <h2>Emirates A380 Airbus</h2>
+                    <p class="location-text"><i class="fa-solid fa-location-dot"></i> GVK One Mall, Hyderabad, Telangana 500082</p>
+                </div>
+                <div class="price-header">
+                    <h2>$240</h2>
+                    <a href="#book-now" class="btn-primary">Book Now</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Banner Image Showcase -->
+        <section class="image-gallery">
+            <div class="gallery-main">
+                <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=1200&q=80" alt="Flight Inside">
+            </div>
+            <div class="gallery-grid">
+                <img src="https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=600&q=80" alt="Plane Exterior">
+                <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=600&q=80" alt="Window View">
+                <img src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?auto=format&fit=crop&w=600&q=80" alt="First Class">
+                <img src="https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&w=600&q=80" alt="Inflight Service">
+            </div>
+        </section>
+
+        <!-- Main Details Section -->
+        <div class="details-grid">
+            <!-- Left Info Panel -->
+            <div class="details-left">
+                <!-- Flight Features & Policies -->
+                <div class="card-box">
+                    <h3>Emirates Flight Features</h3>
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <i class="fa-solid fa-wifi"></i>
+                            <span>Free Wi-Fi</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fa-solid fa-utensils"></i>
+                            <span>In-flight Meal</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fa-solid fa-tv"></i>
+                            <span>In-seat Entertainment</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fa-solid fa-plug"></i>
+                            <span>Power Outlet</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Itinerary Details -->
+                <div class="card-box">
+                    <h3>Flight Details</h3>
+                    <div class="itinerary">
+                        <div class="itinerary-header">
+                            <span class="badge">Outbound • Sun, Nov 07</span>
+                            <span>Duration: 2h 28m</span>
+                        </div>
+                        <div class="flight-leg">
+                            <div class="airline-meta">
+                                <img src="https://api.iconify.design/logos:emirates.svg" alt="Emirates" class="airline-logo">
+                                <div>
+                                    <strong>Emirates Airbus A380-800</strong>
+                                    <p>Flight EK-202 • Economy</p>
+                                </div>
+                            </div>
+                            <div class="timeline">
+                                <div class="time-node">
+                                    <strong>12:00 PM</strong>
+                                    <span>Newark Liberty Intl (EWR)</span>
+                                </div>
+                                <div class="time-duration">
+                                    <i class="fa-solid fa-plane"></i>
+                                    <span>2h 28m Non-stop</span>
+                                </div>
+                                <div class="time-node">
+                                    <strong>02:28 PM</strong>
+                                    <span>Logan Intl (BOS)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Passenger Details Form -->
+                <div class="card-box" id="book-now">
+                    <h3>Passenger Information</h3>
+                    <form class="booking-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" placeholder="John" value="John">
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" placeholder="Doe" value="Doe">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" placeholder="john.doe@example.com" value="john.doe@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input type="tel" placeholder="+1 234 567 890" value="+1 234 567 890">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Passport Number</label>
+                                <input type="text" placeholder="A12345678">
+                            </div>
+                            <div class="form-group">
+                                <label>Frequent Flyer ID (Optional)</label>
+                                <input type="text" placeholder="EK-987654">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Right Price Summary Panel -->
+            <aside class="details-right">
+                <div class="card-box price-summary-box">
+                    <h3>Price Details</h3>
+                    <div class="price-row">
+                        <span>Base Fare</span>
+                        <span>$200.00</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Taxes & Fees</span>
+                        <span>$30.00</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Baggage Allowance</span>
+                        <span>$10.00</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Discount</span>
+                        <span class="discount">-$0.00</span>
+                    </div>
+                    <hr>
+                    <div class="price-row total-row">
+                        <strong>Total Price</strong>
+                        <strong class="total-price">$240.00</strong>
+                    </div>
+
+                    <div class="promo-code">
+                        <input type="text" placeholder="Promo / Voucher Code">
+                        <button class="btn-secondary">Apply</button>
+                    </div>
+
+                    <button class="btn-primary btn-full">Proceed to Payment</button>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" style="margin-top: 80px;">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="logo">
+                    <a href="index.html"><img src="https://api.iconify.design/ion:paper-plane.svg?color=%23111827" alt="logo" class="logo-icon"> <span>Golobe</span></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Work with us</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

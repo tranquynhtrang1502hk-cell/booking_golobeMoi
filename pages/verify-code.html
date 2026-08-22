@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Code - Golobe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="auth-container">
+        <div class="auth-form-side">
+            <a href="index.html" class="auth-logo">
+                <i class="fa-solid fa-paper-plane" style="color: #8DD3BB;"></i>
+                <span>g<span style="color: #8DD3BB;">o</span>lobe</span>
+            </a>
+
+            <div class="auth-header" style="text-align: left; width: 100%; max-width: 400px;">
+                <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 8px;">Verify code</h2>
+                <p style="color: #79747E; font-size: 14px; margin-bottom: 32px;">Please enter the 4-digit code sent to your email address.</p>
+            </div>
+
+            <form id="verify-form" style="width: 100%; max-width: 400px;">
+                <div class="floating-group">
+                    <input type="text" id="otp-code" placeholder=" " maxlength="6" required style="letter-spacing: 4px; font-size: 18px; font-weight: 600;">
+                    <label for="otp-code">Enter Code</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-auth-submit" style="width: 100%; padding: 16px; background-color: #8DD3BB; color: var(--dark); border: none; border-radius: 8px; font-weight: 600; cursor: pointer; margin-top: 16px;">Verify</button>
+
+                <p class="auth-redirect" style="margin-top: 24px;">
+                    Didn't receive code? <a href="#" id="resend-otp">Resend</a>
+                </p>
+            </form>
+        </div>
+
+        <div class="auth-banner-side">
+            <div class="banner-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1000&q=80" alt="Resort View">
+                <div class="banner-dots">
+                    <span class="dot"></span>
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('verify-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const code = document.getElementById('otp-code').value;
+
+            // Giả lập kiểm tra mã OTP (ví dụ nhập mã bất kỳ hoặc mặc định là '1234')
+            if(code.length >= 4) {
+                alert('Xác thực mã thành công!');
+                // Chuyển sang trang đặt lại mật khẩu mới mà bạn đã làm
+                window.location.href = 'reset-password.html'; 
+            } else {
+                alert('Vui lòng nhập đầy đủ mã xác nhận!');
+            }
+        });
+
+        document.getElementById('resend-otp').addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Mã xác nhận mới đã được gửi lại!');
+        });
+    </script>
+</body>
+</html>

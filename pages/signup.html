@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up - Golobe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; background-color: var(--white); }
+        .auth-container { display: flex; min-height: 100vh; width: 100%; }
+        
+        /* ẢNH NỀN RESORT NẰM BÊN TRÁI ĐÚNG MẪU */
+        .auth-image-side { flex: 1; padding: 24px; display: none; }
+        .auth-image-card { width: 100%; height: 100%; min-height: 95vh; border-radius: 24px; background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1000&q=80'); background-size: cover; background-position: center; position: relative; display: flex; flex-direction: column; justify-content: flex-end; padding: 40px; box-sizing: border-box; }
+        .slider-dots { display: flex; gap: 8px; justify-content: center; }
+        .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255, 255, 255, 0.5); }
+        .dot.active { background: white; width: 24px; border-radius: 4px; }
+
+        /* FORM NHẬP THÔNG TIN NẰM BÊN PHẢI ĐÚNG MẪU */
+        .auth-form-side { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px; max-width: 600px; margin: 0 auto; }
+        .auth-form-wrapper { width: 100%; max-width: 440px; }
+        .auth-logo { font-size: 24px; font-weight: 700; color: var(--dark); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 24px; }
+        .auth-title { font-size: 32px; font-weight: 700; margin-bottom: 8px; color: var(--dark); }
+        .auth-subtitle { font-size: 14px; color: #79747E; margin-bottom: 24px; }
+        .form-row-2 { display: flex; gap: 16px; }
+        .auth-form-side .field-group { margin-bottom: 16px; text-align: left; }
+        .auth-form-side .field-group label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 6px; color: var(--dark); }
+        .auth-form-side .field-group input { width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; outline: none; box-sizing: border-box; }
+        .auth-form-side .field-group input:focus { border-color: var(--primary); }
+        .checkbox-group { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; font-size: 13px; color: #79747E; }
+        .checkbox-group a { color: var(--primary); text-decoration: none; font-weight: 600; }
+        .btn-submit { width: 100%; padding: 14px; background-color: #8DD3BB; color: var(--dark); border: none; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
+        .btn-submit:hover { opacity: 0.9; }
+        .auth-footer-text { text-align: center; margin-top: 20px; font-size: 14px; color: #79747E; }
+        .auth-footer-text a { color: #FF8682; text-decoration: none; font-weight: 600; }
+        .social-login { display: flex; justify-content: center; gap: 16px; margin-top: 20px; }
+        .social-btn { flex: 1; padding: 12px; border: 1px solid var(--border); border-radius: 8px; background: white; cursor: pointer; font-size: 18px; color: var(--dark); transition: background 0.2s; }
+        .social-btn:hover { background: #f9f9f9; }
+        .divider-or { text-align: center; position: relative; margin: 20px 0; color: #79747E; font-size: 12px; }
+
+        @media (min-width: 992px) { .auth-image-side { display: block; } }
+    </style>
+</head>
+<body>
+
+    <div class="auth-container">
+        <!-- 1. CỘT TRÁI: ẢNH NỀN RESORT (Đã đưa sang trái) -->
+        <div class="auth-image-side">
+            <div class="auth-image-card">
+                <div class="slider-dots">
+                    <span class="dot"></span>
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. CỘT PHẢI: FORM ĐĂNG KÝ (Đã đưa sang phải) -->
+        <div class="auth-form-side">
+            <div class="auth-form-wrapper">
+                <a href="index.html" class="auth-logo">
+                    <i class="fa-solid fa-paper-plane" style="color: var(--primary);"></i> Golobe
+                </a>
+                <h1 class="auth-title">Sign up</h1>
+                <p class="auth-subtitle">Let’s get you all set up so you can access your personal account.</p>
+
+                <form id="signup-form">
+                    <div class="form-row-2">
+                        <div class="field-group" style="flex: 1;">
+                            <label>First Name</label>
+                            <input type="text" id="first-name" placeholder="John" required>
+                        </div>
+                        <div class="field-group" style="flex: 1;">
+                            <label>Last Name</label>
+                            <input type="text" id="last-name" placeholder="Doe" required>
+                        </div>
+                    </div>
+                    <div class="field-group">
+                        <label>Email</label>
+                        <input type="email" id="signup-email" placeholder="john.doe@gmail.com" required>
+                    </div>
+                    <div class="field-group">
+                        <label>Phone Number</label>
+                        <input type="text" id="phone-number" placeholder="+1 000-000-0000">
+                    </div>
+                    <div class="field-group">
+                        <label>Password</label>
+                        <input type="password" id="signup-password" placeholder="••••••••••••" required>
+                    </div>
+                    <div class="field-group">
+                        <label>Confirm Password</label>
+                        <input type="password" id="confirm-password" placeholder="••••••••••••" required>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="terms" required checked>
+                        <label for="terms" style="margin: 0; font-weight: normal;">I agree to all the <a href="#">Terms</a> and <a href="#">Privacy Policies</a></label>
+                    </div>
+                    <button type="submit" class="btn-submit">Create account</button>
+                </form>
+
+                <div class="auth-footer-text">
+                    Already have an account? <a href="login.html">Login</a>
+                </div>
+                <div class="divider-or">Or sign up with</div>
+                <div class="social-login">
+                    <button class="social-btn"><i class="fa-brands fa-facebook-f" style="color: #1877F2;"></i></button>
+                    <button class="social-btn"><i class="fa-brands fa-google" style="color: #EA4335;"></i></button>
+                    <button class="social-btn"><i class="fa-brands fa-apple" style="color: #000;"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('signup-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const firstName = document.getElementById('first-name').value.trim();
+            const lastName = document.getElementById('last-name').value.trim();
+            const name = `${firstName} ${lastName}`;
+            const email = document.getElementById('signup-email').value.trim();
+            const password = document.getElementById('signup-password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            if (password !== confirmPassword) {
+                alert('Mật khẩu xác nhận không khớp!');
+                return;
+            }
+
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            if (users.find(u => u.email === email)) {
+                alert('Email đã tồn tại!');
+                return;
+            }
+
+            const newUser = { name, email, password };
+            users.push(newUser);
+            localStorage.setItem('users', JSON.stringify(users));
+            localStorage.setItem('currentUser', JSON.stringify(newUser));
+
+            alert('Đăng ký thành công!');
+
+                    window.location.href = 'signup-payment.html';        });
+    </script>
+</body>
+</html>

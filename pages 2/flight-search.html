@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golobe - Flight Search Results & Details</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="page2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <div class="nav-left">
+                <a href="index.html" class="nav-link active"><i class="fa-solid fa-plane"></i> Find Flight</a>
+                <a href="#" class="nav-link"><i class="fa-solid fa-bed"></i> Find Stays</a>
+            </div>
+            
+            <div class="logo">
+                <a href="index.html"><img src="https://api.iconify.design/ion:paper-plane.svg?color=%238dd3bb" alt="logo" class="logo-icon"> <span>Golobe</span></a>
+            </div>
+
+            <div class="nav-right">
+                <a href="#" class="user-profile">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Avatar" class="avatar">
+                    <span>John Doe</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Layout -->
+    <main class="container page2-main">
+        <!-- Search Bar Top Section -->
+        <section class="search-bar-compact">
+            <div class="compact-inputs">
+                <div class="compact-group">
+                    <label>From - To</label>
+                    <span>Lahore - Karachi</span>
+                </div>
+                <div class="compact-group">
+                    <label>Trip</label>
+                    <span>Return</span>
+                </div>
+                <div class="compact-group">
+                    <label>Depart - Return</label>
+                    <span>07 Nov 22 - 13 Nov 22</span>
+                </div>
+                <div class="compact-group">
+                    <label>Passenger - Class</label>
+                    <span>1 Passenger, Economy</span>
+                </div>
+            </div>
+            <button class="btn-search-icon"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </section>
+
+        <!-- Two Column Layout (Filters & Results) -->
+        <div class="results-container">
+            <!-- Sidebar Filters -->
+            <aside class="sidebar-filter">
+                <h3>Filters</h3>
+                
+                <div class="filter-group">
+                    <h4>Price</h4>
+                    <input type="range" min="50" max="1200" value="500" class="price-slider">
+                    <div class="price-labels">
+                        <span>$50</span>
+                        <span>$1200</span>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h4>Departure Time</h4>
+                    <div class="time-slots">
+                        <span>00:00 - 06:00</span>
+                        <span>06:00 - 12:00</span>
+                        <span>12:00 - 18:00</span>
+                        <span>18:00 - 24:00</span>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h4>Airlines</h4>
+                    <label class="checkbox-label"><input type="checkbox" checked> Emirates</label>
+                    <label class="checkbox-label"><input type="checkbox" checked> Qatar Airways</label>
+                    <label class="checkbox-label"><input type="checkbox"> Fly Dubai</label>
+                    <label class="checkbox-label"><input type="checkbox"> Etihad Airways</label>
+                </div>
+
+                <div class="filter-group">
+                    <h4>Trips</h4>
+                    <label class="checkbox-label"><input type="checkbox" checked> Non-stop</label>
+                    <label class="checkbox-label"><input type="checkbox"> 1 Stop</label>
+                    <label class="checkbox-label"><input type="checkbox"> 2+ Stops</label>
+                </div>
+            </aside>
+
+            <!-- Flight Cards List -->
+            <section class="flight-results-list">
+                <!-- Tab Sorting -->
+                <div class="sort-tabs">
+                    <button class="sort-btn active">
+                        <strong>Cheapest</strong>
+                        <span>$99 • 2h 15m</span>
+                    </button>
+                    <button class="sort-btn">
+                        <strong>Best</strong>
+                        <span>$120 • 1h 45m</span>
+                    </button>
+                    <button class="sort-btn">
+                        <strong>Quickest</strong>
+                        <span>$150 • 1h 15m</span>
+                    </button>
+                </div>
+
+                <!-- Flight Item 1 -->
+                <div class="flight-card">
+                    <div class="airline-info">
+                        <img src="https://api.iconify.design/logos:emirates.svg" alt="Emirates" class="airline-logo">
+                        <div class="ratings">
+                            <span class="badge">4.2</span>
+                            <span class="review-count">Very Good 54 reviews</span>
+                        </div>
+                    </div>
+
+                    <div class="flight-details">
+                        <div class="flight-route">
+                            <div class="time-place">
+                                <h3>12:00 pm</h3>
+                                <p>Newark (EWR)</p>
+                            </div>
+                            <div class="duration-line">
+                                <span>non-stop</span>
+                                <div class="line"></div>
+                                <span>2h 28m</span>
+                            </div>
+                            <div class="time-place">
+                                <h3>02:28 pm</h3>
+                                <p>Boston (BOS)</p>
+                            </div>
+                        </div>
+
+                        <div class="flight-route">
+                            <div class="time-place">
+                                <h3>05:00 pm</h3>
+                                <p>Boston (BOS)</p>
+                            </div>
+                            <div class="duration-line">
+                                <span>non-stop</span>
+                                <div class="line"></div>
+                                <span>2h 15m</span>
+                            </div>
+                            <div class="time-place">
+                                <h3>07:15 pm</h3>
+                                <p>Newark (EWR)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="price-action">
+                        <div class="price">starting from <h2>$104</h2></div>
+                        <div class="action-buttons">
+                            <button class="btn-heart"><i class="fa-regular fa-heart"></i></button>
+                            <a href="#" class="btn-primary">View Deals</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flight Item 2 -->
+                <div class="flight-card">
+                    <div class="airline-info">
+                        <img src="https://api.iconify.design/logos:qatar-airways.svg" alt="Qatar" class="airline-logo">
+                        <div class="ratings">
+                            <span class="badge">4.6</span>
+                            <span class="review-count">Excellent 128 reviews</span>
+                        </div>
+                    </div>
+
+                    <div class="flight-details">
+                        <div class="flight-route">
+                            <div class="time-place">
+                                <h3>08:30 am</h3>
+                                <p>Newark (EWR)</p>
+                            </div>
+                            <div class="duration-line">
+                                <span>non-stop</span>
+                                <div class="line"></div>
+                                <span>2h 10m</span>
+                            </div>
+                            <div class="time-place">
+                                <h3>10:40 am</h3>
+                                <p>Boston (BOS)</p>
+                            </div>
+                        </div>
+
+                        <div class="flight-route">
+                            <div class="time-place">
+                                <h3>03:15 pm</h3>
+                                <p>Boston (BOS)</p>
+                            </div>
+                            <div class="duration-line">
+                                <span>non-stop</span>
+                                <div class="line"></div>
+                                <span>2h 20m</span>
+                            </div>
+                            <div class="time-place">
+                                <h3>05:35 pm</h3>
+                                <p>Newark (EWR)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="price-action">
+                        <div class="price">starting from <h2>$140</h2></div>
+                        <div class="action-buttons">
+                            <button class="btn-heart"><i class="fa-regular fa-heart"></i></button>
+                            <a href="#" class="btn-primary">View Deals</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flight Item 3 -->
+                <div class="flight-card">
+                    <div class="airline-info">
+                        <img src="https://api.iconify.design/logos:singapore-airlines.svg" alt="Singapore" class="airline-logo">
+                        <div class="ratings">
+                            <span class="badge">4.8</span>
+                            <span class="review-count">Superb 210 reviews</span>
+                        </div>
+                    </div>
+
+                    <div class="flight-details">
+                        <div class="flight-route">
+                            <div class="time-place">
+                                <h3>01:15 pm</h3>
+                                <p>Newark (EWR)</p>
+                            </div>
+                            <div class="duration-line">
+                                <span>non-stop</span>
+                                <div class="line"></div>
+                                <span>1h 55m</span>
+                            </div>
+                            <div class="time-place">
+                                <h3>03:10 pm</h3>
+                                <p>Boston (BOS)</p>
+                            </div>
+                        </div>
+
+                        <div class="flight-route">
+                            <div class="time-place">
+                                <h3>08:00 pm</h3>
+                                <p>Boston (BOS)</p>
+                            </div>
+                            <div class="duration-line">
+                                <span>non-stop</span>
+                                <div class="line"></div>
+                                <span>2h 00m</span>
+                            </div>
+                            <div class="time-place">
+                                <h3>10:00 pm</h3>
+                                <p>Newark (EWR)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="price-action">
+                        <div class="price">starting from <h2>$185</h2></div>
+                        <div class="action-buttons">
+                            <button class="btn-heart"><i class="fa-regular fa-heart"></i></button>
+                            <a href="#" class="btn-primary">View Deals</a>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" style="margin-top: 80px;">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="logo">
+                    <a href="index.html"><img src="https://api.iconify.design/ion:paper-plane.svg?color=%23111827" alt="logo" class="logo-icon"> <span>Golobe</span></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Work with us</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

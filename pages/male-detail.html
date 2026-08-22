@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malé Tour Details - Golobe</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Montserrat) -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .detail-page { padding-top: 100px; padding-bottom: 80px; }
+        .detail-header {
+            background: url('https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            height: 400px;
+            border-radius: 24px;
+            display: flex;
+            align-items: flex-end;
+            padding: 40px;
+            color: var(--white);
+            position: relative;
+        }
+        .detail-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            border-radius: 24px;
+        }
+        .detail-header-content { position: relative; }
+        .detail-header-content h1 { font-size: 48px; margin-bottom: 8px; }
+        .detail-header-content .rating { display: flex; align-items: center; gap: 8px; }
+        .detail-header-content .rating .fa-star { color: #FFC107; }
+
+        .detail-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .tour-info h2 { font-size: 24px; margin-bottom: 16px; border-bottom: 2px solid var(--light-gray); padding-bottom: 8px; }
+        .tour-info p { line-height: 1.6; margin-bottom: 24px; }
+        .tour-info ul { list-style: none; padding: 0; }
+        .tour-info ul li { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+        .tour-info ul li .fa-check-circle { color: var(--secondary); }
+
+        .booking-card {
+            background: var(--white);
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 120px;
+        }
+        .booking-card .price { margin-bottom: 24px; }
+        .booking-card .price span { font-size: 16px; color: var(--gray); }
+        .booking-card .price h3 { font-size: 36px; color: var(--primary); margin: 0; }
+        .booking-card .btn { width: 100%; }
+
+        @media (max-width: 992px) {
+            .detail-layout { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header / Navbar -->
+    <header style="position: static; background: var(--primary);">
+        <div class="container navbar">
+            <ul class="nav-links">
+                <li><a href="index.html#flights-section"><i class="fa-solid fa-plane"></i> Find Flight</a></li>
+                <li><a href="index.html#stays-section"><i class="fa-solid fa-bed"></i> Find Stays</a></li>
+            </ul>
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-paper-plane"></i> Golobe
+            </a>
+            <div class="auth-btns">
+                <a href="login.html" class="btn btn-text">Login</a>
+                <a href="signup.html" class="btn btn-light">Sign up</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="detail-page container">
+        <div style="margin-bottom: 24px;">
+            <a href="index.html" class="btn btn-outline"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+        </div>
+        <!-- Destination Header -->
+        <section class="detail-header">
+            <div class="detail-header-content">
+                <h1>Malé, Maldives</h1>
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-alt"></i>
+                    <span>4.8 (12,500 reviews)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content Layout -->
+        <div class="detail-layout">
+            <!-- Left Column: Tour Information -->
+            <div class="tour-info">
+                <h2>About the Tour</h2>
+                <p>Escape to paradise in the Maldives. This all-inclusive 5-day package offers a luxurious stay in an overwater bungalow, crystal-clear waters, and vibrant coral reefs. Perfect for relaxation, snorkeling, and romantic getaways.</p>
+
+                <h2>What's Included</h2>
+                <ul>
+                    <li><i class="fa-solid fa-check-circle"></i> 4 nights in an overwater villa.</li>
+                    <li><i class="fa-solid fa-check-circle"></i> All meals and drinks included.</li>
+                    <li><i class="fa-solid fa-check-circle"></i> Roundtrip speedboat transfers.</li>
+                    <li><i class="fa-solid fa-check-circle"></i> Snorkeling and non-motorized water sports.</li>
+                </ul>
+            </div>
+
+            <!-- Right Column: Booking Card -->
+            <aside class="booking-card">
+                <div class="price">
+                    <span>Starting from</span>
+                    <h3>$2,500</h3>
+                </div>
+                <form>
+                    <div class="field-group" style="margin-bottom: 16px;">
+                        <label for="tour-date">Select Date</label>
+                        <input type="date" id="tour-date" value="2025-02-14">
+                    </div>
+                    <div class="field-group" style="margin-bottom: 24px;">
+                        <label for="tour-guests">Guests</label>
+                        <select id="tour-guests">
+                            <option selected>2 Guests</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn btn-primary add-to-cart-btn" style="width: 100%;"
+                        data-type="Tour"
+                        data-name="Malé, Maldives"
+                        data-route="5-day all-inclusive"
+                        data-price="2500"
+                        data-img="https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?auto=format&fit=crop&w=300&q=80">
+                        <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                    </button>
+                </form>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>

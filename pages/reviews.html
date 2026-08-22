@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Reviews - Golobe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .star-rating-input {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+            gap: 4px;
+        }
+
+        .star-rating-input input[type="radio"] {
+            display: none;
+        }
+
+        .star-rating-input label {
+            font-size: 24px;
+            color: #d1d5db;
+            cursor: pointer;
+        }
+
+        .star-rating-input input[type="radio"]:checked~label,
+        .star-rating-input label:hover,
+        .star-rating-input label:hover~label {
+            color: #FFC107;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <div class="container navbar">
+            <ul class="nav-links">
+                <li><a href="index.html#flights-section"><i class="fa-solid fa-plane"></i> Find Flight</a></li>
+                <li><a href="index.html#stays-section"><i class="fa-solid fa-bed"></i> Find Stays</a></li>
+            </ul>
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-paper-plane"></i> Golobe
+            </a>
+            <div class="auth-btns" id="auth-buttons">
+                <a href="login.html" class="btn btn-text">Login</a>
+                <a href="signup.html" class="btn btn-light">Sign up</a>
+            </div>
+            <div class="auth-btns" id="user-info" style="display: none;">
+                <span id="user-name" style="color: var(--primary); font-weight: 600;"></span>
+                <button id="logout-btn" class="btn btn-light">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container" style="margin-top: 80px; margin-bottom: 60px;">
+        <div class="section-header">
+            <div class="section-title">
+                <h2>All Customer Reviews</h2>
+                <p>Read honest feedback from travelers using Golobe facilities</p>
+            </div>
+            <a href="index.html" class="btn btn-outline"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+        </div>
+
+        <!-- Review Submission Form (for logged-in users) -->
+        <section id="review-form-section" class="container" style="margin-top: 40px; display: none;">
+            <div class="info-card" style="padding: 32px; background: #f9fafb;">
+                <h4>Write a Review</h4>
+                <form id="new-review-form" style="display: flex; flex-direction: column; gap: 16px;">
+                    <div class="field-group">
+                        <label for="review-title">Review Title</label>
+                        <input type="text" id="review-title" placeholder="e.g., 'A wonderful experience!'" required>
+                    </div>
+                    <div class="field-group">
+                        <label for="review-text">Your Review</label>
+                        <textarea id="review-text" rows="4" placeholder="Share your thoughts about your trip..." required></textarea>
+                    </div>
+                    <div class="field-group">
+                        <label>Rating</label>
+                        <div class="star-rating-input">
+                            <input type="radio" id="star5" name="rating" value="5" required /><label for="star5" title="5 stars">★</label>
+                            <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 stars">★</label>
+                            <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 stars">★</label>
+                            <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 stars">★</label>
+                            <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star">★</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="align-self: flex-start;">Submit Review</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Login Prompt (for logged-out users) -->
+        <div id="login-to-review-prompt" class="login-prompt info-card" style="text-align: center; padding: 32px; margin-top: 40px; display: none;">
+            <h4><a href="login.html" style="text-decoration: none; color: var(--primary);">Login</a> or <a href="signup.html" style="text-decoration: none; color: var(--primary);">Sign up</a> to write a review.</h4>
+        </div>
+
+        <div class="reviews-grid">
+            <div class="review-card">
+                <h3 class="review-title">"A real sense of community, cozy"</h3>
+                <p class="review-text">Really convenient and the staff was super friendly. Loved the atmosphere and location!</p>
+                <div class="review-rating">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <div class="review-author">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" class="author-img" alt="Olga">
+                    <div>
+                        <div class="author-name">Olga</div>
+                        <div class="author-location">Weave Studios - Kai Tak</div>
+                    </div>
+                </div>
+            </div>
+            <div class="review-card">
+                <h3 class="review-title">"The best booking experience"</h3>
+                <p class="review-text">Easy to filter options and fast booking process. Will definitely use Golobe for my next trip!</p>
+                <div class="review-rating">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <div class="review-author">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" class="author-img" alt="Thomas">
+                    <div>
+                        <div class="author-name">Thomas</div>
+                        <div class="author-location">Weave Studios - Olympic</div>
+                    </div>
+                </div>
+            </div>
+            <div class="review-card">
+                <h3 class="review-title">"High quality & Great prices"</h3>
+                <p class="review-text">Found amazing flight deals that saved me hundreds of dollars. Highly recommended for travelers.</p>
+                <div class="review-rating">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <div class="review-author">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" class="author-img" alt="Eliot">
+                    <div>
+                        <div class="author-name">Eliot</div>
+                        <div class="author-location">Weave Studios - Sai Ying Pun</div>
+                    </div>
+                </div>
+            </div>
+            <div class="review-card">
+                <h3 class="review-title">"Unforgettable Experience"</h3>
+                <p class="review-text">Everything was perfectly organized. Customer support helped me 24/7 during my trip.</p>
+                <div class="review-rating">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <div class="review-author">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" class="author-img" alt="David">
+                    <div>
+                        <div class="author-name">David</div>
+                        <div class="author-location">Weave Studios - Central</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo"><i class="fa-solid fa-paper-plane"></i> Golobe</div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

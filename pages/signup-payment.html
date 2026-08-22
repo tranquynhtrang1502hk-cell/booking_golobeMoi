@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up - Add a Payment Method - Golobe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; background-color: var(--white); }
+        .auth-container { display: flex; min-height: 100vh; width: 100%; }
+        
+        /* Cột bên trái: Ảnh nền resort */
+        .auth-image-side { flex: 1; padding: 24px; display: none; }
+        .auth-image-card { width: 100%; height: 100%; min-height: 95vh; border-radius: 24px; background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1000&q=80'); background-size: cover; background-position: center; position: relative; display: flex; flex-direction: column; justify-content: flex-end; padding: 40px; box-sizing: border-box; }
+        .slider-dots { display: flex; gap: 8px; justify-content: center; }
+        .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255, 255, 255, 0.5); }
+        .dot.active { background: white; width: 24px; border-radius: 4px; }
+
+        /* Cột bên phải: Form thanh toán */
+        .auth-form-side { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px; max-width: 600px; margin: 0 auto; }
+        .auth-form-wrapper { width: 100%; max-width: 440px; }
+        .auth-logo { font-size: 24px; font-weight: 700; color: var(--dark); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 24px; }
+        .back-link { font-size: 14px; color: #79747E; text-decoration: none; display: inline-block; margin-bottom: 12px; }
+        .auth-title { font-size: 32px; font-weight: 700; margin-bottom: 8px; color: var(--dark); }
+        .auth-subtitle { font-size: 14px; color: #79747E; margin-bottom: 24px; }
+        
+        .field-group { margin-bottom: 16px; text-align: left; }
+        .field-group label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 6px; color: var(--dark); }
+        .field-group input, .field-group select { width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; outline: none; box-sizing: border-box; background: #fff; }
+        .field-group input:focus { border-color: var(--primary); }
+        
+        .form-row-2 { display: flex; gap: 16px; }
+        .checkbox-group { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; font-size: 13px; color: #79747E; }
+        
+        .btn-submit { width: 100%; padding: 14px; background-color: #8DD3BB; color: var(--dark); border: none; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
+        .btn-submit:hover { opacity: 0.9; }
+        
+        .terms-note { font-size: 11px; color: #79747E; text-align: center; margin-top: 16px; line-height: 1.5; }
+
+        @media (min-width: 992px) { .auth-image-side { display: block; } }
+    </style>
+</head>
+<body>
+
+    <div class="auth-container">
+        <!-- Cột trái: Ảnh -->
+        <div class="auth-image-side">
+            <div class="auth-image-card">
+                <div class="slider-dots">
+                    <span class="dot"></span>
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cột phải: Form nhập thẻ thanh toán -->
+        <div class="auth-form-side">
+            <div class="auth-form-wrapper">
+                <a href="index.html" class="auth-logo">
+                    <i class="fa-solid fa-paper-plane" style="color: #8DD3BB;"></i> Golobe
+                </a>
+                <a href="signup.html" class="back-link"><i class="fa-solid fa-chevron-left"></i> Back</a>
+                <h1 class="auth-title">Add a payment method</h1>
+                <p class="auth-subtitle">Let’s get you all set up so you can access your personal account.</p>
+
+                <form id="payment-form">
+                    <div class="field-group">
+                        <label>Card Number</label>
+                        <input type="text" placeholder="4321 4321 4321 4321" maxlength="19" required>
+                    </div>
+                    <div class="form-row-2">
+                        <div class="field-group" style="flex: 1;">
+                            <label>Exp. Date</label>
+                            <input type="text" placeholder="02/27" maxlength="5" required>
+                        </div>
+                        <div class="field-group" style="flex: 1;">
+                            <label>CVC</label>
+                            <input type="password" placeholder="123" maxlength="4" required>
+                        </div>
+                    </div>
+                    <div class="field-group">
+                        <label>Name on Card</label>
+                        <input type="text" placeholder="John Doe" required>
+                    </div>
+                    <div class="field-group">
+                        <label>Country or Region</label>
+                        <select>
+                            <option>United States</option>
+                            <option>Vietnam</option>
+                            <option>United Kingdom</option>
+                            <option>Canada</option>
+                        </select>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="save-card" checked>
+                        <label for="save-card" style="margin: 0;">Securely save my information for 1-click checkout</label>
+                    </div>
+                    <button type="submit" class="btn-submit">Add payment method</button>
+                </form>
+
+                <div class="terms-note">
+                    By confirming your subscription, you allow Golobe to charge your card for this payment and future payments in accordance with their terms. You can always cancel your subscription.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('payment-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thêm phương thức thanh toán và hoàn tất đăng ký thành công!');
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>

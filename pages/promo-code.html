@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golobe - Discount Code</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Montserrat) -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- ===== CSS RIÊNG CHO TRANG PROMO ===== -->
+    <style>
+        .page5-main {
+            padding-top: 150px;
+            padding-bottom: 80px;
+            min-height: 100vh;
+        }
+
+        .promo-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .promo-header h1 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 8px;
+        }
+        .promo-header p {
+            font-size: 18px;
+            color: var(--text-muted);
+        }
+
+        .promo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        /* --- CARD NHẬP MÃ --- */
+        .promo-input-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 32px;
+            box-shadow: var(--shadow);
+        }
+        .promo-input-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .promo-input-card .sub {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+
+        .promo-input-group {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .promo-input-group input {
+            flex: 1;
+            padding: 14px 18px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            outline: none;
+            transition: border-color 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .promo-input-group input:focus {
+            border-color: var(--primary);
+        }
+        .promo-input-group input::placeholder {
+            text-transform: none;
+            letter-spacing: 0;
+            font-weight: 400;
+            color: #aaa;
+        }
+
+        .btn-success {
+            background: #10B981;
+            color: white;
+        }
+        .btn-success:hover {
+            background: #059669;
+        }
+
+        .promo-message {
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            display: none;
+            margin-top: 12px;
+        }
+        .promo-message.success {
+            display: block;
+            background: #D1FAE5;
+            color: #065F46;
+            border: 1px solid #10B981;
+        }
+        .promo-message.error {
+            display: block;
+            background: #FEE2E2;
+            color: #991B1B;
+            border: 1px solid #EF4444;
+        }
+        .promo-message.info {
+            display: block;
+            background: #DBEAFE;
+            color: #1E40AF;
+            border: 1px solid #3B82F6;
+        }
+
+        .promo-applied-list {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .promo-applied-list h4 {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+        .promo-applied-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 14px;
+            background: #F9FAFB;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+        .promo-applied-item .code {
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--secondary);
+        }
+        .promo-applied-item .desc {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        .promo-applied-item .remove-btn {
+            background: none;
+            border: none;
+            color: #EF4444;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* --- DANH SÁCH MÃ GỢI Ý --- */
+        .promo-suggestions-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 32px;
+            box-shadow: var(--shadow);
+        }
+        .promo-suggestions-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .promo-suggestions-card .sub {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+
+        .promo-category {
+            margin-bottom: 24px;
+        }
+        .promo-category:last-child {
+            margin-bottom: 0;
+        }
+        .promo-category .category-label {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .promo-category .category-label i {
+            font-size: 16px;
+        }
+
+        .promo-suggestion-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: #F9FAFB;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            transition: background 0.2s;
+            cursor: pointer;
+        }
+        .promo-suggestion-item:hover {
+            background: #F0F9F6;
+        }
+        .promo-suggestion-item .code {
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--secondary);
+            font-family: 'Montserrat', monospace;
+        }
+        .promo-suggestion-item .desc {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        .promo-suggestion-item .discount {
+            font-weight: 700;
+            color: #10B981;
+            font-size: 14px;
+            background: #D1FAE5;
+            padding: 2px 12px;
+            border-radius: 20px;
+        }
+        .promo-suggestion-item .use-btn {
+            background: var(--primary);
+            border: none;
+            color: var(--secondary);
+            padding: 4px 14px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 12px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .promo-suggestion-item .use-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        /* ===== CART SUMMARY ===== */
+        .promo-summary-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 32px;
+            box-shadow: var(--shadow);
+            grid-column: 1 / -1;
+        }
+        .promo-summary-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 15px;
+        }
+        .summary-row:last-child {
+            border-bottom: none;
+        }
+        .summary-row.total {
+            font-weight: 700;
+            font-size: 18px;
+            padding-top: 16px;
+            border-top: 2px solid var(--secondary);
+            border-bottom: none;
+        }
+        .summary-row .label {
+            color: var(--text-muted);
+        }
+        .summary-row .value {
+            font-weight: 600;
+        }
+        .summary-row .value.discount {
+            color: #10B981;
+        }
+
+        .promo-summary-actions {
+            display: flex;
+            gap: 16px;
+            margin-top: 24px;
+            justify-content: flex-end;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .promo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page5-main {
+                padding-top: 100px;
+            }
+            .promo-header h1 {
+                font-size: 28px;
+            }
+            .promo-input-group {
+                flex-direction: column;
+            }
+            .promo-suggestion-item {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            .promo-summary-actions {
+                flex-direction: column;
+            }
+            .promo-summary-actions .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* Ghi đè một số style từ style.css để phù hợp */
+        .static-header .cart-icon {
+            color: var(--secondary);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="static-header">
+        <div class="container navbar">
+            <ul class="nav-links">
+                <li><a href="index.html#flights-section" class="header-link"><i class="fa-solid fa-plane"></i> Find Flight</a></li>
+                <li><a href="index.html#stays-section" class="header-link"><i class="fa-solid fa-bed"></i> Find Stays</a></li>
+            </ul>
+           <a href="index.html" class="logo">
+                <i class="fa-solid fa-paper-plane"></i> Golobe
+            </a>
+            <div class="auth-btns" id="auth-buttons">
+                <a href="login.html" class="btn btn-text-dark">Login</a>
+                <a href="signup.html" class="btn btn-light">Sign up</a>
+            </div>
+            <div class="header-actions">
+                <a href="payment.html" class="cart-icon"><i class="fa-solid fa-cart-shopping"></i><span id="cart-item-count">0</span></a>
+            </div>
+            <div class="auth-btns" id="user-info" style="display: none;">
+                <span id="user-name" style="color: var(--secondary); font-weight: 600;"></span>
+                <button id="logout-btn" class="btn btn-light">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="page5-main">
+        <div class="container">
+
+            <!-- Tiêu đề -->
+            <div class="promo-header">
+                <h1><i class="fa-solid fa-ticket" style="color: var(--primary);"></i> Discount Code</h1>
+                <p>Enter your code or select from the suggestions to receive discounts for your trip</p>
+            </div>
+
+            <div class="promo-grid">
+                <!-- Cột trái: Nhập mã + danh sách đã áp dụng -->
+                <div class="promo-input-card">
+                    <h3><i class="fa-solid fa-pen-to-square"></i> Enter Discount Code</h3>
+                    <p class="sub">Enter your code in the box below and click <strong>Apply</strong></p>
+
+                    <div class="promo-input-group">
+                        <input type="text" id="promo-input" placeholder="e.g., SUMMER2026" maxlength="20">
+                        <button id="apply-promo-btn" class="btn btn-primary"><i class="fa-solid fa-check"></i> Áp dụng</button>
+                    </div>
+
+                    <div id="promo-message" class="promo-message"></div>
+
+                    <!-- Danh sách mã đã áp dụng -->
+                    <div class="promo-applied-list" id="applied-promos-container">
+                        <h4><i class="fa-solid fa-circle-check"></i> Discount Codes Applied</h4>
+                        <div id="applied-promos-list">
+                            <!-- Hiển thị động bằng JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cột phải: Danh sách mã gợi ý -->
+                <div class="promo-suggestions-card">
+                    <h3><i class="fa-solid fa-lightbulb"></i> Discount Code Suggestions</h3>
+                    <p class="sub">Click on a code to apply it quickly</p>
+
+                    <!-- Khách quen -->
+                    <div class="promo-category">
+                        <div class="category-label"><i class="fa-solid fa-crown" style="color: #F59E0B;"></i> Regular Customers</div>
+                        <div class="promo-suggestion-item" data-code="VIP2026" data-desc="15% discount for loyal customers" data-discount="15%">
+                            <span class="code">VIP2026</span>
+                            <span class="desc">15% discount for loyal customers</span>
+                            <span class="discount">-15%</span>
+                            <button class="use-btn"><i class="fa-solid fa-plus"></i> Use</button>
+                        </div>
+                        <div class="promo-suggestion-item" data-code="LOYAL10" data-desc="10% discount for VIP members" data-discount="10%">
+                            <span class="code">LOYAL10</span>
+                            <span class="desc">10% discount for VIP members</span>
+                            <span class="discount">-10%</span>
+                            <button class="use-btn"><i class="fa-solid fa-plus"></i> Use</button>
+                        </div>
+                    </div>
+
+                    <!-- Mùa hè -->
+                    <div class="promo-category">
+                        <div class="category-label"><i class="fa-solid fa-sun" style="color: #F97316;"></i> Summer Deals</div>
+                        <div class="promo-suggestion-item" data-code="SUMMER2026" data-desc="20% discount for summer flights" data-discount="20%">
+                            <span class="code">SUMMER2026</span>
+                            <span class="desc">20% discount for summer flights</span>
+                            <span class="discount">-20%</span>
+                            <button class="use-btn"><i class="fa-solid fa-plus"></i> Use</button>
+                        </div>
+                        <div class="promo-suggestion-item" data-code="HOTDEAL" data-desc="12% discount for summer room bookings" data-discount="12%">
+                            <span class="code">HOTDEAL</span>
+                            <span class="desc">12% discount for summer room bookings</span>
+                            <span class="discount">-12%</span>
+                            <button class="use-btn"><i class="fa-solid fa-plus"></i> Use</button>
+                        </div>
+                    </div>
+
+                    <!-- Khách mới -->
+                    <div class="promo-category">
+                        <div class="category-label"><i class="fa-solid fa-user-plus" style="color: #3B82F6;"></i> New Customers</div>
+                        <div class="promo-suggestion-item" data-code="WELCOME25" data-desc="25% discount for first-time bookings" data-discount="25%">
+                            <span class="code">WELCOME25</span>
+                            <span class="desc">25% discount for first-time bookings</span>
+                            <span class="discount">-25%</span>
+                            <button class="use-btn"><i class="fa-solid fa-plus"></i> Use</button>
+                        </div>
+                        <div class="promo-suggestion-item" data-code="NEWUSER" data-desc="10% discount for new customers" data-discount="10%">
+                            <span class="code">NEWUSER</span>
+                            <span class="desc">10% discount for new customers</span>
+                            <span class="discount">-10%</span>
+                            <button class="use-btn"><i class="fa-solid fa-plus"></i> Use</button>
+                        </div>
+                    </div>
+
+                    <!-- Khách sạn / Chuyến bay -->
+                    <div class="promo-category">
+                        <div class="category-label"><i class="fa-solid fa-hotel" style="color: #8B5CF6;"></i> Hotels &amp; Flights</div>
+                        <div class="promo-suggestion-item" data-code="HOTEL15" data-desc="15% discount for hotel bookings" data-discount="15%">
+                            <span class="code">HOTEL15</span>
+                            <span class="desc">15% discount for hotel bookings</span>
+                            <span class="discount">-15%</span>
+                            <button class="use-btn"><i class="fa-solid fa-plus"></i> Use</button>
+                        </div>
+                        <div class="promo-suggestion-item" data-code="FLIGHT8" data-desc="8% discount for flight tickets" data-discount="8%">
+                            <span class="code">FLIGHT8</span>
+                            <span class="desc">8% discount for flight tickets</span>
+                            <span class="discount">-8%</span>
+                            <button class="use-btn"><i class="fa-solid fa-plus"></i> Use</button>
+                        </div>
+                        <div class="promo-suggestion-item" data-code="COMBO" data-desc="18% discount when booking a flight + hotel combo" data-discount="18%">
+                            <span class="code">COMBO</span>
+                            <span class="desc">18% discount when booking a flight + hotel combo</span>
+                            <span class="discount">-18%</span>
+                            <button class="use-btn"><i class="fa-solid fa-plus"></i> Use</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== Bảng tóm tắt ===== -->
+                <div class="promo-summary-card">
+                    <h3><i class="fa-solid fa-receipt"></i> Order Summary</h3>
+
+                    <div class="summary-row">
+                        <span class="label">Total Order Value</span>
+                        <span class="value" id="subtotal-value">$450.00</span>
+                    </div>
+
+                    <div id="promo-discount-row" class="summary-row" style="display: none;">
+                        <span class="label">Discount</span>
+                        <span class="value discount" id="discount-value">-$0.00</span>
+                    </div>
+
+                    <div id="promo-code-row" class="summary-row" style="display: none;">
+                        <span class="label">Applied Promo Code</span>
+                        <span class="value" id="applied-code-display">VIP2026</span>
+                    </div>
+
+                    <div class="summary-row total">
+                        <span class="label">Total Amount</span>
+                        <span class="value" id="total-value">$450.00</span>
+                    </div>
+
+                    <div class="promo-summary-actions">
+                        <a href="payment.html" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Back to Payment</a>
+                        <a href="#" class="btn btn-success" id="checkout-with-promo"><i class="fa-solid fa-credit-card"></i> Proceed to Checkout</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">
+                        <i class="fa-solid fa-paper-plane"></i> Golobe
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Our Destinations</h4>
+                    <ul>
+                        <li><a href="#">Canada</a></li>
+                        <li><a href="#">Alaska</a></li>
+                        <li><a href="#">France</a></li>
+                        <li><a href="#">Iceland</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Our Activities</h4>
+                    <ul>
+                        <li><a href="#">Northern Lights</a></li>
+                        <li><a href="#">Cruising & sailing</a></li>
+                        <li><a href="#">Multi-activity</a></li>
+                        <li><a href="#">Kayaking</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Travel Blogs</h4>
+                    <ul>
+                        <li><a href="#">Bali Travel Guide</a></li>
+                        <li><a href="#">Sri Lanka Travel Guide</a></li>
+                        <li><a href="#">Peru Travel Guide</a></li>
+                        <li><a href="#">Swiss Alps Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>About Us</h4>
+                    <ul>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Work with us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // --- QUẢN LÝ GIỎ HÀNG ---
+            function updateCartIcon() {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const cartCountEl = document.getElementById('cart-item-count');
+                if (cartCountEl) {
+                    cartCountEl.textContent = cart.length;
+                    cartCountEl.style.display = cart.length > 0 ? 'flex' : 'none';
+                }
+            }
+            updateCartIcon();
+
+            // --- ĐĂNG NHẬP / ĐĂNG XUẤT ---
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            const authButtons = document.getElementById('auth-buttons');
+            const userInfo = document.getElementById('user-info');
+            const userNameEl = document.getElementById('user-name');
+            const logoutBtn = document.getElementById('logout-btn');
+
+            if (currentUser) {
+                if (authButtons) authButtons.style.display = 'none';
+                if (userInfo) {
+                    userInfo.style.display = 'flex';
+                    if (userNameEl) {
+                        userNameEl.textContent = currentUser.name;
+                    }
+                }
+            } else {
+                if (authButtons) authButtons.style.display = 'flex';
+                if (userInfo) userInfo.style.display = 'none';
+            }
+
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', () => {
+                    localStorage.removeItem('currentUser');
+                    alert('You have been logged out.');
+                    window.location.reload();
+                });
+            }
+
+            // --- LOGIC PROMO CODE ---
+
+            // Dữ liệu mã khuyến mãi hợp lệ
+            const validPromoCodes = {
+                'VIP2026': { discount: 15, desc: 'Save 15% for loyal customers' },
+                'LOYAL10': { discount: 10, desc: 'Save 10% for VIP members' },
+                'SUMMER2026': { discount: 20, desc: 'Save 20% for summer flights' },
+                'HOTDEAL': { discount: 12, desc: 'Save 12% for summer hotel bookings' },
+                'WELCOME25': { discount: 25, desc: 'Save 25% for first-time bookings' },
+                'NEWUSER': { discount: 10, desc: 'Save 10% for new customers' },
+                'HOTEL15': { discount: 15, desc: 'Save 15% for hotel bookings' },
+                'FLIGHT8': { discount: 8, desc: 'Save 8% for flight tickets' },
+                'COMBO': { discount: 18, desc: 'Save 18% when booking a flight + hotel combo' }
+            };
+
+            // State
+            let appliedPromos = [];
+            let subtotal = 450.00;
+
+            // DOM refs
+            const promoInput = document.getElementById('promo-input');
+            const applyBtn = document.getElementById('apply-promo-btn');
+            const messageEl = document.getElementById('promo-message');
+            const appliedListEl = document.getElementById('applied-promos-list');
+            const subtotalEl = document.getElementById('subtotal-value');
+            const discountRow = document.getElementById('promo-discount-row');
+            const discountValueEl = document.getElementById('discount-value');
+            const codeRow = document.getElementById('promo-code-row');
+            const appliedCodeDisplay = document.getElementById('applied-code-display');
+            const totalEl = document.getElementById('total-value');
+            const useBtns = document.querySelectorAll('.use-btn');
+
+            function calculateTotalDiscount() {
+                let totalDiscount = 0;
+                appliedPromos.forEach(code => {
+                    const data = validPromoCodes[code];
+                    if (data) {
+                        totalDiscount += (subtotal * data.discount) / 100;
+                    }
+                });
+                return Math.min(totalDiscount, subtotal);
+            }
+
+            function updateUI() {
+                subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+                const totalDiscount = calculateTotalDiscount();
+                const finalTotal = subtotal - totalDiscount;
+
+                if (appliedPromos.length > 0 && totalDiscount > 0) {
+                    discountRow.style.display = 'flex';
+                    discountValueEl.textContent = `-$${totalDiscount.toFixed(2)}`;
+                } else {
+                    discountRow.style.display = 'none';
+                }
+
+                if (appliedPromos.length > 0) {
+                    codeRow.style.display = 'flex';
+                    appliedCodeDisplay.textContent = appliedPromos.join(', ');
+                } else {
+                    codeRow.style.display = 'none';
+                }
+
+                totalEl.textContent = `$${finalTotal.toFixed(2)}`;
+                renderAppliedPromos();
+
+                localStorage.setItem('appliedPromos', JSON.stringify(appliedPromos));
+                localStorage.setItem('finalTotal', finalTotal.toFixed(2));
+            }
+
+            function renderAppliedPromos() {
+                if (appliedPromos.length === 0) {
+                    appliedListEl.innerHTML = `<p style="color: var(--text-muted); font-size: 14px;">No promo codes applied</p>`;
+                    return;
+                }
+
+                let html = '';
+                appliedPromos.forEach(code => {
+                    const data = validPromoCodes[code];
+                    html += `
+                        <div class="promo-applied-item">
+                            <div>
+                                <span class="code">${code}</span>
+                                <span class="desc">${data ? data.desc : ''}</span>
+                            </div>
+                            <button class="remove-btn" data-code="${code}"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                    `;
+                });
+                appliedListEl.innerHTML = html;
+
+                document.querySelectorAll('.remove-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const codeToRemove = this.dataset.code;
+                        appliedPromos = appliedPromos.filter(c => c !== codeToRemove);
+                        showMessage(`Code Removed ${codeToRemove}`, 'info');
+                        updateUI();
+                    });
+                });
+            }
+
+            function showMessage(text, type = 'info') {
+                messageEl.textContent = text;
+                messageEl.className = 'promo-message ' + type;
+                setTimeout(() => {
+                    messageEl.className = 'promo-message';
+                }, 5000);
+            }
+
+            function applyPromoCode(code) {
+                const trimmedCode = code.trim().toUpperCase();
+                if (!trimmedCode) {
+                    showMessage('Please enter a promo code.', 'error');
+                    return false;
+                }
+                if (!validPromoCodes[trimmedCode]) {
+                    showMessage(`Code "${trimmedCode}" is invalid. Please check again.`, 'error');
+                    return false;
+                }
+                if (appliedPromos.includes(trimmedCode)) {
+                    showMessage(`Code "${trimmedCode}" has already been applied.`, 'info');
+                    return false;
+                }
+                appliedPromos.push(trimmedCode);
+                showMessage(`✅ Code "${trimmedCode}" applied successfully! You saved ${validPromoCodes[trimmedCode].discount}%`, 'success');
+                promoInput.value = '';
+                updateUI();
+                return true;
+            }
+
+            applyBtn.addEventListener('click', function() {
+                applyPromoCode(promoInput.value);
+            });
+
+            promoInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    applyPromoCode(promoInput.value);
+                }
+            });
+
+            useBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const item = this.closest('.promo-suggestion-item');
+                    if (item) {
+                        applyPromoCode(item.dataset.code);
+                    }
+                });
+            });
+
+            document.querySelectorAll('.promo-suggestion-item').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    if (e.target.closest('.use-btn')) return;
+                    applyPromoCode(this.dataset.code);
+                });
+            });
+
+            function restoreFromLocalStorage() {
+                const savedPromos = localStorage.getItem('appliedPromos');
+                if (savedPromos) {
+                    try {
+                        appliedPromos = JSON.parse(savedPromos);
+                        appliedPromos = appliedPromos.filter(code => validPromoCodes[code]);
+                    } catch (e) {
+                        appliedPromos = [];
+                    }
+                }
+                updateUI();
+            }
+
+            document.getElementById('checkout-with-promo').addEventListener('click', function(e) {
+                e.preventDefault();
+                const finalTotal = parseFloat(totalEl.textContent.replace('$', ''));
+                if (appliedPromos.length > 0) {
+                    alert(`✅ You have applied ${appliedPromos.length} promo codes.\nTotal amount to pay: $${finalTotal.toFixed(2)}`);
+                } else {
+                    alert(`💰 Total amount to pay: $${finalTotal.toFixed(2)}`);
+                }
+                window.location.href = 'payment.html';
+            });
+
+            restoreFromLocalStorage();
+
+        });
+    </script>
+
+</body>
+</html>

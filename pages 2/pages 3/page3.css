@@ -1,0 +1,282 @@
+/* Page 3 Specific Styles */
+.page3-main {
+    margin-top: 24px;
+}
+
+.breadcrumb {
+    margin-bottom: 24px;
+}
+
+.breadcrumb a {
+    color: var(--dark);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.flight-title-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flight-title-wrap h2 {
+    font-size: 28px;
+    margin-bottom: 4px;
+}
+
+.location-text {
+    font-size: 14px;
+    color: var(--gray-text);
+}
+
+.price-header {
+    text-align: right;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.price-header h2 {
+    color: #FF8682;
+    font-size: 32px;
+}
+
+/* Image Gallery Grid */
+.image-gallery {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+    height: 420px;
+}
+
+.gallery-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 202px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* Content Layout Grid */
+.details-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 32px;
+}
+
+.card-box {
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 24px;
+}
+
+.card-box h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+/* Features List */
+.features-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.feature-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+    background: #FAFAFA;
+    padding: 16px;
+    border-radius: 12px;
+}
+
+.feature-item i {
+    font-size: 24px;
+    color: var(--primary);
+}
+
+.feature-item span {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* Itinerary */
+.itinerary-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.airline-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.airline-meta .airline-logo {
+    height: 36px;
+}
+
+.timeline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #F9FAFB;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.time-node {
+    display: flex;
+    flex-direction: column;
+}
+
+.time-node strong {
+    font-size: 20px;
+}
+
+.time-node span {
+    font-size: 12px;
+    color: var(--gray-text);
+}
+
+.time-duration {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--gray-text);
+    font-size: 12px;
+}
+
+.time-duration i {
+    font-size: 18px;
+    color: var(--dark);
+    margin-bottom: 4px;
+}
+
+/* Form Styles */
+.booking-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.form-group input {
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+/* Price Summary */
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: var(--gray-text);
+}
+
+.price-row.total-row {
+    margin-top: 16px;
+    font-size: 18px;
+    color: var(--dark);
+}
+
+.total-price {
+    color: #FF8682;
+    font-size: 22px;
+}
+
+.discount {
+    color: #10B981;
+}
+
+.promo-code {
+    display: flex;
+    gap: 8px;
+    margin: 20px 0;
+}
+
+.promo-code input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.btn-secondary {
+    background: var(--dark);
+    color: #fff;
+    border: none;
+    padding: 0 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-full {
+    width: 100%;
+    text-align: center;
+    padding: 14px 0;
+    font-size: 16px;
+}
+
+@media (max-width: 900px) {
+    .image-gallery {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+    .features-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}

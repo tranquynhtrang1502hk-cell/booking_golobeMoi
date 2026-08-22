@@ -1,0 +1,192 @@
+/* Page 6 Specific Styles (Auth / Login) */
+body {
+    background-color: #F3F4F6;
+    margin: 0;
+    min-height: 100vh;
+}
+
+.auth-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+    background: #fff;
+}
+
+.auth-form-side {
+    padding: 40px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.auth-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.back-home {
+    text-decoration: none;
+    color: var(--gray-text);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.back-home:hover {
+    color: var(--dark);
+}
+
+.auth-content {
+    max-width: 440px;
+    width: 100%;
+    margin: 40px auto;
+}
+
+.auth-content h2 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.auth-subtitle {
+    color: var(--gray-text);
+    margin-bottom: 32px;
+    font-size: 14px;
+}
+
+.password-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-input-wrapper input {
+    width: 100%;
+    padding-right: 40px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 14px;
+    color: var(--gray-text);
+    cursor: pointer;
+}
+
+.auth-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    font-size: 14px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    color: var(--gray-text);
+}
+
+.forgot-password {
+    color: #FF8682;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.divider {
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    line-height: 0.1em;
+    margin: 32px 0 24px;
+}
+
+.divider span {
+    background: #fff;
+    padding: 0 16px;
+    color: var(--gray-text);
+    font-size: 13px;
+}
+
+.social-login-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.btn-social {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.btn-social:hover {
+    background: #F9FAFB;
+}
+
+.social-fb { color: #1877F2; }
+.social-gg { color: #EA4335; }
+.social-apple { color: #000; }
+
+.auth-footer {
+    text-align: center;
+    font-size: 14px;
+    color: var(--gray-text);
+}
+
+.link-signup {
+    color: #FF8682;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-visual-side {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    border-radius: 24px 0 0 24px;
+    margin: 16px 16px 16px 0;
+    display: flex;
+    align-items: flex-end;
+    padding: 48px;
+}
+
+.overlay-text {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    padding: 32px;
+    border-radius: 16px;
+    color: #fff;
+}
+
+.overlay-text h3 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.overlay-text p {
+    font-size: 14px;
+    opacity: 0.9;
+    line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+    .auth-container {
+        grid-template-columns: 1fr;
+    }
+    .auth-visual-side {
+        display: none;
+    }
+    .auth-form-side {
+        padding: 24px;
+    }
+}
