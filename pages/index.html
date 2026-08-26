@@ -110,49 +110,111 @@
     </section>
 
     <!-- Search Form -->
-    <div class="search-container">
-        <div class="search-card">
-            <div class="search-tabs">
-                <button class="tab-btn active" data-tab="flights"><i class="fa-solid fa-plane"></i> Flights</button>
-                <button class="tab-btn" data-tab="stays"><i class="fa-solid fa-bed"></i> Stays</button>
-            </div>
-           <form id="search-form" action="/pages 2/flight-search.html">
-                <div class="search-fields">
-                   <div class="field-group input-with-swap">
-                        <label for="from-to">From - To</label>
-                            <div class="input-wrapper">
-                            <input type="text" id="from-to" name="route" value="Lahore - Karachi">
-                        <!-- Nút hoán đổi -->
-                            <button type="button" id="swap-btn" title="Swap locations">
-                                <i class="fa-solid fa-right-left"></i>
-                            </button>
-                    </div>
-                </div>
-                    <div class="field-group">
-                        <label for="trip-type">Trip</label>
-                        <select id="trip-type">
-                            <option>Return</option>
-                            <option>One Way</option>
-                        </select>
-                    </div>
-                    <div class="field-group">
-                        <label for="depart-return">Depart - Return</label>
-                        <input type="text" id="depart-return" value="07 Nov 22 - 13 Nov 22">
-                    </div>
-                    <div class="field-group">
-                        <label for="passenger-class">Passenger - Class</label>
-                        <input type="text" id="passenger-class" value="1 Passenger, Economy">
-                    </div>
-                </div>
-                <div class="search-actions">
-                    <a href="promo-code.html" class="btn btn-promo-code" id="add-promo-btn">
-        <i class="fa-solid fa-plus"></i> Add Promo Code
-    </a>
-                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Show Places</button>
-                </div>
-            </form>
+     <div class="search-container">
+    <div class="search-card">
+        <!-- Tabs -->
+        <div class="search-tabs">
+            <button class="tab-btn active" data-tab="flights" id="tab-flights">
+                <i class="fa-solid fa-plane"></i> Flights
+            </button>
+            <button class="tab-btn" data-tab="stays" id="tab-stays">
+                <i class="fa-solid fa-bed"></i> Stays
+            </button>
         </div>
+
+        <!-- FORM TÌM FLIGHT -->
+        <form id="flight-search-form" class="search-form active">
+            <div class="search-fields">
+                <!-- From - To -->
+                <div class="field-group input-with-swap">
+                    <label for="from-to">From - To</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="from-to" name="from-to" placeholder="City - City" value="Lahore - Karachi">
+                        <button type="button" class="swap-btn" title="Swap locations">
+                            <i class="fa-solid fa-right-left"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Trip Type -->
+                <div class="field-group">
+                    <label for="trip-type">Trip</label>
+                    <select id="trip-type">
+                        <option value="return">Return</option>
+                        <option value="oneway" selected>One Way</option>
+                    </select>
+                </div>
+
+                <!-- Depart Date -->
+                <div class="field-group">
+                    <label for="depart-date">Depart</label>
+                    <input type="date" id="depart-date">
+                </div>
+
+                <!-- Return Date (Ẩn khi One Way) -->
+                <div class="field-group" id="return-date-group">
+                    <label for="return-date">Return</label>
+                    <input type="date" id="return-date">
+                </div>
+
+                <!-- Passenger - Class -->
+                <div class="field-group">
+                    <label for="passenger-class">Passenger - Class</label>
+                    <select id="passenger-class">
+                        <option>1 Passenger, Economy</option>
+                        <option>2 Passengers, Economy</option>
+                        <option>1 Passenger, Business</option>
+                        <option>2 Passengers, Business</option>
+                    </select>
+                </div>
+            </div>
+            <div class="search-actions">
+                <a href="promo-code.html" class="btn btn-promo-code">
+                    <i class="fa-solid fa-plus"></i> Add Promo Code
+                </a>
+               <a href="flights.html" class="btn btn-primary">
+                    <i class="fa-solid fa-paper-plane"></i> Show Flights
+                </a>
+            </div>
+        </form>
+
+        <!-- FORM TÌM HOTEL (STAYS) -->
+        <form id="hotel-search-form" class="search-form" style="display: none;">
+            <div class="search-fields">
+                <div class="field-group">
+                    <label for="hotel-destination">Destination</label>
+                    <input type="text" id="hotel-destination" placeholder="City, Hotel or Area">
+                </div>
+                <div class="field-group">
+                    <label for="hotel-checkin">Check-in</label>
+                    <input type="date" id="hotel-checkin">
+                </div>
+                <div class="field-group">
+                    <label for="hotel-checkout">Check-out</label>
+                    <input type="date" id="hotel-checkout">
+                </div>
+                <div class="field-group">
+                    <label for="hotel-guests">Guests</label>
+                    <select id="hotel-guests">
+                        <option value="1">1 Guest</option>
+                        <option value="2" selected>2 Guests</option>
+                        <option value="3">3 Guests</option>
+                        <option value="4">4 Guests</option>
+                        <option value="5">5+ Guests</option>
+                    </select>
+                </div>
+            </div>
+            <div class="search-actions">
+                <a href="promo-code.html" class="btn btn-promo-code">
+                    <i class="fa-solid fa-plus"></i> Add Promo Code
+                </a>
+                <a href="hotels.html" class="btn btn-primary">
+                    <i class="fa-solid fa-bed"></i> Show Hotels
+                </a>
+            </div>
+        </form>
     </div>
+</div>
 
     <!-- Perfect Places Section -->
     <section class="container">
