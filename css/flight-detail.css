@@ -1,0 +1,606 @@
+/* ========================================
+   FLIGHT SEARCH PAGE STYLES
+   File: flight-search.css
+   ======================================== */
+
+/* ===== 1. SEARCH BAR (Results) ===== */
+.results-search-container {
+    background: var(--primary);
+    padding: 24px 0;
+    margin-top: 80px;
+}
+
+.results-search-form {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr) auto;
+    gap: 12px;
+    align-items: end;
+}
+
+.results-search-form .field-group {
+    border: none;
+    background: var(--white);
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.results-search-form .field-group:focus-within {
+    border-color: var(--primary-dark);
+    box-shadow: 0 0 0 3px rgba(141, 211, 187, 0.2);
+}
+
+.results-search-form .field-group label {
+    display: block;
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.results-search-form .field-group label i {
+    margin-right: 4px;
+    font-size: 11px;
+}
+
+.results-search-form .field-group input,
+.results-search-form .field-group select {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+    background: transparent;
+    padding: 4px 0;
+}
+
+.results-search-form .field-group select {
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2379747E' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right center;
+    padding-right: 20px;
+}
+
+.results-search-form .btn {
+    padding: 12px 24px;
+    height: 100%;
+    min-height: 48px;
+    white-space: nowrap;
+}
+
+#results-return-group {
+    transition: all 0.3s ease;
+}
+
+/* ===== 2. LAYOUT ===== */
+.results-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 32px;
+    padding: 40px 0 80px 0;
+}
+
+/* ===== 3. FILTERS SIDEBAR ===== */
+.filters-sidebar {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: var(--shadow);
+    height: fit-content;
+    position: sticky;
+    top: 100px;
+    border: 1px solid var(--border);
+}
+
+.filters-sidebar > h4 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-dark);
+}
+
+.filters-sidebar > h4 i {
+    color: var(--primary);
+}
+
+.filter-group {
+    margin-bottom: 24px;
+}
+
+.filter-group:last-child {
+    margin-bottom: 0;
+}
+
+.filter-group h5 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filter-group h5 i {
+    color: var(--primary);
+    width: 18px;
+}
+
+/* ---- Price Range ---- */
+.price-range {
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 4px;
+    background: var(--border);
+    outline: none;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.price-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: var(--primary);
+    cursor: pointer;
+    border-radius: 50%;
+    border: 2px solid var(--white);
+    box-shadow: 0 2px 8px rgba(17, 34, 17, 0.15);
+    transition: all 0.3s ease;
+}
+
+.price-range::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+    background: var(--primary-dark);
+}
+
+.price-display {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 8px;
+    font-weight: 500;
+}
+
+/* ---- Checkbox ---- */
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    color: var(--text-dark);
+}
+
+.checkbox-label:hover {
+    color: var(--primary);
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--primary);
+    cursor: pointer;
+}
+
+.checkbox-label i {
+    width: 18px;
+}
+
+/* ---- Rating Stars ---- */
+.rating-stars {
+    color: #FFC107;
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+}
+
+.rating-stars i {
+    margin-right: 2px;
+}
+
+/* ---- Sort Buttons ---- */
+.btn-sort {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--white);
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    color: var(--text-dark);
+}
+
+.btn-sort:hover {
+    border-color: var(--primary);
+    background: #F0F9F6;
+}
+
+.btn-sort.active {
+    border-color: var(--primary);
+    background: var(--primary);
+    color: var(--secondary);
+}
+
+.btn-sort i {
+    font-size: 14px;
+    color: inherit;
+}
+
+/* ===== 4. SEARCH INFO ===== */
+.search-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 16px 0 20px 0;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.search-info strong {
+    color: var(--text-dark);
+    font-weight: 700;
+}
+
+.search-info i {
+    color: var(--primary);
+    margin-right: 8px;
+}
+
+.search-info span {
+    display: flex;
+    align-items: center;
+}
+
+/* ===== 5. FLIGHT CARD ===== */
+.flight-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 20px 24px;
+    box-shadow: var(--shadow);
+    display: grid;
+    grid-template-columns: 100px 1fr auto;
+    gap: 24px;
+    align-items: center;
+    margin-bottom: 16px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.flight-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(17, 34, 17, 0.08);
+    border-color: var(--primary);
+}
+
+/* ---- Airline Icon ---- */
+.airline-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.airline-icon i {
+    font-size: 36px;
+}
+
+.airline-icon span {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+/* ---- Flight Details ---- */
+.flight-details {
+    text-align: center;
+}
+
+.flight-time {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--text-dark);
+}
+
+.flight-path {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    color: var(--text-muted);
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+
+.flight-path .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--text-muted);
+}
+
+.flight-path .line {
+    flex-grow: 1;
+    height: 1px;
+    background: var(--border);
+    max-width: 80px;
+}
+
+.flight-info {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* ---- Flight Booking ---- */
+.flight-booking {
+    text-align: right;
+    min-width: 160px;
+}
+
+.flight-rating {
+    font-size: 14px;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+}
+
+.flight-rating .fa-star {
+    color: #FFC107;
+}
+
+.flight-rating span {
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.flight-price .price-label {
+    display: block;
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.flight-price .price-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary);
+    display: block;
+    margin: 4px 0 12px 0;
+}
+
+.flight-price .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 20px;
+}
+
+.flight-price .btn i {
+    margin-right: 8px;
+}
+
+/* ===== 6. SHOW MORE ===== */
+.show-more {
+    text-align: center;
+    margin-top: 24px;
+    padding: 20px 0;
+}
+
+.show-more .btn-outline {
+    padding: 12px 40px;
+    font-size: 14px;
+}
+
+.show-more .btn-outline i {
+    margin-right: 8px;
+}
+
+#extra-flights {
+    margin-top: 16px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+/* ---- Tablet 1024px ---- */
+@media (max-width: 1024px) {
+    .results-layout {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .filters-sidebar {
+        position: static;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        padding: 20px;
+    }
+
+    .filters-sidebar > h4 {
+        grid-column: 1 / -1;
+    }
+
+    .filter-group:last-child {
+        grid-column: 1 / -1;
+    }
+}
+
+/* ---- Tablet 900px ---- */
+@media (max-width: 900px) {
+    .results-search-form {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .results-search-form .btn {
+        grid-column: 1 / -1;
+    }
+
+    .results-search-container {
+        margin-top: 70px;
+        padding: 16px 0;
+    }
+
+    .flight-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 20px;
+        gap: 16px;
+    }
+
+    .flight-booking {
+        text-align: center;
+        min-width: unset;
+    }
+
+    .flight-price .btn {
+        max-width: 200px;
+        margin: 0 auto;
+    }
+
+    .flight-path .line {
+        max-width: 60px;
+    }
+
+    .search-info {
+        gap: 12px;
+        font-size: 13px;
+    }
+
+    .airline-icon i {
+        font-size: 28px;
+    }
+}
+
+/* ---- Mobile 768px ---- */
+@media (max-width: 768px) {
+    .results-search-form {
+        grid-template-columns: 1fr;
+    }
+
+    .filters-sidebar {
+        grid-template-columns: 1fr;
+    }
+
+    .results-layout {
+        padding: 24px 0 60px 0;
+    }
+
+    .search-info {
+        flex-direction: column;
+        gap: 8px;
+        font-size: 13px;
+        padding: 12px 0 16px 0;
+    }
+
+    .flight-time {
+        font-size: 16px;
+    }
+
+    .flight-price .price-value {
+        font-size: 24px;
+    }
+
+    .show-more .btn-outline {
+        padding: 10px 30px;
+        font-size: 13px;
+    }
+}
+
+/* ---- Mobile 480px ---- */
+@media (max-width: 480px) {
+    .results-layout {
+        padding: 16px 0 40px 0;
+    }
+
+    .results-search-container {
+        margin-top: 60px;
+        padding: 12px 0;
+    }
+
+    .results-search-form .field-group {
+        padding: 6px 12px;
+    }
+
+    .results-search-form .field-group input,
+    .results-search-form .field-group select {
+        font-size: 13px;
+    }
+
+    .flight-card {
+        padding: 16px;
+        border-radius: 12px;
+    }
+
+    .flight-time {
+        font-size: 14px;
+    }
+
+    .flight-price .price-value {
+        font-size: 20px;
+    }
+
+    .flight-price .btn {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+
+    .filters-sidebar {
+        padding: 16px;
+        border-radius: 12px;
+    }
+
+    .filters-sidebar > h4 {
+        font-size: 16px;
+    }
+
+    .filter-group h5 {
+        font-size: 13px;
+    }
+
+    .search-info {
+        font-size: 12px;
+        gap: 6px;
+    }
+
+    .show-more .btn-outline {
+        padding: 8px 24px;
+        font-size: 12px;
+    }
+
+    .flight-rating {
+        font-size: 13px;
+    }
+
+    .airline-icon i {
+        font-size: 24px;
+    }
+}
