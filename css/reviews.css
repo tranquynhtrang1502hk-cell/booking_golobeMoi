@@ -1,0 +1,562 @@
+/* ========================================
+   REVIEWS PAGE STYLES
+   File: reviews.css
+   ======================================== */
+
+/* ===== 1. BANNER ===== */
+.reviews-banner {
+    padding: 100px 0 60px 0;
+    background: linear-gradient(135deg, #074a6b 0%, #0096c7 40%, #8dd3bb 100%);
+    color: var(--white);
+    text-align: center;
+    margin-top: 0;
+}
+
+.reviews-banner h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.reviews-banner h1 i {
+    margin-right: 12px;
+}
+
+.reviews-banner p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+/* ===== 2. STATS ===== */
+.reviews-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: -40px;
+    position: relative;
+    z-index: 10;
+}
+
+.stat-item {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(17, 34, 17, 0.08);
+    border-color: var(--primary);
+}
+
+.stat-number {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--secondary);
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.stat-label i {
+    color: var(--primary);
+}
+
+.stat-label .fa-star {
+    color: #FFC107;
+}
+
+/* ===== 3. REVIEWS SECTION ===== */
+.reviews-section {
+    padding: 60px 0;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.section-title h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+.section-title h2 i {
+    margin-right: 10px;
+}
+
+.section-title p {
+    font-size: 16px;
+    color: var(--text-muted);
+}
+
+.filter-sort select {
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    font-weight: 600;
+    background: var(--white);
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.filter-sort select:hover,
+.filter-sort select:focus {
+    border-color: var(--primary);
+}
+
+/* ===== 4. REVIEWS GRID ===== */
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.review-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--primary);
+    box-shadow: 0 8px 30px rgba(17, 34, 17, 0.08);
+}
+
+.review-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+}
+
+.review-text {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    line-height: 1.7;
+}
+
+.review-rating {
+    color: #FFC107;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.review-rating i {
+    margin-right: 2px;
+}
+
+.review-rating .fa-regular {
+    color: #ddd;
+}
+
+.review-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.author-img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.author-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.author-location {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.review-date {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+/* ===== 5. LOAD MORE ===== */
+.load-more {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.load-more .btn-outline {
+    padding: 12px 40px;
+    font-size: 14px;
+}
+
+.load-more .btn-outline i {
+    margin-right: 8px;
+}
+
+/* ===== 6. WRITE REVIEW ===== */
+.write-review-section {
+    padding: 60px 0 80px 0;
+}
+
+.write-review-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+}
+
+.write-review-header {
+    margin-bottom: 32px;
+}
+
+.write-review-header h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+.write-review-header h3 i {
+    margin-right: 10px;
+    color: var(--primary);
+}
+
+.write-review-header p {
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+/* ---- Form ---- */
+#write-review-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#write-review-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+#write-review-form .form-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+#write-review-form label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+#write-review-form label i {
+    color: var(--primary);
+    width: 16px;
+}
+
+#write-review-form input,
+#write-review-form select,
+#write-review-form textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    background: var(--bg-light);
+    color: var(--text-dark);
+}
+
+#write-review-form input::placeholder,
+#write-review-form textarea::placeholder {
+    color: #aaa;
+}
+
+#write-review-form input:focus,
+#write-review-form select:focus,
+#write-review-form textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(141, 211, 187, 0.2);
+    background: var(--white);
+}
+
+#write-review-form select {
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2379747E' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+}
+
+#write-review-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* ---- Rating Input ---- */
+.rating-input {
+    display: flex;
+    gap: 8px;
+    font-size: 32px;
+    cursor: pointer;
+    padding: 4px 0;
+}
+
+.rating-input i {
+    transition: all 0.2s ease;
+    color: #ddd;
+}
+
+.rating-input i:hover {
+    transform: scale(1.2);
+}
+
+.rating-input .fa-solid {
+    color: #FFC107;
+}
+
+.rating-input .fa-regular {
+    color: #ddd;
+}
+
+/* ---- Checkbox ---- */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary);
+    cursor: pointer;
+    flex-shrink: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.checkbox-group label {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-bottom: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.checkbox-group label a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.checkbox-group label a:hover {
+    text-decoration: underline;
+}
+
+/* ---- Submit Button ---- */
+#write-review-form .btn-primary {
+    padding: 14px 40px;
+    font-size: 16px;
+    width: auto;
+    min-width: 200px;
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#write-review-form .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(141, 211, 187, 0.4);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+/* ---- Tablet 1024px ---- */
+@media (max-width: 1024px) {
+    .reviews-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .reviews-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .reviews-banner h1 {
+        font-size: 36px;
+    }
+}
+
+/* ---- Tablet 900px ---- */
+@media (max-width: 900px) {
+    .reviews-banner {
+        padding: 80px 0 40px 0;
+    }
+
+    .reviews-banner h1 {
+        font-size: 28px;
+    }
+
+    .reviews-banner p {
+        font-size: 16px;
+    }
+
+    .section-title h2 {
+        font-size: 24px;
+    }
+}
+
+/* ---- Mobile 768px ---- */
+@media (max-width: 768px) {
+    .reviews-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .reviews-stats {
+        grid-template-columns: 1fr;
+        margin-top: -30px;
+    }
+
+    .stat-number {
+        font-size: 28px;
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .filter-sort select {
+        width: 100%;
+    }
+
+    .write-review-card {
+        padding: 24px;
+    }
+
+    #write-review-form .form-row-2 {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    #write-review-form .btn-primary {
+        width: 100%;
+        justify-content: center;
+        min-width: unset;
+    }
+
+    .review-card {
+        padding: 20px;
+    }
+
+    .write-review-header h3 {
+        font-size: 20px;
+    }
+
+    .rating-input {
+        font-size: 28px;
+    }
+
+    .checkbox-group {
+        align-items: flex-start;
+    }
+}
+
+/* ---- Mobile 480px ---- */
+@media (max-width: 480px) {
+    .reviews-banner {
+        padding: 70px 0 30px 0;
+    }
+
+    .reviews-banner h1 {
+        font-size: 24px;
+    }
+
+    .reviews-banner p {
+        font-size: 14px;
+    }
+
+    .write-review-card {
+        padding: 16px;
+        border-radius: 12px;
+    }
+
+    .review-card {
+        padding: 16px;
+        border-radius: 12px;
+    }
+
+    .stat-item {
+        padding: 16px;
+    }
+
+    .stat-number {
+        font-size: 24px;
+    }
+
+    .load-more .btn-outline {
+        padding: 10px 24px;
+        font-size: 13px;
+        width: 100%;
+    }
+
+    #write-review-form .btn-primary {
+        font-size: 14px;
+        padding: 12px 24px;
+    }
+
+    .rating-input {
+        font-size: 24px;
+        gap: 4px;
+    }
+}
