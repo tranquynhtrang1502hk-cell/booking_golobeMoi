@@ -4,22 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Reviews - Golobe</title>
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- CSS chung -->
-    <link rel="stylesheet" href="../css/style.css">
-    
-    <!-- CSS riêng cho Reviews -->
-    <link rel="stylesheet" href="../css/reviews.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/reviews.css">
 </head>
 <body>
 
-    <!-- ===== HEADER ===== -->
     <header class="static-header">
         <div class="container navbar">
             <ul class="nav-links">
@@ -176,27 +167,30 @@
     </section>
 
     <!-- ===== FOOTER ===== -->
-    <footer>
-        <div class="container footer-grid">
-            <div>
-                <div class="footer-logo"><i class="fa-solid fa-paper-plane"></i> Golobe</div>
-                <div class="social-links">
-                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+  <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">
+                        <i class="fa-solid fa-paper-plane"></i> Golobe
+                    </div>
+                    <div class="social-links">
+                        <i class="fa-brands fa-facebook-f"></i></a>
+                       <i class="fa-brands fa-twitter"></i></a>
+                      <i class="fa-brands fa-youtube"></i></a>
+                       <i class="fa-brands fa-instagram"></i></a>
+                    </div>
                 </div>
-            </div>
-            <div class="footer-col">
-                <h4>Our Destinations</h4>
-                <ul>
-                    <li><a href="#">Maldives</a></li>
-                    <li><a href="#">Italia</a></li>
-                    <li><a href="#">France</a></li>
-                    <li><a href="#">And More</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
+                <div class="footer-col">
+                    <h4>Our Destinations</h4>
+                     <ul>
+                        <li><a href="male-detail.html">Maldives</a></li>
+                        <li><a href="rome-detail.html">Italia</a></li>
+                        <li><a href="paris-detail.html">France</a></li>
+                        <li><a href="places.html">And More</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
                 <h4>Our Activities</h4>
                 <ul>
                     <li><a href="activities-relaxation.html">Relaxation, Resorts & Islands</a></li>
@@ -221,15 +215,13 @@
                     <li><a href="privacy.html">Privacy Policy</a></li>
                 </ul>
             </div>
+            </div>
         </div>
     </footer>
-    <!-- ===== JAVASCRIPT ===== -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
-            // ========================================
             // 1. DỮ LIỆU REVIEWS
-            // ========================================
             const reviewsData = [
                 {
                     id: 1,
@@ -335,9 +327,7 @@
             let currentReviews = [...reviewsData];
             let showCount = 6;
 
-            // ========================================
             // 2. RENDER REVIEWS
-            // ========================================
             function renderReviews(reviews, count) {
                 const grid = document.getElementById('reviews-grid');
                 const displayReviews = reviews.slice(0, count);
@@ -384,17 +374,13 @@
             // Render lần đầu
             renderReviews(currentReviews, showCount);
 
-            // ========================================
             // 3. LOAD MORE
-            // ========================================
             document.getElementById('load-more-btn').addEventListener('click', function() {
                 showCount += 3;
                 renderReviews(currentReviews, showCount);
             });
 
-            // ========================================
             // 4. SORT REVIEWS
-            // ========================================
             document.getElementById('review-sort').addEventListener('change', function() {
                 const sortType = this.value;
                 switch(sortType) {
@@ -417,9 +403,7 @@
                 renderReviews(currentReviews, showCount);
             });
 
-            // ========================================
             // 5. RATING INPUT
-            // ========================================
             const ratingStars = document.querySelectorAll('#rating-input i');
             const ratingHidden = document.getElementById('review-rating');
             let selectedRating = 0;
@@ -454,9 +438,7 @@
                 });
             }
 
-            // ========================================
             // 6. SUBMIT REVIEW FORM
-            // ========================================
             document.getElementById('write-review-form').addEventListener('submit', function(e) {
                 e.preventDefault();
 
@@ -502,9 +484,7 @@
                 document.getElementById('load-more-btn').style.display = 'inline-block';
             });
 
-            // ========================================
             // 7. GIỎ HÀNG
-            // ========================================
             function updateCartIcon() {
                 const cart = JSON.parse(localStorage.getItem('cart')) || [];
                 const cartCountEl = document.getElementById('cart-item-count');
@@ -515,9 +495,7 @@
             }
             updateCartIcon();
 
-            // ========================================
             // 8. ĐĂNG NHẬP / ĐĂNG XUẤT
-            // ========================================
             const currentUser = JSON.parse(localStorage.getItem('currentUser'));
             const authButtons = document.getElementById('auth-buttons');
             const userInfo = document.getElementById('user-info');
