@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work with us - Golobe</title>
+    <meta name="description" content="Join the Golobe team. Explore career opportunities in travel, technology, and customer service. Work with us to shape the future of travel.">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+        .career-banner {
+            padding: 120px 0 60px 0;
+            background: linear-gradient(135deg, #1a1a2e 0%, #302b63 50%, #8dd3bb 100%);
+            color: var(--white);
+            text-align: center;
+        }
+        .career-banner h1 { font-size: 48px; font-weight: 700; margin-bottom: 12px; }
+        .career-banner h1 i { margin-right: 12px; }
+        .career-banner p { font-size: 18px; opacity: 0.9; max-width: 700px; margin: 0 auto; }
+        .career-content { padding: 60px 0 80px 0; }
+        .career-wrapper { max-width: 900px; margin: 0 auto; }
+        .career-card { background: var(--white); border-radius: 16px; padding: 48px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+        .career-card h2 { font-size: 28px; font-weight: 700; margin-bottom: 16px; }
+        .career-card h2 i { color: var(--primary); margin-right: 10px; }
+        .career-card h3 { font-size: 20px; font-weight: 600; margin: 32px 0 12px 0; color: var(--text-dark); }
+        .career-card h3 i { color: var(--primary); margin-right: 8px; }
+        .career-card p { font-size: 15px; line-height: 1.8; color: var(--text-muted); margin-bottom: 16px; }
+        .career-card ul { list-style: none; padding: 0; margin: 0 0 16px 0; }
+        .career-card ul li { padding: 8px 0 8px 32px; position: relative; font-size: 15px; line-height: 1.6; color: var(--text-muted); }
+        .career-card ul li::before { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; top: 8px; color: var(--primary); }
+        .career-card .highlight-box { background: #F0F9F6; border-left: 4px solid var(--primary); padding: 16px 20px; border-radius: 8px; margin: 16px 0; }
+        .career-card .highlight-box p { margin-bottom: 0; font-weight: 500; color: var(--text-dark); }
+        .career-card .highlight-box i { color: var(--primary); margin-right: 8px; }
+        .career-benefits { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin: 24px 0; }
+        .career-benefits .benefit-item { display: flex; align-items: center; gap: 12px; padding: 16px; background: #F9FAFB; border-radius: 10px; transition: all 0.3s ease; }
+        .career-benefits .benefit-item:hover { background: #F0F9F6; }
+        .career-benefits .benefit-item i { font-size: 24px; color: var(--primary); width: 36px; text-align: center; }
+        .career-benefits .benefit-item span { font-weight: 600; color: var(--text-dark); }
+        .back-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 32px; padding: 12px 24px; border: 1px solid var(--border); border-radius: 8px; text-decoration: none; color: var(--text-dark); font-weight: 600; transition: all 0.3s ease; }
+        .back-link:hover { border-color: var(--primary); background: #F0F9F6; }
+        @media (max-width: 768px) { .career-banner { padding: 100px 0 40px 0; } .career-banner h1 { font-size: 28px; } .career-card { padding: 24px; } .career-card h2 { font-size: 22px; } .career-card h3 { font-size: 18px; } .career-card p, .career-card ul li { font-size: 14px; } .career-benefits { grid-template-columns: 1fr; } }
+        @media (max-width: 480px) { .career-banner h1 { font-size: 24px; } .career-card { padding: 16px; } }
+    </style>
+</head>
+<body>
+
+    <header class="static-header">
+        <div class="container navbar">
+            <ul class="nav-links">
+                <li><a href="index.html" class="header-link"><i class="fa-solid fa-plane"></i> Find Flight</a></li>
+                <li><a href="hotels.html" class="header-link"><i class="fa-solid fa-bed"></i> Find Stays</a></li>
+            </ul>
+            <a href="index.html" class="logo dark-logo"><i class="fa-solid fa-paper-plane"></i> Golobe</a>
+            <div class="header-actions">
+                <a href="payment.html" class="cart-icon"><i class="fa-solid fa-cart-shopping"></i><span id="cart-item-count">0</span></a>
+            </div>
+            <div class="auth-btns" id="auth-buttons">
+                <a href="login.html" class="btn btn-text-dark">Login</a>
+                <a href="signup.html" class="btn btn-dark">Sign up</a>
+            </div>
+            <div class="auth-btns" id="user-info" style="display: none;">
+                <span id="user-name" style="color: var(--secondary); font-weight: 600;"></span>
+                <button id="logout-btn" class="btn btn-dark">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="career-banner">
+        <div class="container">
+            <h1><i class="fa-regular fa-handshake"></i> Work with us</h1>
+            <p>Join the Golobe team and help shape the future of travel. We're looking for passionate individuals who love exploring the world.</p>
+        </div>
+    </section>
+
+    <section class="container career-content">
+        <div class="career-wrapper">
+            <div class="career-card">
+                <h2><i class="fa-regular fa-compass"></i> Join Our Team</h2>
+                <p>At Golobe, we believe that great travel experiences start with great people. We're a dynamic, passionate team dedicated to making travel accessible, enjoyable, and unforgettable for everyone. If you share our love for travel and innovation, we want to hear from you.</p>
+                <p>We're looking for talented individuals across multiple disciplines including technology, marketing, customer service, and travel operations. Join us in our mission to connect travelers with the world's most extraordinary experiences.</p>
+
+                <div class="highlight-box">
+                    <p><i class="fa-solid fa-quote-left"></i> Work with passionate people who love travel as much as you do.</p>
+                </div>
+
+                <h2><i class="fa-regular fa-star"></i> Why Join Golobe?</h2>
+                <div class="career-benefits">
+                    <div class="benefit-item">
+                        <i class="fa-regular fa-globe"></i>
+                        <span>Work with a global team</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fa-regular fa-clock"></i>
+                        <span>Flexible working hours</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fa-regular fa-plane"></i>
+                        <span>Travel perks & discounts</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fa-regular fa-lightbulb"></i>
+                        <span>Innovative work environment</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fa-regular fa-users"></i>
+                        <span>Collaborative team culture</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fa-regular fa-graduation-cap"></i>
+                        <span>Learning & development</span>
+                    </div>
+                </div>
+
+                <h2><i class="fa-regular fa-briefcase"></i> Open Positions</h2>
+                <p>We're always looking for talented people to join our team. Current openings include:</p>
+                <ul>
+                    <li><strong>Full Stack Developer:</strong> Build and maintain our travel platform with modern technologies.</li>
+                    <li><strong>Marketing Specialist:</strong> Drive brand awareness and engage our travel community.</li>
+                    <li><strong>Customer Experience Expert:</strong> Deliver exceptional service to our travelers worldwide.</li>
+                    <li><strong>Travel Operations Manager:</strong> Curate and manage our travel offerings and partnerships.</li>
+                    <li><strong>Product Designer:</strong> Create intuitive and beautiful user experiences.</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><i class="fa-solid fa-envelope"></i> Send your CV to <strong>careers@golobe.com</strong> with the subject line "Application for [Position Name]".</p>
+                </div>
+
+                <h2><i class="fa-regular fa-circle-check"></i> How to Apply</h2>
+                <ul>
+                    <li><strong>Step 1:</strong> Review our open positions and find the role that fits your skills.</li>
+                    <li><strong>Step 2:</strong> Prepare your CV and a brief cover letter explaining why you'd be a great fit.</li>
+                    <li><strong>Step 3:</strong> Send your application to careers@golobe.com.</li>
+                    <li><strong>Step 4:</strong> Our team will review your application and get back to you within 5-7 business days.</li>
+                    <li><strong>Step 5:</strong> If selected, we'll schedule an interview and discuss how you can contribute to our mission.</li>
+                </ul>
+
+                <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-grid">
+            <div>
+                <div class="footer-logo"><i class="fa-solid fa-paper-plane"></i> Golobe</div>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Our Destinations</h4>
+                <ul>
+                    <li><a href="#">Maldives</a></li>
+                    <li><a href="#">Italia</a></li>
+                    <li><a href="#">France</a></li>
+                    <li><a href="#">And More</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Our Activities</h4>
+                <ul>
+                    <li><a href="activities-relaxation.html">Relaxation, Resorts & Islands</a></li>
+                    <li><a href="activities-culture.html">Explore Culture, History & Architecture</a></li>
+                    <li><a href="activities-adventure.html">Adventure & Modern Fun</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Travel Blogs</h4>
+                <ul>
+                    <li><a href="guide-maldives.html">Maldives Travel Guide</a></li>
+                    <li><a href="guide-paris.html">Paris Travel Guide</a></li>
+                    <li><a href="guide-rome.html">Rome Travel Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="our-story.html">Our Story</a></li>
+                    <li><a href="work-with-us.html">Work with us</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

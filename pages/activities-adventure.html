@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adventure & Modern Fun - Golobe</title>
+    <meta name="description" content="Find the best adventure activities and modern entertainment destinations. From thrilling outdoor experiences to vibrant city life, plan your next adventure with Golobe.">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+        .page-banner {
+            padding: 120px 0 60px 0;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #8dd3bb 100%);
+            color: var(--white);
+            text-align: center;
+        }
+        .page-banner h1 { font-size: 48px; font-weight: 700; margin-bottom: 12px; }
+        .page-banner h1 i { margin-right: 12px; }
+        .page-banner p { font-size: 18px; opacity: 0.9; max-width: 700px; margin: 0 auto; }
+        .page-content { padding: 60px 0 80px 0; }
+        .section-desc { max-width: 800px; margin: 0 auto 40px; text-align: center; font-size: 16px; color: var(--text-muted); line-height: 1.8; }
+        .activity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 40px; }
+        .activity-card { background: var(--white); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border); transition: all 0.3s ease; }
+        .activity-card:hover { transform: translateY(-4px); border-color: var(--primary); }
+        .activity-card img { width: 100%; height: 220px; object-fit: cover; }
+        .activity-card .card-body { padding: 24px; }
+        .activity-card .card-body h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+        .activity-card .card-body p { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px; }
+        .activity-card .card-body .btn { width: 100%; justify-content: center; }
+        .back-link { text-align: center; margin-top: 20px; }
+        @media (max-width: 1024px) { .activity-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .page-banner { padding: 100px 0 40px 0; } .page-banner h1 { font-size: 28px; } .activity-grid { grid-template-columns: 1fr; } .activity-card img { height: 180px; } }
+        @media (max-width: 480px) { .page-banner h1 { font-size: 24px; } }
+    </style>
+</head>
+<body>
+
+    <header class="static-header">
+        <div class="container navbar">
+            <ul class="nav-links">
+                <li><a href="index.html" class="header-link"><i class="fa-solid fa-plane"></i> Find Flight</a></li>
+                <li><a href="hotels.html" class="header-link"><i class="fa-solid fa-bed"></i> Find Stays</a></li>
+            </ul>
+            <a href="index.html" class="logo dark-logo"><i class="fa-solid fa-paper-plane"></i> Golobe</a>
+            <div class="header-actions">
+                <a href="payment.html" class="cart-icon"><i class="fa-solid fa-cart-shopping"></i><span id="cart-item-count">0</span></a>
+            </div>
+            <div class="auth-btns" id="auth-buttons">
+                <a href="login.html" class="btn btn-text-dark">Login</a>
+                <a href="signup.html" class="btn btn-dark">Sign up</a>
+            </div>
+            <div class="auth-btns" id="user-info" style="display: none;">
+                <span id="user-name" style="color: var(--secondary); font-weight: 600;"></span>
+                <button id="logout-btn" class="btn btn-dark">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-banner">
+        <div class="container">
+            <h1><i class="fa-solid fa-person-hiking"></i> Adventure & Modern Fun</h1>
+            <p>Fuel your adventurous spirit with thrilling outdoor experiences and discover vibrant modern entertainment destinations around the world.</p>
+        </div>
+    </section>
+
+    <section class="container page-content">
+        <div class="section-desc">
+            <p>For those who seek excitement and adventure, the world offers endless opportunities for unforgettable experiences. From hiking through majestic mountain ranges and diving into crystal-clear waters to exploring bustling modern cities with world-class entertainment, there's something for every thrill-seeker.</p>
+            <p style="margin-top: 12px;">Our adventure travel guides feature the best destinations for outdoor activities, extreme sports, and modern urban experiences. Whether you're looking to ski in the Swiss Alps, surf in Bali, or explore the vibrant nightlife of Dubai, we have the perfect adventure waiting for you.</p>
+            <p style="margin-top: 12px;">Safety and sustainability are at the heart of our adventure recommendations. We partner with experienced local guides and operators who prioritize your safety while ensuring responsible tourism practices. Let us help you create memories that will last a lifetime.</p>
+        </div>
+
+        <div class="activity-grid">
+            <div class="activity-card">
+                <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80" alt="Dubai">
+                <div class="card-body">
+                    <h3>Dubai Modern Adventure</h3>
+                    <p>Experience the ultimate in modern entertainment with skydiving, desert safaris, luxury shopping, and world-class attractions in Dubai.</p>
+                    <a href="dubai-detail.html" class="btn btn-primary"><i class="fa-regular fa-compass"></i> Explore</a>
+                </div>
+            </div>
+            <div class="activity-card">
+                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="New York">
+                <div class="card-body">
+                    <h3>New York City Life</h3>
+                    <p>Explore the vibrant energy of NYC with its iconic skyline, Broadway shows, world-class museums, and endless entertainment options.</p>
+                    <a href="newyork-detail.html" class="btn btn-primary"><i class="fa-regular fa-compass"></i> Explore</a>
+                </div>
+            </div>
+            <div class="activity-card">
+                <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=800&q=80" alt="Switzerland">
+                <div class="card-body">
+                    <h3>Swiss Alps Adventure</h3>
+                    <p>Embark on thrilling mountain expeditions, skiing adventures, and breathtaking hikes through the stunning Swiss Alps landscapes.</p>
+                    <a href="#" class="btn btn-primary"><i class="fa-regular fa-compass"></i> Explore</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="back-link">
+            <a href="index.html" class="btn btn-outline"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-grid">
+            <div>
+                <div class="footer-logo"><i class="fa-solid fa-paper-plane"></i> Golobe</div>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Our Destinations</h4>
+                <ul>
+                    <li><a href="#">Maldives</a></li>
+                    <li><a href="#">Italia</a></li>
+                    <li><a href="#">France</a></li>
+                    <li><a href="#">And More</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Our Activities</h4>
+                <ul>
+                    <li><a href="activities-relaxation.html">Relaxation, Resorts & Islands</a></li>
+                    <li><a href="activities-culture.html">Explore Culture, History & Architecture</a></li>
+                    <li><a href="activities-adventure.html">Adventure & Modern Fun</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Travel Blogs</h4>
+                <ul>
+                    <li><a href="guide-maldives.html">Maldives Travel Guide</a></li>
+                    <li><a href="guide-paris.html">Paris Travel Guide</a></li>
+                    <li><a href="guide-rome.html">Rome Travel Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="our-story.html">Our Story</a></li>
+                    <li><a href="work-with-us.html">Work with us</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

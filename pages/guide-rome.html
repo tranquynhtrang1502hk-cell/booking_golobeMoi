@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rome Travel Guide - Golobe</title>
+    <meta name="description" content="Complete travel guide to Rome. Explore the Colosseum, Vatican City, Roman Forum, and the best things to do in the Eternal City.">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+        .guide-banner {
+            padding: 120px 0 60px 0;
+            background: linear-gradient(135deg, #5c2a2a 0%, #8b3a3a 50%, #8dd3bb 100%);
+            color: var(--white);
+            text-align: center;
+        }
+        .guide-banner h1 { font-size: 48px; font-weight: 700; margin-bottom: 12px; }
+        .guide-banner h1 i { margin-right: 12px; }
+        .guide-banner p { font-size: 18px; opacity: 0.9; max-width: 700px; margin: 0 auto; }
+        .guide-content { padding: 60px 0 80px 0; }
+        .guide-wrapper { max-width: 900px; margin: 0 auto; }
+        .guide-card { background: var(--white); border-radius: 16px; padding: 48px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+        .guide-card h2 { font-size: 28px; font-weight: 700; margin-bottom: 16px; }
+        .guide-card h2 i { color: var(--primary); margin-right: 10px; }
+        .guide-card h3 { font-size: 20px; font-weight: 600; margin: 32px 0 12px 0; color: var(--text-dark); }
+        .guide-card h3 i { color: var(--primary); margin-right: 8px; }
+        .guide-card p { font-size: 15px; line-height: 1.8; color: var(--text-muted); margin-bottom: 16px; }
+        .guide-card ul { list-style: none; padding: 0; margin: 0 0 16px 0; }
+        .guide-card ul li { padding: 8px 0 8px 32px; position: relative; font-size: 15px; line-height: 1.6; color: var(--text-muted); }
+        .guide-card ul li::before { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; top: 8px; color: var(--primary); }
+        .guide-card .highlight-box { background: #F0F9F6; border-left: 4px solid var(--primary); padding: 16px 20px; border-radius: 8px; margin: 16px 0; }
+        .guide-card .highlight-box p { margin-bottom: 0; font-weight: 500; color: var(--text-dark); }
+        .guide-card .highlight-box i { color: var(--primary); margin-right: 8px; }
+        .back-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 32px; padding: 12px 24px; border: 1px solid var(--border); border-radius: 8px; text-decoration: none; color: var(--text-dark); font-weight: 600; transition: all 0.3s ease; }
+        .back-link:hover { border-color: var(--primary); background: #F0F9F6; }
+        @media (max-width: 768px) { .guide-banner { padding: 100px 0 40px 0; } .guide-banner h1 { font-size: 28px; } .guide-card { padding: 24px; } .guide-card h2 { font-size: 22px; } .guide-card h3 { font-size: 18px; } .guide-card p, .guide-card ul li { font-size: 14px; } }
+        @media (max-width: 480px) { .guide-banner h1 { font-size: 24px; } .guide-card { padding: 16px; } }
+    </style>
+</head>
+<body>
+
+    <header class="static-header">
+        <div class="container navbar">
+            <ul class="nav-links">
+                <li><a href="index.html" class="header-link"><i class="fa-solid fa-plane"></i> Find Flight</a></li>
+                <li><a href="hotels.html" class="header-link"><i class="fa-solid fa-bed"></i> Find Stays</a></li>
+            </ul>
+            <a href="index.html" class="logo dark-logo"><i class="fa-solid fa-paper-plane"></i> Golobe</a>
+            <div class="header-actions">
+                <a href="payment.html" class="cart-icon"><i class="fa-solid fa-cart-shopping"></i><span id="cart-item-count">0</span></a>
+            </div>
+            <div class="auth-btns" id="auth-buttons">
+                <a href="login.html" class="btn btn-text-dark">Login</a>
+                <a href="signup.html" class="btn btn-dark">Sign up</a>
+            </div>
+            <div class="auth-btns" id="user-info" style="display: none;">
+                <span id="user-name" style="color: var(--secondary); font-weight: 600;"></span>
+                <button id="logout-btn" class="btn btn-dark">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="guide-banner">
+        <div class="container">
+            <h1><i class="fa-regular fa-building"></i> Rome Travel Guide</h1>
+            <p>Explore the Eternal City with our complete travel guide to Rome, featuring ancient ruins, Vatican treasures, and authentic Italian experiences.</p>
+        </div>
+    </section>
+
+    <section class="container guide-content">
+        <div class="guide-wrapper">
+            <div class="guide-card">
+                <h2><i class="fa-regular fa-compass"></i> Overview</h2>
+                <p>Rome, the capital of Italy, is a city where ancient history meets modern life. Known as the Eternal City, Rome is filled with monumental ruins, magnificent art, and vibrant street life. From the iconic Colosseum to the spiritual heart of Vatican City, every street in Rome tells a story of empire, faith, and artistic brilliance.</p>
+                <p>Visiting Rome is like stepping into a living museum. The city offers endless opportunities for exploration, from ancient Roman forums and Renaissance palaces to world-class museums and authentic Italian cuisine. Whether you're an art lover, a history buff, or a food enthusiast, Rome will captivate your heart.</p>
+
+                <h2><i class="fa-regular fa-star"></i> Best Time to Visit</h2>
+                <p>Rome enjoys a Mediterranean climate with hot summers and mild winters. The best times to visit are spring and fall when the weather is pleasant and crowds are manageable.</p>
+                <ul>
+                    <li><strong>Spring (March-May):</strong> Mild temperatures, blooming flowers, and fewer crowds. Perfect for sightseeing.</li>
+                    <li><strong>Summer (June-August):</strong> Hot and busy, but vibrant with outdoor dining and festivals.</li>
+                    <li><strong>Autumn (September-November):</strong> Pleasantly warm with beautiful fall colors and cultural events.</li>
+                    <li><strong>Winter (December-February):</strong> Cool and quiet with festive Christmas atmosphere and lower prices.</li>
+                </ul>
+
+                <h2><i class="fa-regular fa-landmark"></i> Top Attractions</h2>
+                <ul>
+                    <li><strong>Colosseum:</strong> The iconic ancient amphitheater that symbolizes Rome's imperial history.</li>
+                    <li><strong>Vatican City:</strong> The world's smallest country, home to St. Peter's Basilica and the Sistine Chapel.</li>
+                    <li><strong>Roman Forum:</strong> The heart of ancient Roman public life with impressive ruins.</li>
+                    <li><strong>Pantheon:</strong> A remarkably preserved ancient temple with a stunning domed ceiling.</li>
+                    <li><strong>Trevi Fountain:</strong> One of the most beautiful fountains in the world, perfect for tossing a coin.</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><i class="fa-solid fa-sun"></i> Tip: Visit major attractions early in the morning or late in the afternoon to avoid peak crowds.</p>
+                </div>
+
+                <h2><i class="fa-regular fa-clock"></i> Activities & Experiences</h2>
+                <ul>
+                    <li><strong>Pasta Making Class:</strong> Learn to make authentic Italian pasta from scratch.</li>
+                    <li><strong>Vatican Museums:</strong> Explore one of the world's greatest art collections.</li>
+                    <li><strong>Gelato Tasting:</strong> Try the best gelato in Rome at traditional gelaterias.</li>
+                    <li><strong>Piazzas:</strong> Relax at Piazza Navona, Piazza di Spagna, and Campo de' Fiori.</li>
+                    <li><strong>Appian Way:</strong> Walk along one of ancient Rome's most important roads.</li>
+                </ul>
+
+                <h2><i class="fa-regular fa-circle-check"></i> Travel Tips</h2>
+                <ul>
+                    <li><strong>Getting Around:</strong> Rome's Metro, buses, and trams connect all major attractions.</li>
+                    <li><strong>Currency:</strong> Euro (EUR) is the official currency.</li>
+                    <li><strong>Language:</strong> Italian, but English is spoken in tourist areas.</li>
+                    <li><strong>Dress Code:</strong> Modest clothing required for entry into Vatican City and churches.</li>
+                    <li><strong>Beware of Pickpockets:</strong> Keep belongings secure in crowded areas.</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><i class="fa-solid fa-triangle-exclamation"></i> Important: Book Vatican Museum and Colosseum tickets online in advance to skip the lines!</p>
+                </div>
+
+                <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-grid">
+            <div>
+                <div class="footer-logo"><i class="fa-solid fa-paper-plane"></i> Golobe</div>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Our Destinations</h4>
+                <ul>
+                    <li><a href="#">Maldives</a></li>
+                    <li><a href="#">Italia</a></li>
+                    <li><a href="#">France</a></li>
+                    <li><a href="#">And More</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Our Activities</h4>
+                <ul>
+                    <li><a href="activities-relaxation.html">Relaxation, Resorts & Islands</a></li>
+                    <li><a href="activities-culture.html">Explore Culture, History & Architecture</a></li>
+                    <li><a href="activities-adventure.html">Adventure & Modern Fun</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Travel Blogs</h4>
+                <ul>
+                    <li><a href="guide-maldives.html">Maldives Travel Guide</a></li>
+                    <li><a href="guide-paris.html">Paris Travel Guide</a></li>
+                    <li><a href="guide-rome.html">Rome Travel Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="our-story.html">Our Story</a></li>
+                    <li><a href="work-with-us.html">Work with us</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

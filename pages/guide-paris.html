@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maldives Travel Guide - Golobe</title>
+    <meta name="description" content="Complete travel guide to the Maldives. Discover the best resorts, activities, and tips for an unforgettable island paradise vacation.">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+        .guide-banner {
+            padding: 120px 0 60px 0;
+            background: linear-gradient(135deg, #006994 0%, #00b4d8 50%, #8dd3bb 100%);
+            color: var(--white);
+            text-align: center;
+        }
+        .guide-banner h1 { font-size: 48px; font-weight: 700; margin-bottom: 12px; }
+        .guide-banner h1 i { margin-right: 12px; }
+        .guide-banner p { font-size: 18px; opacity: 0.9; max-width: 700px; margin: 0 auto; }
+        .guide-content { padding: 60px 0 80px 0; }
+        .guide-wrapper { max-width: 900px; margin: 0 auto; }
+        .guide-card { background: var(--white); border-radius: 16px; padding: 48px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+        .guide-card h2 { font-size: 28px; font-weight: 700; margin-bottom: 16px; }
+        .guide-card h2 i { color: var(--primary); margin-right: 10px; }
+        .guide-card h3 { font-size: 20px; font-weight: 600; margin: 32px 0 12px 0; color: var(--text-dark); }
+        .guide-card h3 i { color: var(--primary); margin-right: 8px; }
+        .guide-card p { font-size: 15px; line-height: 1.8; color: var(--text-muted); margin-bottom: 16px; }
+        .guide-card ul { list-style: none; padding: 0; margin: 0 0 16px 0; }
+        .guide-card ul li { padding: 8px 0 8px 32px; position: relative; font-size: 15px; line-height: 1.6; color: var(--text-muted); }
+        .guide-card ul li::before { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; top: 8px; color: var(--primary); }
+        .guide-card .highlight-box { background: #F0F9F6; border-left: 4px solid var(--primary); padding: 16px 20px; border-radius: 8px; margin: 16px 0; }
+        .guide-card .highlight-box p { margin-bottom: 0; font-weight: 500; color: var(--text-dark); }
+        .guide-card .highlight-box i { color: var(--primary); margin-right: 8px; }
+        .back-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 32px; padding: 12px 24px; border: 1px solid var(--border); border-radius: 8px; text-decoration: none; color: var(--text-dark); font-weight: 600; transition: all 0.3s ease; }
+        .back-link:hover { border-color: var(--primary); background: #F0F9F6; }
+        @media (max-width: 768px) { .guide-banner { padding: 100px 0 40px 0; } .guide-banner h1 { font-size: 28px; } .guide-card { padding: 24px; } .guide-card h2 { font-size: 22px; } .guide-card h3 { font-size: 18px; } .guide-card p, .guide-card ul li { font-size: 14px; } }
+        @media (max-width: 480px) { .guide-banner h1 { font-size: 24px; } .guide-card { padding: 16px; } }
+    </style>
+</head>
+<body>
+
+    <header class="static-header">
+        <div class="container navbar">
+            <ul class="nav-links">
+                <li><a href="index.html" class="header-link"><i class="fa-solid fa-plane"></i> Find Flight</a></li>
+                <li><a href="hotels.html" class="header-link"><i class="fa-solid fa-bed"></i> Find Stays</a></li>
+            </ul>
+            <a href="index.html" class="logo dark-logo"><i class="fa-solid fa-paper-plane"></i> Golobe</a>
+            <div class="header-actions">
+                <a href="payment.html" class="cart-icon"><i class="fa-solid fa-cart-shopping"></i><span id="cart-item-count">0</span></a>
+            </div>
+            <div class="auth-btns" id="auth-buttons">
+                <a href="login.html" class="btn btn-text-dark">Login</a>
+                <a href="signup.html" class="btn btn-dark">Sign up</a>
+            </div>
+            <div class="auth-btns" id="user-info" style="display: none;">
+                <span id="user-name" style="color: var(--secondary); font-weight: 600;"></span>
+                <button id="logout-btn" class="btn btn-dark">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="guide-banner">
+        <div class="container">
+            <h1><i class="fa-solid fa-umbrella-beach"></i> Maldives Travel Guide</h1>
+            <p>Your complete guide to the ultimate island paradise, featuring the best resorts, activities, and travel tips for an unforgettable vacation.</p>
+        </div>
+    </section>
+
+    <section class="container guide-content">
+        <div class="guide-wrapper">
+            <div class="guide-card">
+                <h2><i class="fa-regular fa-compass"></i> Overview</h2>
+                <p>The Maldives is a tropical paradise located in the Indian Ocean, known for its stunning white-sand beaches, crystal-clear turquoise waters, and luxurious overwater villas. Comprising 26 atolls and over 1,000 coral islands, the Maldives offers the ultimate island getaway experience.</p>
+                <p>Whether you're looking for a romantic honeymoon, a family vacation, or a solo retreat, the Maldives has something for everyone. From world-class diving and snorkeling to spa treatments and gourmet dining, this destination promises relaxation and adventure in equal measure.</p>
+
+                <h2><i class="fa-regular fa-star"></i> Best Time to Visit</h2>
+                <p>The best time to visit the Maldives is between November and April, during the dry season. This period offers sunny skies, calm seas, and perfect beach weather. The wet season from May to October brings occasional rain showers but can also offer better deals on accommodation.</p>
+                <ul>
+                    <li><strong>November to April (Dry Season):</strong> Ideal for beach activities, diving, and snorkeling with clear skies and calm waters.</li>
+                    <li><strong>May to October (Wet Season):</strong> Lower prices, fewer crowds, and still plenty of sunshine between showers.</li>
+                    <li><strong>December to January:</strong> Peak tourist season with higher prices and advanced booking required.</li>
+                </ul>
+
+                <h2><i class="fa-regular fa-hotel"></i> Best Resorts</h2>
+                <p>The Maldives is home to some of the world's most luxurious resorts, each offering unique experiences and world-class amenities.</p>
+                <ul>
+                    <li><strong>Soneva Fushi:</strong> A luxury eco-resort with private villas, outdoor bathrooms, and exceptional service.</li>
+                    <li><strong>Gili Lankanfushi:</strong> Overwater villas with direct lagoon access and breathtaking sunset views.</li>
+                    <li><strong>Conrad Maldives Rangali Island:</strong> Famous for its underwater restaurant and exceptional spa facilities.</li>
+                    <li><strong>Four Seasons Resort Maldives:</strong> A family-friendly resort with excellent service and stunning surroundings.</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><i class="fa-solid fa-sun"></i> Tip: Book your resort at least 3-6 months in advance to secure the best rates and availability, especially during peak season.</p>
+                </div>
+
+                <h2><i class="fa-regular fa-clock"></i> Activities & Experiences</h2>
+                <p>The Maldives offers a wide range of activities for every type of traveler. Here are some must-try experiences:</p>
+                <ul>
+                    <li><strong>Snorkeling & Diving:</strong> Explore vibrant coral reefs with turtles, manta rays, and colorful fish.</li>
+                    <li><strong>Overwater Spa Treatments:</strong> Relax with a massage in a spa overlooking the ocean.</li>
+                    <li><strong>Private Island Dining:</strong> Enjoy a romantic candlelit dinner on a secluded sandbank.</li>
+                    <li><strong>Sunset Cruises:</strong> Take a boat ride to watch the spectacular sunset over the Indian Ocean.</li>
+                    <li><strong>Water Sports:</strong> Try jet skiing, windsurfing, paddleboarding, and more.</li>
+                </ul>
+
+                <h2><i class="fa-regular fa-circle-check"></i> Travel Tips</h2>
+                <ul>
+                    <li><strong>Getting There:</strong> Fly into Velana International Airport (MLE) and take a seaplane or speedboat to your resort.</li>
+                    <li><strong>Currency:</strong> US Dollars are widely accepted, but Maldivian Rufiyaa is the local currency.</li>
+                    <li><strong>Language:</strong> Dhivehi is the local language, but English is spoken in most resorts.</li>
+                    <li><strong>Visa:</strong> Visas are available on arrival for most nationalities for up to 30 days.</li>
+                    <li><strong>Dress Code:</strong> Resort wear is casual, but modest clothing is recommended when visiting local islands.</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><i class="fa-solid fa-triangle-exclamation"></i> Important: Always respect local customs and protect the fragile marine environment by using reef-safe sunscreen.</p>
+                </div>
+
+                <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-grid">
+            <div>
+                <div class="footer-logo"><i class="fa-solid fa-paper-plane"></i> Golobe</div>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Our Destinations</h4>
+                <ul>
+                    <li><a href="#">Maldives</a></li>
+                    <li><a href="#">Italia</a></li>
+                    <li><a href="#">France</a></li>
+                    <li><a href="#">And More</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Our Activities</h4>
+                <ul>
+                    <li><a href="activities-relaxation.html">Relaxation, Resorts & Islands</a></li>
+                    <li><a href="activities-culture.html">Explore Culture, History & Architecture</a></li>
+                    <li><a href="activities-adventure.html">Adventure & Modern Fun</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Travel Blogs</h4>
+                <ul>
+                    <li><a href="guide-maldives.html">Maldives Travel Guide</a></li>
+                    <li><a href="guide-paris.html">Paris Travel Guide</a></li>
+                    <li><a href="guide-rome.html">Rome Travel Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="our-story.html">Our Story</a></li>
+                    <li><a href="work-with-us.html">Work with us</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story - Golobe</title>
+    <meta name="description" content="Learn about Golobe's story, our mission to connect travelers with the world, and our commitment to exceptional travel experiences.">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+        .story-banner {
+            padding: 120px 0 60px 0;
+            background: linear-gradient(135deg, #0a3d5c 0%, #1a7a9e 50%, #8dd3bb 100%);
+            color: var(--white);
+            text-align: center;
+        }
+        .story-banner h1 { font-size: 48px; font-weight: 700; margin-bottom: 12px; }
+        .story-banner h1 i { margin-right: 12px; }
+        .story-banner p { font-size: 18px; opacity: 0.9; max-width: 700px; margin: 0 auto; }
+        .story-content { padding: 60px 0 80px 0; }
+        .story-wrapper { max-width: 900px; margin: 0 auto; }
+        .story-card { background: var(--white); border-radius: 16px; padding: 48px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+        .story-card h2 { font-size: 28px; font-weight: 700; margin-bottom: 16px; }
+        .story-card h2 i { color: var(--primary); margin-right: 10px; }
+        .story-card h3 { font-size: 20px; font-weight: 600; margin: 32px 0 12px 0; color: var(--text-dark); }
+        .story-card h3 i { color: var(--primary); margin-right: 8px; }
+        .story-card p { font-size: 15px; line-height: 1.8; color: var(--text-muted); margin-bottom: 16px; }
+        .story-card .highlight-box { background: #F0F9F6; border-left: 4px solid var(--primary); padding: 16px 20px; border-radius: 8px; margin: 16px 0; }
+        .story-card .highlight-box p { margin-bottom: 0; font-weight: 500; color: var(--text-dark); }
+        .story-card .highlight-box i { color: var(--primary); margin-right: 8px; }
+        .story-values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 32px 0; }
+        .story-values .value-item { text-align: center; padding: 24px; background: #F9FAFB; border-radius: 12px; }
+        .story-values .value-item i { font-size: 36px; color: var(--primary); margin-bottom: 12px; }
+        .story-values .value-item h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+        .story-values .value-item p { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 0; }
+        .back-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 32px; padding: 12px 24px; border: 1px solid var(--border); border-radius: 8px; text-decoration: none; color: var(--text-dark); font-weight: 600; transition: all 0.3s ease; }
+        .back-link:hover { border-color: var(--primary); background: #F0F9F6; }
+        @media (max-width: 768px) { .story-banner { padding: 100px 0 40px 0; } .story-banner h1 { font-size: 28px; } .story-card { padding: 24px; } .story-card h2 { font-size: 22px; } .story-card h3 { font-size: 18px; } .story-card p { font-size: 14px; } .story-values { grid-template-columns: 1fr; } }
+        @media (max-width: 480px) { .story-banner h1 { font-size: 24px; } .story-card { padding: 16px; } }
+    </style>
+</head>
+<body>
+
+    <header class="static-header">
+        <div class="container navbar">
+            <ul class="nav-links">
+                <li><a href="index.html" class="header-link"><i class="fa-solid fa-plane"></i> Find Flight</a></li>
+                <li><a href="hotels.html" class="header-link"><i class="fa-solid fa-bed"></i> Find Stays</a></li>
+            </ul>
+            <a href="index.html" class="logo dark-logo"><i class="fa-solid fa-paper-plane"></i> Golobe</a>
+            <div class="header-actions">
+                <a href="payment.html" class="cart-icon"><i class="fa-solid fa-cart-shopping"></i><span id="cart-item-count">0</span></a>
+            </div>
+            <div class="auth-btns" id="auth-buttons">
+                <a href="login.html" class="btn btn-text-dark">Login</a>
+                <a href="signup.html" class="btn btn-dark">Sign up</a>
+            </div>
+            <div class="auth-btns" id="user-info" style="display: none;">
+                <span id="user-name" style="color: var(--secondary); font-weight: 600;"></span>
+                <button id="logout-btn" class="btn btn-dark">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="story-banner">
+        <div class="container">
+            <h1><i class="fa-regular fa-circle-play"></i> Our Story</h1>
+            <p>Discover the journey of Golobe and our commitment to connecting travelers with the world's most extraordinary experiences.</p>
+        </div>
+    </section>
+
+    <section class="container story-content">
+        <div class="story-wrapper">
+            <div class="story-card">
+                <h2><i class="fa-regular fa-compass"></i> The Golobe Journey</h2>
+                <p>Golobe was born from a simple idea: to make travel accessible, enjoyable, and unforgettable for everyone. What started as a small team of passionate travelers has grown into a trusted platform connecting millions of explorers with the world's most incredible destinations.</p>
+                <p>Our name, Golobe, represents our vision - to help you go beyond the ordinary and discover the extraordinary. We believe that travel is not just about reaching a destination, but about the experiences, connections, and memories you create along the way.</p>
+
+                <div class="highlight-box">
+                    <p><i class="fa-solid fa-quote-left"></i> Travel is the only thing you buy that makes you richer. We're here to help you make every journey meaningful.</p>
+                </div>
+
+                <h2><i class="fa-regular fa-star"></i> Our Mission</h2>
+                <p>At Golobe, our mission is to inspire and empower travelers to explore the world with confidence. We provide seamless booking experiences, curated travel recommendations, and exceptional customer service to ensure every journey is unforgettable.</p>
+                <p>We partner with the best airlines, hotels, and local experts to offer you the most comprehensive travel options. Whether you're planning a weekend getaway or a month-long adventure, we're here to help you create the perfect itinerary.</p>
+
+                <h2><i class="fa-regular fa-hand-heart"></i> Our Values</h2>
+                <div class="story-values">
+                    <div class="value-item">
+                        <i class="fa-regular fa-heart"></i>
+                        <h4>Passion</h4>
+                        <p>We're passionate about travel and dedicated to sharing that passion with every customer.</p>
+                    </div>
+                    <div class="value-item">
+                        <i class="fa-regular fa-handshake"></i>
+                        <h4>Trust</h4>
+                        <p>We build lasting relationships with our customers through transparency and reliability.</p>
+                    </div>
+                    <div class="value-item">
+                        <i class="fa-regular fa-compass"></i>
+                        <h4>Exploration</h4>
+                        <p>We encourage curiosity and discovery, helping you find hidden gems around the world.</p>
+                    </div>
+                </div>
+
+                <h2><i class="fa-regular fa-users"></i> Our Community</h2>
+                <p>Golobe is more than a travel platform - we're a community of explorers, dreamers, and adventurers. Our community shares stories, tips, and inspiration, helping each other discover the world's wonders.</p>
+                <p>From solo travelers and digital nomads to families and luxury seekers, our diverse community represents every type of traveler. We believe that travel connects us all, and we're proud to be part of your journey.</p>
+
+                <h2><i class="fa-regular fa-clock"></i> Looking Forward</h2>
+                <p>As we continue to grow, we remain committed to our founding values: exceptional service, curated experiences, and genuine connections. We're constantly innovating to make travel easier, more sustainable, and more rewarding.</p>
+                <p>Join us on this journey of discovery. Let Golobe be your guide to the world.</p>
+
+                <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-grid">
+            <div>
+                <div class="footer-logo"><i class="fa-solid fa-paper-plane"></i> Golobe</div>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Our Destinations</h4>
+                <ul>
+                    <li><a href="#">Maldives</a></li>
+                    <li><a href="#">Italia</a></li>
+                    <li><a href="#">France</a></li>
+                    <li><a href="#">And More</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Our Activities</h4>
+                <ul>
+                    <li><a href="activities-relaxation.html">Relaxation, Resorts & Islands</a></li>
+                    <li><a href="activities-culture.html">Explore Culture, History & Architecture</a></li>
+                    <li><a href="activities-adventure.html">Adventure & Modern Fun</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Travel Blogs</h4>
+                <ul>
+                    <li><a href="guide-maldives.html">Maldives Travel Guide</a></li>
+                    <li><a href="guide-paris.html">Paris Travel Guide</a></li>
+                    <li><a href="guide-rome.html">Rome Travel Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="our-story.html">Our Story</a></li>
+                    <li><a href="work-with-us.html">Work with us</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
