@@ -4,16 +4,12 @@
     <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Golobe - Travel Agency & Flight/Hotel Booking</title>
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts (Montserrat) -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
-    <!-- Header / Navbar -->
     <header>
         <div class="container navbar">
             <ul class="nav-links">
@@ -27,24 +23,19 @@
             <div class="header-actions">
                 <a href="payment.html" class="cart-icon"><i class="fa-solid fa-cart-shopping"></i><span id="cart-item-count">0</span></a>
             </div>
-            <!-- Khi chưa đăng nhập -->
 <div class="auth-btns" id="auth-buttons">
   <a href="login.html" class="btn btn-text">Login</a>
   <a href="signup.html" class="btn btn-light">Sign up</a>
 </div>
 
-<!-- Khi ĐÃ đăng nhập -->
 <div class="user-profile-wrapper" id="user-info" style="display: none;">
-  <!-- Nút bấm hiển thị Avatar & Tên (đóng vai trò trigger toggle menu) -->
   <button class="profile-trigger" id="profile-trigger">
     <i class="fa-solid fa-circle-user" style="font-size: 24px; color: #555;"></i>
     <span class="user-name" id="user-name">John D.</span>
     <i class="fa-solid fa-chevron-down arrow-icon"></i>
   </button>
 
-  <!-- Dropdown Menu Popup -->
   <div class="dropdown-menu" id="profile-dropdown">
-    <!-- Thẻ thông tin user trên cùng -->
     <div class="user-card-header">
       <i class="fa-solid fa-circle-user" style="font-size: 24px; color: #555;"></i>
       <div class="card-info">
