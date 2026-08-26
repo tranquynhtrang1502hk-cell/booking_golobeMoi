@@ -1,0 +1,1027 @@
+/* ========================================
+   ACCOUNT PAGE STYLES
+   File: account.css
+   ======================================== */
+
+/* ===== 1. MAIN CONTENT ===== */
+.account-main-content {
+    margin-top: 40px;
+    margin-bottom: 80px;
+}
+
+/* ===== 2. PROFILE HERO CARD ===== */
+.account-hero-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    margin-bottom: 32px;
+    position: relative;
+    border: 1px solid var(--border);
+}
+
+.cover-banner {
+    height: 220px;
+    background: linear-gradient(135deg, #074a6b 0%, #0096c7 40%, #8dd3bb 100%);
+    position: relative;
+}
+
+.btn-upload-cover {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--white);
+    font-weight: 600;
+    font-size: 13px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-upload-cover:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: translateY(-2px);
+}
+
+.btn-upload-cover i {
+    font-size: 14px;
+}
+
+.account-avatar-wrapper {
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.account-avatar {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 5px solid var(--white);
+    object-fit: cover;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn-edit-avatar {
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+    background: var(--primary);
+    color: var(--secondary);
+    border: 2px solid var(--white);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.btn-edit-avatar:hover {
+    background: var(--primary-dark);
+    transform: scale(1.1);
+}
+
+.account-user-details {
+    text-align: center;
+    margin-top: 75px;
+    padding: 0 20px 32px 20px;
+}
+
+.account-user-details h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+}
+
+.account-user-details p {
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+/* ===== 3. NAVIGATION TABS ===== */
+.account-nav-tabs {
+    display: flex;
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 6px;
+    gap: 4px;
+    box-shadow: var(--shadow);
+    margin-bottom: 32px;
+    border: 1px solid var(--border);
+}
+
+.account-tab-btn {
+    flex: 1;
+    padding: 14px 20px;
+    border: none;
+    background: transparent;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.account-tab-btn:hover {
+    background: #F0F9F6;
+    color: var(--text-dark);
+}
+
+.account-tab-btn.active {
+    background: var(--primary);
+    color: var(--secondary);
+    box-shadow: 0 2px 8px rgba(141, 211, 187, 0.3);
+}
+
+/* ===== 4. TAB CONTENT ===== */
+.account-tab-content {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.account-tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.account-section-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+}
+
+.account-section-title i {
+    color: var(--primary);
+    margin-right: 10px;
+}
+
+/* ===== 5. ACCOUNT INFO ROWS ===== */
+.account-card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px 0;
+}
+
+.account-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.account-info-row:hover {
+    background: #F9FAFB;
+}
+
+.account-info-row:not(:last-child) {
+    border-bottom: 1px solid var(--border);
+}
+
+.info-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.info-meta .label-title {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.info-meta .value-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.row-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.row-actions .btn {
+    padding: 6px 14px;
+    font-size: 12px;
+}
+
+/* ===== 6. HISTORY ===== */
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.filter-dropdown .field-group-select {
+    padding: 10px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    outline: none;
+    background: var(--white);
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-dropdown .field-group-select:hover,
+.filter-dropdown .field-group-select:focus {
+    border-color: var(--primary);
+}
+
+.history-subtabs {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 12px;
+}
+
+.subtab-btn {
+    background: none;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 4px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.subtab-btn:hover {
+    color: var(--text-dark);
+}
+
+.subtab-btn.active {
+    color: var(--text-dark);
+}
+
+.subtab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -13px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--primary);
+    border-radius: 2px;
+}
+
+.subtab-btn i {
+    font-size: 14px;
+}
+
+/* ===== 7. BOOKING TICKET ITEM ===== */
+.booking-ticket-item {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.booking-ticket-item:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(17, 34, 17, 0.08);
+}
+
+.airline-brand img {
+    max-width: 70px;
+    max-height: 40px;
+    object-fit: contain;
+}
+
+.booking-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    padding: 0 20px;
+}
+
+.time-schedule {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.time-schedule .airport {
+    display: block;
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.time-schedule .time-val {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.time-schedule .path-dash {
+    color: var(--text-muted);
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.meta-tags {
+    display: flex;
+    gap: 20px;
+    font-size: 13px;
+    color: var(--text-muted);
+    flex-wrap: wrap;
+}
+
+.meta-tags i {
+    color: var(--primary);
+    margin-right: 4px;
+    width: 16px;
+}
+
+.booking-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.booking-actions .btn {
+    padding: 8px 18px;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.btn-next-arrow {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    color: var(--text-muted);
+}
+
+.btn-next-arrow:hover {
+    border-color: var(--primary);
+    background: #F0F9F6;
+    color: var(--primary);
+}
+
+/* ===== 8. PAYMENT METHODS ===== */
+.payment-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+.user-credit-card {
+    background: linear-gradient(135deg, #8DD3BB 0%, #74C0A5 100%);
+    border-radius: var(--radius);
+    padding: 24px;
+    height: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 20px rgba(141, 211, 187, 0.3);
+    transition: all 0.3s ease;
+}
+
+.user-credit-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(141, 211, 187, 0.4);
+}
+
+.card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.card-num {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--secondary);
+    letter-spacing: 2px;
+    font-family: 'Montserrat', monospace;
+}
+
+.btn-delete-card {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 14px;
+    cursor: pointer;
+    color: var(--secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.btn-delete-card:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+}
+
+.card-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.exp-label {
+    display: block;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: var(--secondary);
+    opacity: 0.7;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.exp-date {
+    font-weight: 700;
+    color: var(--secondary);
+    font-size: 16px;
+}
+
+.brand-name {
+    font-size: 22px;
+    font-weight: 800;
+    font-style: italic;
+    color: var(--secondary);
+    opacity: 0.8;
+}
+
+.add-card-placeholder {
+    border: 2px dashed var(--primary);
+    border-radius: var(--radius);
+    height: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    background: var(--white);
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text-muted);
+    transition: all 0.3s ease;
+}
+
+.add-card-placeholder:hover {
+    border-color: var(--primary-dark);
+    background: #F0F9F6;
+    transform: translateY(-4px);
+}
+
+.plus-circle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-size: 20px;
+    transition: all 0.3s ease;
+}
+
+.add-card-placeholder:hover .plus-circle {
+    background: var(--primary);
+    color: var(--white);
+}
+
+/* ===== 9. NEWSLETTER (Account Page) ===== */
+.newsletter {
+    background: #CDEAE1;
+    border-radius: 20px;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    margin-top: 60px !important;
+}
+
+.newsletter-text h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--secondary);
+    margin-bottom: 4px;
+}
+
+.newsletter-text p {
+    font-size: 15px;
+    color: var(--text-dark);
+    opacity: 0.8;
+}
+
+.newsletter-text p:first-of-type {
+    font-weight: 700;
+    opacity: 1;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.newsletter-form input {
+    padding: 14px 20px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    width: 300px;
+    font-size: 14px;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.newsletter-form input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(141, 211, 187, 0.2);
+}
+
+.newsletter-graphic {
+    flex-shrink: 0;
+}
+
+.newsletter-graphic i {
+    font-size: 120px;
+    color: var(--secondary);
+    opacity: 0.15;
+}
+
+/* ===== 10. MODAL ===== */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    animation: modalFade 0.3s ease;
+}
+
+@keyframes modalFade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-backdrop.show {
+    display: flex;
+}
+
+.modal-dialog {
+    background: var(--white);
+    padding: 32px;
+    border-radius: 16px;
+    width: 440px;
+    max-width: 95%;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: modalSlide 0.3s ease;
+}
+
+@keyframes modalSlide {
+    from {
+        transform: scale(0.9) translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+.btn-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: all 0.3s ease;
+    line-height: 1;
+}
+
+.btn-modal-close:hover {
+    color: var(--text-dark);
+    transform: rotate(90deg);
+}
+
+.modal-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 24px;
+}
+
+.modal-card-form .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.modal-card-form .form-field label {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.modal-card-form .form-field input,
+.modal-card-form .form-field select {
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    background: var(--white);
+}
+
+.modal-card-form .form-field input:focus,
+.modal-card-form .form-field select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(141, 211, 187, 0.2);
+}
+
+.modal-card-form .form-field select {
+    cursor: pointer;
+}
+
+.form-row-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.checkbox-remember {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin: 16px 0 8px 0;
+}
+
+.checkbox-remember input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary);
+    cursor: pointer;
+}
+
+.checkbox-remember label {
+    cursor: pointer;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+/* ---- Tablet 1024px ---- */
+@media (max-width: 1024px) {
+    .payment-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .booking-ticket-item {
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .booking-info {
+        padding: 0;
+        flex: 1 1 100%;
+        order: 2;
+    }
+
+    .airline-brand {
+        order: 1;
+    }
+
+    .booking-actions {
+        order: 3;
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
+
+/* ---- Mobile 768px ---- */
+@media (max-width: 768px) {
+    .account-main-content {
+        margin-top: 24px;
+        margin-bottom: 40px;
+    }
+
+    .cover-banner {
+        height: 150px;
+    }
+
+    .btn-upload-cover {
+        bottom: 12px;
+        right: 12px;
+        padding: 8px 14px;
+        font-size: 12px;
+    }
+
+    .btn-upload-cover span {
+        display: none;
+    }
+
+    .account-avatar-wrapper {
+        top: 110px;
+    }
+
+    .account-avatar {
+        width: 100px;
+        height: 100px;
+        border-width: 4px;
+    }
+
+    .btn-edit-avatar {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+        right: 4px;
+        bottom: 4px;
+    }
+
+    .account-user-details {
+        margin-top: 60px;
+        padding-bottom: 20px;
+    }
+
+    .account-user-details h2 {
+        font-size: 20px;
+    }
+
+    .account-nav-tabs {
+        flex-direction: column;
+        padding: 4px;
+        gap: 4px;
+    }
+
+    .account-tab-btn {
+        padding: 12px 16px;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .account-info-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 14px 16px;
+    }
+
+    .row-actions {
+        width: 100%;
+    }
+
+    .row-actions .btn {
+        flex: 1;
+        text-align: center;
+    }
+
+    .history-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .history-subtabs {
+        gap: 16px;
+    }
+
+    .subtab-btn {
+        font-size: 14px;
+    }
+
+    .time-schedule .time-val {
+        font-size: 15px;
+    }
+
+    .meta-tags {
+        gap: 12px;
+        font-size: 12px;
+    }
+
+    .payment-cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .user-credit-card {
+        height: 170px;
+    }
+
+    .newsletter {
+        flex-direction: column;
+        text-align: center;
+        padding: 24px 20px;
+    }
+
+    .newsletter-text h2 {
+        font-size: 26px;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .newsletter-form input {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .newsletter-form .btn {
+        width: 100%;
+        max-width: 400px;
+        justify-content: center;
+    }
+
+    .newsletter-graphic {
+        display: none;
+    }
+
+    .modal-dialog {
+        padding: 24px 20px;
+        margin: 16px;
+    }
+
+    .form-row-2col {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .booking-actions {
+        justify-content: flex-start;
+    }
+
+    .booking-actions .btn {
+        padding: 6px 14px;
+        font-size: 12px;
+    }
+}
+
+/* ---- Mobile 480px ---- */
+@media (max-width: 480px) {
+    .cover-banner {
+        height: 120px;
+    }
+
+    .account-avatar-wrapper {
+        top: 90px;
+    }
+
+    .account-avatar {
+        width: 80px;
+        height: 80px;
+        border-width: 3px;
+    }
+
+    .btn-edit-avatar {
+        width: 26px;
+        height: 26px;
+        font-size: 10px;
+    }
+
+    .account-user-details {
+        margin-top: 50px;
+    }
+
+    .account-user-details h2 {
+        font-size: 18px;
+    }
+
+    .account-user-details p {
+        font-size: 13px;
+    }
+
+    .account-section-title {
+        font-size: 20px;
+    }
+
+    .booking-ticket-item {
+        padding: 16px;
+    }
+
+    .time-schedule {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .time-schedule .time-val {
+        font-size: 14px;
+    }
+
+    .time-schedule .path-dash {
+        font-size: 16px;
+    }
+
+    .meta-tags {
+        font-size: 11px;
+        gap: 8px;
+    }
+
+    .user-credit-card {
+        height: 150px;
+        padding: 18px;
+    }
+
+    .card-num {
+        font-size: 16px;
+    }
+
+    .brand-name {
+        font-size: 18px;
+    }
+
+    .add-card-placeholder {
+        height: 150px;
+    }
+
+    .newsletter-text h2 {
+        font-size: 22px;
+    }
+
+    .newsletter-text p {
+        font-size: 14px;
+    }
+
+    .modal-title {
+        font-size: 20px;
+    }
+
+    .airline-brand img {
+        max-width: 50px;
+    }
+}
