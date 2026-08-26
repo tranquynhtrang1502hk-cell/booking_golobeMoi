@@ -1,173 +1,558 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Reviews - Golobe</title>
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS chung -->
     <link rel="stylesheet" href="../css/style.css">
-    <style>
-        .star-rating-input {
-            display: flex;
-            flex-direction: row-reverse;
-            justify-content: flex-end;
-            gap: 4px;
-        }
-
-        .star-rating-input input[type="radio"] {
-            display: none;
-        }
-
-        .star-rating-input label {
-            font-size: 24px;
-            color: #d1d5db;
-            cursor: pointer;
-        }
-
-        .star-rating-input input[type="radio"]:checked~label,
-        .star-rating-input label:hover,
-        .star-rating-input label:hover~label {
-            color: #FFC107;
-        }
-    </style>
+    
+    <!-- CSS riêng cho Reviews -->
+    <link rel="stylesheet" href="../css/reviews.css">
 </head>
-
 <body>
 
-    <!-- Header / Navbar -->
-    <header>
+    <!-- ===== HEADER ===== -->
+    <header class="static-header">
         <div class="container navbar">
             <ul class="nav-links">
-                <li><a href="index.html#flights-section"><i class="fa-solid fa-plane"></i> Find Flight</a></li>
-                <li><a href="index.html#stays-section"><i class="fa-solid fa-bed"></i> Find Stays</a></li>
+                <li><a href="index.html" class="header-link"><i class="fa-solid fa-plane"></i> Find Flight</a></li>
+                <li><a href="hotels.html" class="header-link"><i class="fa-solid fa-bed"></i> Find Stays</a></li>
             </ul>
-            <a href="index.html" class="logo">
+            <a href="index.html" class="logo dark-logo">
                 <i class="fa-solid fa-paper-plane"></i> Golobe
             </a>
+            <div class="header-actions">
+                <a href="payment.html" class="cart-icon"><i class="fa-solid fa-cart-shopping"></i><span id="cart-item-count">0</span></a>
+            </div>
             <div class="auth-btns" id="auth-buttons">
-                <a href="login.html" class="btn btn-text">Login</a>
-                <a href="signup.html" class="btn btn-light">Sign up</a>
+                <a href="login.html" class="btn btn-text-dark">Login</a>
+                <a href="signup.html" class="btn btn-dark">Sign up</a>
             </div>
             <div class="auth-btns" id="user-info" style="display: none;">
-                <span id="user-name" style="color: var(--primary); font-weight: 600;"></span>
-                <button id="logout-btn" class="btn btn-light">Logout</button>
+                <span id="user-name" style="color: var(--secondary); font-weight: 600;"></span>
+                <button id="logout-btn" class="btn btn-dark">Logout</button>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="container" style="margin-top: 80px; margin-bottom: 60px;">
+    <!-- ===== BANNER ===== -->
+    <section class="reviews-banner">
+        <div class="container">
+            <div class="banner-content">
+                <h1><i class="fa-solid fa-star" style="color: #FFC107;"></i> Customer Reviews</h1>
+                <p>What people say about Golobe facilities and services</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STATS ===== -->
+    <section class="container">
+        <div class="reviews-stats">
+            <div class="stat-item">
+                <div class="stat-number">4.8</div>
+                <div class="stat-label">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <span>Average Rating</span>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">12,847</div>
+                <div class="stat-label">
+                    <i class="fa-regular fa-comment"></i>
+                    <span>Total Reviews</span>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">
+                    <i class="fa-regular fa-face-smile"></i>
+                    <span>Satisfaction Rate</span>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">150+</div>
+                <div class="stat-label">
+                    <i class="fa-regular fa-building"></i>
+                    <span>Destinations</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== REVIEWS GRID ===== -->
+    <section class="container reviews-section">
         <div class="section-header">
             <div class="section-title">
-                <h2>All Customer Reviews</h2>
-                <p>Read honest feedback from travelers using Golobe facilities</p>
+                <h2><i class="fa-regular fa-message" style="color: var(--primary);"></i> What our customers say</h2>
+                <p>Real reviews from real travelers around the world</p>
             </div>
-            <a href="index.html" class="btn btn-outline"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
-        </div>
-
-        <!-- Review Submission Form (for logged-in users) -->
-        <section id="review-form-section" class="container" style="margin-top: 40px; display: none;">
-            <div class="info-card" style="padding: 32px; background: #f9fafb;">
-                <h4>Write a Review</h4>
-                <form id="new-review-form" style="display: flex; flex-direction: column; gap: 16px;">
-                    <div class="field-group">
-                        <label for="review-title">Review Title</label>
-                        <input type="text" id="review-title" placeholder="e.g., 'A wonderful experience!'" required>
-                    </div>
-                    <div class="field-group">
-                        <label for="review-text">Your Review</label>
-                        <textarea id="review-text" rows="4" placeholder="Share your thoughts about your trip..." required></textarea>
-                    </div>
-                    <div class="field-group">
-                        <label>Rating</label>
-                        <div class="star-rating-input">
-                            <input type="radio" id="star5" name="rating" value="5" required /><label for="star5" title="5 stars">★</label>
-                            <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 stars">★</label>
-                            <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 stars">★</label>
-                            <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 stars">★</label>
-                            <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star">★</label>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="align-self: flex-start;">Submit Review</button>
-                </form>
-            </div>
-        </section>
-
-        <!-- Login Prompt (for logged-out users) -->
-        <div id="login-to-review-prompt" class="login-prompt info-card" style="text-align: center; padding: 32px; margin-top: 40px; display: none;">
-            <h4><a href="login.html" style="text-decoration: none; color: var(--primary);">Login</a> or <a href="signup.html" style="text-decoration: none; color: var(--primary);">Sign up</a> to write a review.</h4>
-        </div>
-
-        <div class="reviews-grid">
-            <div class="review-card">
-                <h3 class="review-title">"A real sense of community, cozy"</h3>
-                <p class="review-text">Really convenient and the staff was super friendly. Loved the atmosphere and location!</p>
-                <div class="review-rating">
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                </div>
-                <div class="review-author">
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" class="author-img" alt="Olga">
-                    <div>
-                        <div class="author-name">Olga</div>
-                        <div class="author-location">Weave Studios - Kai Tak</div>
-                    </div>
-                </div>
-            </div>
-            <div class="review-card">
-                <h3 class="review-title">"The best booking experience"</h3>
-                <p class="review-text">Easy to filter options and fast booking process. Will definitely use Golobe for my next trip!</p>
-                <div class="review-rating">
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                </div>
-                <div class="review-author">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" class="author-img" alt="Thomas">
-                    <div>
-                        <div class="author-name">Thomas</div>
-                        <div class="author-location">Weave Studios - Olympic</div>
-                    </div>
-                </div>
-            </div>
-            <div class="review-card">
-                <h3 class="review-title">"High quality & Great prices"</h3>
-                <p class="review-text">Found amazing flight deals that saved me hundreds of dollars. Highly recommended for travelers.</p>
-                <div class="review-rating">
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                </div>
-                <div class="review-author">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" class="author-img" alt="Eliot">
-                    <div>
-                        <div class="author-name">Eliot</div>
-                        <div class="author-location">Weave Studios - Sai Ying Pun</div>
-                    </div>
-                </div>
-            </div>
-            <div class="review-card">
-                <h3 class="review-title">"Unforgettable Experience"</h3>
-                <p class="review-text">Everything was perfectly organized. Customer support helped me 24/7 during my trip.</p>
-                <div class="review-rating">
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                </div>
-                <div class="review-author">
-                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" class="author-img" alt="David">
-                    <div>
-                        <div class="author-name">David</div>
-                        <div class="author-location">Weave Studios - Central</div>
-                    </div>
-                </div>
+            <div class="filter-sort">
+                <select id="review-sort" style="padding: 10px 16px; border-radius: 8px; border: 1px solid var(--border); font-weight: 600; background: var(--white); cursor: pointer;">
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                    <option value="highest">Highest Rating</option>
+                    <option value="lowest">Lowest Rating</option>
+                </select>
             </div>
         </div>
-    </main>
 
-    <!-- Footer -->
+        <div class="reviews-grid" id="reviews-grid">
+            <!-- Reviews sẽ được render bằng JavaScript -->
+        </div>
+
+        <!-- Load More -->
+        <div class="load-more">
+            <button id="load-more-btn" class="btn btn-outline"><i class="fa-solid fa-chevron-down"></i> Load More Reviews</button>
+        </div>
+    </section>
+
+    <!-- ===== WRITE REVIEW ===== -->
+    <section class="container write-review-section">
+        <div class="write-review-card">
+            <div class="write-review-header">
+                <h3><i class="fa-regular fa-pen-to-square" style="color: var(--primary);"></i> Write a Review</h3>
+                <p>Share your experience with Golobe community</p>
+            </div>
+            <form id="write-review-form">
+                <div class="form-group">
+                    <label>Your Rating</label>
+                    <div class="rating-input" id="rating-input">
+                        <i class="fa-regular fa-star" data-rating="1"></i>
+                        <i class="fa-regular fa-star" data-rating="2"></i>
+                        <i class="fa-regular fa-star" data-rating="3"></i>
+                        <i class="fa-regular fa-star" data-rating="4"></i>
+                        <i class="fa-regular fa-star" data-rating="5"></i>
+                    </div>
+                    <input type="hidden" id="review-rating" value="0">
+                </div>
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label><i class="fa-regular fa-user"></i> Your Name</label>
+                        <input type="text" id="review-name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fa-regular fa-envelope"></i> Your Email</label>
+                        <input type="email" id="review-email" placeholder="Enter your email" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label><i class="fa-regular fa-building"></i> Destination</label>
+                    <select id="review-destination" required>
+                        <option value="">Select a destination</option>
+                        <option value="Istanbul, Turkey">Istanbul, Turkey</option>
+                        <option value="Sydney, Australia">Sydney, Australia</option>
+                        <option value="Baku, Azerbaijan">Baku, Azerbaijan</option>
+                        <option value="Malé, Maldives">Malé, Maldives</option>
+                        <option value="Paris, France">Paris, France</option>
+                        <option value="Dubai, UAE">Dubai, UAE</option>
+                        <option value="Tokyo, Japan">Tokyo, Japan</option>
+                        <option value="Rome, Italy">Rome, Italy</option>
+                        <option value="New York, USA">New York, USA</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label><i class="fa-regular fa-comment"></i> Your Review</label>
+                    <textarea id="review-text" rows="4" placeholder="Share your experience..." required></textarea>
+                </div>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="review-agree" required>
+                    <label for="review-agree">I agree to the <a href="terms.html">Terms</a> and <a href="privacy.html">Privacy Policy</a></label>
+                </div>
+                <button type="submit" class="btn btn-primary"><i class="fa-regular fa-paper-plane"></i> Submit Review</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
     <footer>
-        <div class="container">
-            <div class="footer-logo"><i class="fa-solid fa-paper-plane"></i> Golobe</div>
+        <div class="container footer-grid">
+            <div>
+                <div class="footer-logo"><i class="fa-solid fa-paper-plane"></i> Golobe</div>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Our Destinations</h4>
+                <ul>
+                    <li><a href="#">Maldives</a></li>
+                    <li><a href="#">Italia</a></li>
+                    <li><a href="#">France</a></li>
+                    <li><a href="#">And More</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Our Activities</h4>
+                <ul>
+                    <li><a href="activities-relaxation.html">Relaxation, Resorts & Islands</a></li>
+                    <li><a href="activities-culture.html">Explore Culture, History & Architecture</a></li>
+                    <li><a href="activities-adventure.html">Adventure & Modern Fun</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Travel Blogs</h4>
+                <ul>
+                    <li><a href="guide-maldives.html">Maldives Travel Guide</a></li>
+                    <li><a href="guide-paris.html">Paris Travel Guide</a></li>
+                    <li><a href="guide-rome.html">Rome Travel Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="our-story.html">Our Story</a></li>
+                    <li><a href="work-with-us.html">Work with us</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
         </div>
     </footer>
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
 
-    <script src="script.js"></script>
+            // ========================================
+            // 1. DỮ LIỆU REVIEWS
+            // ========================================
+            const reviewsData = [
+                {
+                    id: 1,
+                    name: 'Olga',
+                    location: 'Weave Studios - Kai Tak',
+                    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80',
+                    rating: 5,
+                    title: '"A real sense of community, cozy"',
+                    text: 'Really convenient and the staff was super friendly. Loved the atmosphere and location!',
+                    date: '2 weeks ago',
+                    destination: 'Istanbul, Turkey'
+                },
+                {
+                    id: 2,
+                    name: 'Thomas',
+                    location: 'Weave Studios - Olympic',
+                    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80',
+                    rating: 5,
+                    title: '"The best booking experience"',
+                    text: 'Easy to filter options and fast booking process. Will definitely use Golobe for my next trip!',
+                    date: '1 month ago',
+                    destination: 'Dubai, UAE'
+                },
+                {
+                    id: 3,
+                    name: 'Eliot',
+                    location: 'Weave Studios - Sai Ying Pun',
+                    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80',
+                    rating: 5,
+                    title: '"High quality & Great prices"',
+                    text: 'Found amazing flight deals that saved me hundreds of dollars. Highly recommended for travelers.',
+                    date: '3 weeks ago',
+                    destination: 'Paris, France'
+                },
+                {
+                    id: 4,
+                    name: 'Sarah M.',
+                    location: 'Travel Blogger',
+                    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&q=80',
+                    rating: 4,
+                    title: '"Great experience overall"',
+                    text: 'The booking process was smooth and the customer support was very helpful. Will use again.',
+                    date: '2 months ago',
+                    destination: 'Sydney, Australia'
+                },
+                {
+                    id: 5,
+                    name: 'James K.',
+                    location: 'Frequent Traveler',
+                    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&q=80',
+                    rating: 5,
+                    title: '"Incredible service!"',
+                    text: 'The staff went above and beyond to make my stay memorable. The hotel was perfect!',
+                    date: '1 week ago',
+                    destination: 'Malé, Maldives'
+                },
+                {
+                    id: 6,
+                    name: 'Emma W.',
+                    location: 'Business Traveler',
+                    avatar: 'https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?auto=format&fit=crop&w=100&q=80',
+                    rating: 4,
+                    title: '"Great location and amenities"',
+                    text: 'Perfect location for business meetings. The facilities were top-notch.',
+                    date: '3 months ago',
+                    destination: 'New York, USA'
+                },
+                {
+                    id: 7,
+                    name: 'Michael R.',
+                    location: 'Adventure Seeker',
+                    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80',
+                    rating: 5,
+                    title: '"Breathtaking views!"',
+                    text: 'Absolutely loved the view from the hotel. The staff was incredibly helpful and friendly.',
+                    date: '2 months ago',
+                    destination: 'Baku, Azerbaijan'
+                },
+                {
+                    id: 8,
+                    name: 'Lisa T.',
+                    location: 'Family Traveler',
+                    avatar: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=100&q=80',
+                    rating: 4,
+                    title: '"Great for families"',
+                    text: 'Very family-friendly hotel with lots of activities for kids. Highly recommended!',
+                    date: '1 month ago',
+                    destination: 'Tokyo, Japan'
+                },
+                {
+                    id: 9,
+                    name: 'David L.',
+                    location: 'Couple Traveler',
+                    avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&q=80',
+                    rating: 5,
+                    title: '"Perfect romantic getaway"',
+                    text: 'The perfect place for a romantic escape. Beautiful views and amazing service.',
+                    date: '3 weeks ago',
+                    destination: 'Rome, Italy'
+                }
+            ];
+
+            let currentReviews = [...reviewsData];
+            let showCount = 6;
+
+            // ========================================
+            // 2. RENDER REVIEWS
+            // ========================================
+            function renderReviews(reviews, count) {
+                const grid = document.getElementById('reviews-grid');
+                const displayReviews = reviews.slice(0, count);
+
+                grid.innerHTML = displayReviews.map(review => `
+                    <div class="review-card">
+                        <h3 class="review-title">${review.title}</h3>
+                        <p class="review-text">${review.text}</p>
+                        <div class="review-rating">
+                            ${generateStars(review.rating)}
+                        </div>
+                        <div class="review-author">
+                            <img src="${review.avatar}" class="author-img" alt="${review.name}">
+                            <div>
+                                <div class="author-name">${review.name}</div>
+                                <div class="author-location">${review.location} • ${review.destination}</div>
+                                <div class="review-date">${review.date}</div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+
+                // Cập nhật nút Load More
+                const loadMoreBtn = document.getElementById('load-more-btn');
+                if (count >= reviews.length) {
+                    loadMoreBtn.style.display = 'none';
+                } else {
+                    loadMoreBtn.style.display = 'inline-block';
+                }
+            }
+
+            function generateStars(rating) {
+                let stars = '';
+                for (let i = 1; i <= 5; i++) {
+                    if (i <= rating) {
+                        stars += '<i class="fa-solid fa-star"></i>';
+                    } else {
+                        stars += '<i class="fa-regular fa-star"></i>';
+                    }
+                }
+                return stars;
+            }
+
+            // Render lần đầu
+            renderReviews(currentReviews, showCount);
+
+            // ========================================
+            // 3. LOAD MORE
+            // ========================================
+            document.getElementById('load-more-btn').addEventListener('click', function() {
+                showCount += 3;
+                renderReviews(currentReviews, showCount);
+            });
+
+            // ========================================
+            // 4. SORT REVIEWS
+            // ========================================
+            document.getElementById('review-sort').addEventListener('change', function() {
+                const sortType = this.value;
+                switch(sortType) {
+                    case 'newest':
+                        currentReviews.sort((a, b) => new Date(b.date) - new Date(a.date));
+                        break;
+                    case 'oldest':
+                        currentReviews.sort((a, b) => new Date(a.date) - new Date(b.date));
+                        break;
+                    case 'highest':
+                        currentReviews.sort((a, b) => b.rating - a.rating);
+                        break;
+                    case 'lowest':
+                        currentReviews.sort((a, b) => a.rating - b.rating);
+                        break;
+                    default:
+                        currentReviews = [...reviewsData];
+                }
+                showCount = 6;
+                renderReviews(currentReviews, showCount);
+            });
+
+            // ========================================
+            // 5. RATING INPUT
+            // ========================================
+            const ratingStars = document.querySelectorAll('#rating-input i');
+            const ratingHidden = document.getElementById('review-rating');
+            let selectedRating = 0;
+
+            ratingStars.forEach(star => {
+                star.addEventListener('click', function() {
+                    selectedRating = parseInt(this.dataset.rating);
+                    ratingHidden.value = selectedRating;
+                    updateRatingStars(selectedRating);
+                });
+
+                star.addEventListener('mouseenter', function() {
+                    const hoverRating = parseInt(this.dataset.rating);
+                    updateRatingStars(hoverRating, true);
+                });
+
+                star.addEventListener('mouseleave', function() {
+                    updateRatingStars(selectedRating);
+                });
+            });
+
+            function updateRatingStars(rating, isHover = false) {
+                ratingStars.forEach(star => {
+                    const starRating = parseInt(star.dataset.rating);
+                    if (starRating <= rating) {
+                        star.className = 'fa-solid fa-star';
+                        star.style.color = '#FFC107';
+                    } else {
+                        star.className = 'fa-regular fa-star';
+                        star.style.color = '#ddd';
+                    }
+                });
+            }
+
+            // ========================================
+            // 6. SUBMIT REVIEW FORM
+            // ========================================
+            document.getElementById('write-review-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const name = document.getElementById('review-name').value.trim();
+                const email = document.getElementById('review-email').value.trim();
+                const destination = document.getElementById('review-destination').value;
+                const text = document.getElementById('review-text').value.trim();
+                const rating = parseInt(document.getElementById('review-rating').value);
+                const agree = document.getElementById('review-agree').checked;
+
+                if (rating === 0) {
+                    alert('Please select a rating!');
+                    return;
+                }
+
+                if (!agree) {
+                    alert('Please agree to the Terms and Privacy Policy.');
+                    return;
+                }
+
+                const newReview = {
+                    id: reviewsData.length + 1,
+                    name: name,
+                    location: email,
+                    avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=8DD3BB&color=fff&size=100`,
+                    rating: rating,
+                    title: `"${text.substring(0, 30)}..."`,
+                    text: text,
+                    date: 'Just now',
+                    destination: destination
+                };
+
+                reviewsData.unshift(newReview);
+                currentReviews = [...reviewsData];
+                showCount = 6;
+                renderReviews(currentReviews, showCount);
+
+                alert('✅ Thank you for your review!');
+                this.reset();
+                selectedRating = 0;
+                updateRatingStars(0);
+                document.getElementById('review-rating').value = 0;
+                document.getElementById('load-more-btn').style.display = 'inline-block';
+            });
+
+            // ========================================
+            // 7. GIỎ HÀNG
+            // ========================================
+            function updateCartIcon() {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const cartCountEl = document.getElementById('cart-item-count');
+                if (cartCountEl) {
+                    cartCountEl.textContent = cart.length;
+                    cartCountEl.style.display = cart.length > 0 ? 'flex' : 'none';
+                }
+            }
+            updateCartIcon();
+
+            // ========================================
+            // 8. ĐĂNG NHẬP / ĐĂNG XUẤT
+            // ========================================
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            const authButtons = document.getElementById('auth-buttons');
+            const userInfo = document.getElementById('user-info');
+            const userNameEl = document.getElementById('user-name');
+            const logoutBtn = document.getElementById('logout-btn');
+
+            if (currentUser) {
+                if (authButtons) authButtons.style.display = 'none';
+                if (userInfo) {
+                    userInfo.style.display = 'flex';
+                    const fullName = currentUser.name || (currentUser.email ? currentUser.email.split('@')[0] : 'User');
+                    const nameParts = fullName.trim().split(' ');
+                    let shortName = fullName;
+                    if (nameParts.length > 1) {
+                        const lastName = nameParts[0];
+                        const firstNameInitial = nameParts[nameParts.length - 1].charAt(0).toUpperCase();
+                        shortName = `${lastName} ${firstNameInitial}.`;
+                    }
+                    if (userNameEl) userNameEl.textContent = shortName;
+                }
+            } else {
+                if (authButtons) authButtons.style.display = 'flex';
+                if (userInfo) userInfo.style.display = 'none';
+            }
+
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function() {
+                    localStorage.removeItem('currentUser');
+                    alert('You have been logged out.');
+                    window.location.reload();
+                });
+            }
+
+        });
+    </script>
+
 </body>
-
 </html>
