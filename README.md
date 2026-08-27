@@ -43,6 +43,8 @@ Các trang HTML được chia thành nhiều nhóm chức năng như:
 - Trang thanh toán.
 - Trang mã khuyến mãi.
 - Trang đánh giá.
+- Trang chính sách và điều khoản.
+- Trang giới thiệu.
 
 ### CSS3
 
@@ -82,7 +84,19 @@ Git và GitHub được sử dụng để quản lý và lưu trữ mã nguồn 
 booking-Golobe/
 │
 ├── css/                        # Thư mục chứa các tệp định dạng CSS chung
-│   └── login.css                # Giao diện cho trang đăng nhập
+│   └── account.css                        # Giao diện cho trang tài khoản
+│   └── flight.css                         # Giao diện cho trang chuyến bay
+│   └── flight-detail.css                  # Giao diện cho trang đặt chuyến bay
+│   └── hotel.css                          # Giao diện cho trang khách sạn
+│   └── hotel-detail.css                   # Giao diện cho trang khách sạn
+│   └── hotels.css                         # Giao diện cho trang danh sách khách sạn
+│   └── login.css                          # Giao diện cho trang đăng nhập
+│   └── privacy.css                        # Giao diện cho trang chính sách bảo mật
+│   └── promo-code.css                     # Giao diện cho trang mã khuyến mãi
+│   └── reviews.css                        # Giao diện cho trang đánh giá
+│   └── signup.css                         # Giao diện cho trang đăng ký
+│   └── style.css                          # Giao diện chung cho trang web
+│   └── terms.css                          # Giao diện cho trang điều khoản
 │
 ├── image/                      # Thư mục chứa hình ảnh và tài nguyên truyền thông
 │   ├── arab-hotel.jpg
@@ -103,39 +117,71 @@ booking-Golobe/
 │   ├── Tokyo_Tower_Afterglow.JPG
 │   └── verwater-Paradise-Resort.jpg
 │
-├── pages/                      # Các trang giao diện chính của dự án
-│   ├── account.html
-│   ├── baku-detail.html
-│   ├── destination-detail.html
-│   ├── dubai-detail.html
-│   ├── flight-detail-emirates-1.html
-│   ├── flight-detail-flydubai-1.html
-│   ├── flight-detail-qatar-1.html
-│   ├── flight-detail.html                       # Thông tin chi tiết của một chuyến bay
-│   ├── flight.css                               # Giao diện cho các trang liên quan đến thông tin chuyến bay
-│   ├── flights.html                             # Hiện thị các thông tin chuyến bay
-│   ├── forgot-password.html
-│   ├── hotel-detail.html                        # Thông tin chi tiết của một khách sạn
-│   ├── hotel.html                 
-│   ├── hotels.html                              # Hiện thị các thông tin của khách sạn
-│   ├── index.html                               # Trang chính của dự án
-│   ├── login.html                               # Trang đăng nhập
-│   ├── male-detail.html
-│   ├── newyork-detail.html
-│   ├── paris-detail.html
-│   ├── payment.html                             # Trang hiện thị thanh toán
-│   ├── places.html                              # Trang hiện thị các địa điểm
-│   ├── promo-code.html                          # Trang mã khuyến mãi
-│   ├── reset-password.html                      # Trang đặt lại mật khẩu
-│   ├── reviews.html                             # Trang đánh giá từ khách hàng
-│   ├── rome-detail.html
-│   ├── script.js                                # File JavaScript xử lý logic chính
-│   ├── signup-payment.html                      # Trang đăng nhập khi thanh toán
-│   ├── signup.html                              # Trang đăng kí
-│   ├── style.css                                # File CSS chính cho giao diện
-│   ├── sydney-detail.html
-│   ├── tokyo-detail.html
-│   └── verify-code.html
+pages/
+│
+├──  Trang chính
+│   └── index.html                 # Trang chủ của website
+│
+├──  Tài khoản & xác thực
+│   ├── account.html               # Quản lý thông tin tài khoản
+│   ├── login.html                 # Đăng nhập
+│   ├── signup.html                # Đăng ký tài khoản
+│   ├── forgot-password.html       # Quên mật khẩu
+│   ├── reset-password.html        # Đặt lại mật khẩu
+│   └── verify-code.html            # Xác thực mã OTP/email
+│
+├──  Chuyến bay
+│   ├── flights.html               # Danh sách và tìm kiếm chuyến bay
+│   ├── flight-detail.html         # Chi tiết chuyến bay
+│   ├── flight-detail-emirates-1.html  # Chi tiết chuyến bay Emirates
+│   ├── flight-detail-flydubai-1.html  # Chi tiết chuyến bay Flydubai
+│   └── flight-detail-qatar-1.html     # Chi tiết chuyến bay Qatar
+│
+├──  Khách sạn
+│   ├── hotel.html                 # Tìm kiếm khách sạn
+│   ├── hotels.html                # Danh sách khách sạn
+│   └── hotel-detail.html          # Chi tiết khách sạn
+│
+├──  Địa điểm & du lịch
+│   ├── places.html                # Danh sách các địa điểm nổi bật
+│   ├── destination-detail.html   # Chi tiết điểm đến
+│   │
+│   ├──  Chi tiết địa điểm
+│   │   ├── baku-detail.html       # Chi tiết địa điểm Baku
+│   │   ├── dubai-detail.html      # Chi tiết địa điểm Dubai
+│   │   ├── newyork-detail.html    # Chi tiết địa điểm New York
+│   │   ├── paris-detail.html      # Chi tiết địa điểm Paris
+│   │   ├── rome-detail.html       # Chi tiết địa điểm Rome
+│   │   ├── sydney-detail.html     # Chi tiết địa điểm Sydney
+│   │   ├── tokyo-detail.html      # Chi tiết địa điểm Tokyo
+│   │   └── male-detail.html       # Chi tiết địa điểm Malé
+│   │
+│   ├──  Hoạt động
+│   │   ├── activities-adventure.html   # Các hoạt động phiêu lưu
+│   │   ├── activities-culture.html     # Các hoạt động văn hóa
+│   │   └── activities-relaxation.html  # Các hoạt động thư giãn
+│   │
+│   └──  Hướng dẫn du lịch
+│       ├── guide-maldives.html    # Hướng dẫn du lịch Maldives
+│       ├── guide-paris.html       # Hướng dẫn du lịch Paris
+│       └── guide-rome.html        # Hướng dẫn du lịch Rome
+│
+├──  Thanh toán
+│   ├── payment.html               # Trang thanh toán
+│   ├── signup-payment.html        # Đăng ký kết hợp thanh toán
+│   └── promo-code.html            # Nhập và áp dụng mã khuyến mãi
+│
+├──  Đánh giá
+│   └── reviews.html               # Hiển thị đánh giá từ khách hàng
+│
+├──  Thông tin website
+│   ├── our-story.html             # Giới thiệu về website / câu chuyện thương hiệu
+│   ├── work-with-us.html          # Tuyển dụng / hợp tác
+│   ├── terms.html                 # Điều khoản sử dụng
+│   └── privacy.html               # Chính sách bảo mật
+│
+└──  JavaScript
+    └── script.js                  # Xử lý các chức năng tương tác của website
 │
 ├── pages 2/                    # Các phiên bản/mô-đun trang phát triển bổ sung
 ├── pages 3/
